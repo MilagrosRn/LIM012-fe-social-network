@@ -5,8 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/b24a021b71.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id="contenedor">
+  <div id="login">
+    <div id="infoD"><a href="" target="_blank"><img class="info" src="info.png"></a></div>
+    <div id="logoD"><img class="logo" src="logo.png"></div>
+  </div>
+  <div class="formulario">
+    <form>
+      <div class="con">
+        <header class="head-form">
+          <h2>Iniciar Sesión</h2>
+          <!-- <p>login here using your username and password</p> -->
+        </header><br>
+        <div class="field-set">
+          <div class="ingresartexto">
+            <div class="inputF">
+              <i class="fas fa-envelope"></i><input class="form-input" id="txt-input" type="text" placeholder="Correo" required>         
+            </div>
+            <div class="inputF">
+              <i class="fa fa-key"></i><input class="form-input" type="password" placeholder="Contraseña" id="pwd"  name="password" required>
+            </div>
+          </div>
+          <div class="btnIngresar"><button class="log-in">Ingresar</button></div> 
+        </div>
+        <div>
+          <span class="linea">--Puedes iniciar sesión con--</span>
+        </div>
+        <div class="other">
+          <button class="btn submits frgt-pass">Facebook  <i class="fab fa-facebook-f"></i></button>
+          <button class="btn submits sign-up">Google <i class="fab fa-google-plus-g"></i></button>
+        </div>
+        <div><span>No tienes cuenta?  <b><a href="" target="_blank">Registrate</a></b></span></div>
+      </div>
+    </form>
+  </div>
+</div>
   <script type="module" src="index.js"></script>
 </body>
 </html>
