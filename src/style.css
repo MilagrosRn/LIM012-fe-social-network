@@ -3,15 +3,11 @@
     margin: 0;
     box-sizing: border-box;
 }
-body {
-    font-family: 'Poppins', sans-serif;
-    height: 100%;
-}
-#contenedor{
+#primera_vista_login{
     display: flex;
     /* justify-content: space-around; */
     flex-direction: column;
-    background-image: url("fondeDegradado.jpg");
+    background-image: url(fondo_degradado.jpg);
     /* background-repeat: no-repeat; */
     height: 100%;
 }
@@ -38,9 +34,7 @@ body {
     display: flex;
     justify-content: space-around;
 }
-#formulario{
-    width: 100%;
-}
+
 .btnIngresar{
     display: flex;
     justify-content: space-around;
@@ -87,25 +81,10 @@ form .con {
 .input-item {
     background: #FFFFFF;
     color: #333;
-    /* padding: 5.5px 0px 5px 5px;
-    border: 1px solid #575656; */
-    /* border-radius: 15px 0px 0px 15px; */
 }
 .field-set{
     width: 100%;
 }
-/* input[class="form-input"]{
-    width: 90%;
-    height: 35px;
-    margin-top: 2%;
-    padding: 10px;
-    font-size: 16px;
-    color: #ABA3A3;
-    border: 1px solid #575656;
-    outline: none;
-    border-radius: 25px 25px 25px 25px;
-    transition: 0.2s linear;
-} */
 .form-input{
     border: 0;
     background: #FFFFFF;
@@ -219,7 +198,7 @@ header{
 body{
     font-family:Fontmedium;
     margin: 0;
-    background: url(fondeDegradado.jpg);
+    background: url(fondo_degradado.jpg);
     background-size: cover;
     background-attachment: fixed;
 }

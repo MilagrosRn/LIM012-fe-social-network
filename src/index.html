@@ -4,26 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Vida sana</title>
+  <link rel="shortcut icon" href="./imagenes/primera_vista/logoColor.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css" />
   <script src="https://kit.fontawesome.com/b24a021b71.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="contenedor">
-  <div id="login">
-    <div id="infoD"><a href="" target="_blank"><img class="info" src="info.png"></a></div>
-    <div id="logoD"><img class="logo" src="logo.png"></div>
-  </div>
-  <div class="formulario">
-    <form>
-      <div class="con">
-        <header class="head-form">
-          <h2>Iniciar Sesión</h2>
-          <!-- <p>login here using your username and password</p> -->
-        </header><br>
-        <div class="field-set">
-          <div class="ingresartexto">
+<div id="primera_vista_login">
+  <div><i class="fas fa-info-circle" ></i></div>
+  <header>
+    <img class="logo" src="./imagenes/primera_vista/logo_oficial.png" >
+  </header>
+  <form class="formulario_login">
+    <h1>Iniciar Sesión</h1>
+      <div class="field-set">
+         <div class="ingresartexto">
             <div class="inputF">
               <i class="fas fa-envelope"></i><input class="form-input" id="txt-input" type="text" placeholder="Correo" required>         
             </div>
@@ -41,20 +36,12 @@
           <button class="btn submits sign-up">Google <i class="fab fa-google-plus-g"></i></button>
         </div>
         <div><span>No tienes cuenta?  <b><a href="" target="_blank">Registrate</a></b></span></div>
-      </div>
     </form>
-  </div>
-</div>
-  <script src="https://kit.fontawesome.com/c824c32d53.js" crossorigin="anonymous"></script>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <title>Vida Sana</title>
-</head>
-<body>
-  <div>
-    <i class="fas fa-info-circle" ></i>
-  </div>
+    <div>
+<div id="segunda_vista_registro">
+  <div><i class="fas fa-info-circle" ></i></div>
   <header>
-    <img class="logo" src="logoFinal1.png" >
+    <img class="logo" src="./imagenes/primera_vista/logo_oficial.png" >
   </header>
   <section>
   <form class="formulario_registro">
@@ -79,10 +66,9 @@
     <input type="button" class="boton_registrarse" value="Registrarme">
     <hr>
     <p class="text_form" >¿Ya tienes una cuenta? <a href="#" class="inicio_sesion">Inicia Sesion</a></p>
-   
   </form>
-</section>
-
+  </section>
+</div>
   <script type="module" src="index.js"></script>
 </body>
 </html>
