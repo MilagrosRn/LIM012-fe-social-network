@@ -3,204 +3,37 @@
     margin: 0;
     box-sizing: border-box;
 }
-#primera_vista_login{
-    display: flex;
-    /* justify-content: space-around; */
-    flex-direction: column;
-    background-image: url(fondo_degradado.jpg);
-    /* background-repeat: no-repeat; */
-    height: 100%;
-}
-#login{
-    /* background-image: url("fondeDegradado.jpg");
-    background-repeat: no-repeat;
-    width: 60%; */
-    padding-top: 5%;
-}
-/* imagen de info */
-.info{
-    width: 30px;
-    height: 30px;
-}
-#infoD{
-    padding-left: 4%;
-}
-/* imagen de logo */
-.logo{
-    width: 70%;
-    height: 90px;;
-}
-#logoD{
-    display: flex;
-    justify-content: space-around;
-}
-
-.btnIngresar{
-    display: flex;
-    justify-content: space-around;
-}
-.ingresartexto{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-form {
-    /* width: 450px; 
-    min-height: 500px;*/
-    width: 80%;
-    height: auto;
-    border-radius: 15px;
-    margin: 2% auto;
-    margin-bottom: 12%;
-    padding: 5%;
-    background-color: #F9F9F9;
-}
-form .con {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: space-around;
-    justify-content: space-around;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    align-items: center;
-}
-.head-form {
-    margin: 2% auto 5% auto;
-    text-align: center;
-    font-size: 15px;
-    color: #575656;
-}
-/* header h2 {
-    font-size: 250%;
-    font-family: 'Playfair Display', serif;
-    color: #3e403f;
-} */
-/* header p {letter-spacing: 0.05em;} */
-.input-item {
-    background: #FFFFFF;
-    color: #333;
-}
-.field-set{
-    width: 100%;
-}
-.form-input{
-    border: 0;
-    background: #FFFFFF;
-    outline: none;
-    margin-left: 5%;
-}
-.inputF{
-    width: 90%;
-    height: 35px;
-    margin-top: 5%;
-    padding: 2px;
-    padding-left: 10px;
-    font-size: 16px;
-    background: #FFFFFF;
-    border: 1px solid #575656;
-    border-radius: 25px 25px 25px 25px
-}
-/* input[id="txt-input"] {width: 250px;} */
-/* focus  */
-input:focus {
-    transform: translateX(-2px);
-    border-radius: 5px;
-}
-button {
-    display: inline-block;
-    color: #FFFFFF;
-    width: 60%;
-    height: 35px;
-    padding: 0 5px;
-    background: #E60712;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s linear;
-    margin: 6% auto;
-    letter-spacing: 0.05em;
-}
-.other{
-    width: 100%;
-}
-.submits {
-    width: 45%;
-    display: inline-block;
-    float: left;
-    margin-left: 5%;
-}
-.frgt-pass {background: #3A5898;}
-.sign-up {background: #A4A4A4;}
-button:hover {
-    transform: translatey(3px);
-    box-shadow: none;
-}
-button:hover {
-    animation: ani9 0.4s ease-in-out infinite alternate;
-}
-@keyframes ani9 {
-    0% {
-        transform: translateY(3px);
-    }
-    100% {
-        transform: translateY(5px);
-    }
-}
-.linea{
-    color: #575656;
-    font-size: 15px;
-}
-a{
-    color: #FF0505;
-}
-a:link {
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: none;
-    color: #FF0505;
-  }
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 @font-face {
-    font-family:  Fontmedium;
+    font-family: Fontmedium;
     src: url(fuentes/Poppins-Medium.ttf);
 }
 @font-face {
     font-family: FontSemibold;
     src: url(fuentes/Poppins-SemiBold.ttf);
-  }
-header{
-     display: flex;
-    align-items: center;
-    justify-content: center;
 }
-.logo{
-    width:68%;
-    display: flex;
-    margin-bottom: 0;
-   margin-bottom: 9%;
-}
-.fa-info-circle{
-    color: #FFFFFF;
-    margin-top: 5%;
-    margin-left: 5%;
-    font-size:1.5rem;
-}
-
 body{
     font-family:Fontmedium;
     margin: 0;
     background: url(fondo_degradado.jpg);
     background-size: cover;
     background-attachment: fixed;
+}
+header{
+    display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.logo{
+   width:68%;
+   display: flex;
+   margin-bottom: 0;
+  margin-bottom: 9%;
+}
+.fa-info-circle{
+   color: #FFFFFF;
+   margin-top: 5%;
+   margin-left: 5%;
+   font-size:1.5rem;
 }
 section{
     display: flex;
@@ -216,6 +49,7 @@ section{
 }
 form{
     background: rgba(249, 249, 249, 0.89);
+    margin-bottom: 12%;
 }
 h1{
     font-family: Fontmedium;
@@ -237,11 +71,59 @@ h1{
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
     border-radius: 82px;
 }
+input:hover{
+    outline: none;   
+}
 .icon_form{
     color: #575656;
     text-align: center;
     min-width: 25%;
 }
+.btnIngresar{
+    display: flex;
+    justify-content: space-around;
+}
+button {
+    display: inline-block;
+    color: #FFFFFF;
+    width: 60%;
+    height: 35px;
+    padding: 0 5px;
+    background: #E60712;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    margin: 6% auto;
+    letter-spacing: 0.05em;
+}
+.btnFG{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.submits {
+    width: 45%;
+    margin-left: 5%;
+}
+.frgt-pass {background: #3A5898;}
+.sign-up {background: #A4A4A4;}
+.textoS{
+    color: #575656;
+    font-size: 15px;
+}
+a{
+    color: #FF0505;
+}
+a:link {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+    color: #FF0505;
+  }
 .boton_registrarse{
     font-family: Fontmedium;
     background: #E60712;

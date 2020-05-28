@@ -10,65 +10,68 @@
   <script src="https://kit.fontawesome.com/b24a021b71.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="primera_vista_login">
-  <div><i class="fas fa-info-circle" ></i></div>
-  <header>
-    <img class="logo" src="./imagenes/primera_vista/logo_oficial.png" >
-  </header>
-  <form class="formulario_login">
-    <h1>Iniciar Sesión</h1>
-      <div class="field-set">
-         <div class="ingresartexto">
-            <div class="inputF">
-              <i class="fas fa-envelope"></i><input class="form-input" id="txt-input" type="text" placeholder="Correo" required>         
-            </div>
-            <div class="inputF">
-              <i class="fa fa-key"></i><input class="form-input" type="password" placeholder="Contraseña" id="pwd"  name="password" required>
-            </div>
-          </div>
-          <div class="btnIngresar"><button class="log-in">Ingresar</button></div> 
-        </div>
-        <div>
-          <span class="linea">--Puedes iniciar sesión con--</span>
-        </div>
-        <div class="other">
-          <button class="btn submits frgt-pass">Facebook  <i class="fab fa-facebook-f"></i></button>
-          <button class="btn submits sign-up">Google <i class="fab fa-google-plus-g"></i></button>
-        </div>
-        <div><span>No tienes cuenta?  <b><a href="" target="_blank">Registrate</a></b></span></div>
+  <div id="primera_vista_registro">
+    <div><i class="fas fa-info-circle" ></i></div>
+    <header>
+      <img class="logo" src="./imagenes/primera_vista/logo_oficial.png" >
+    </header>
+    <section>
+    <form class="formulario_registro">
+      <br>
+      <h1>Iniciar Sesión</h1>
+      <br>
+      <div class="input_contenedor">
+        <i class="fas fa-envelope" class="icon_form"></i>
+        <input type="text" class="correo" placeholder="Correo">
+      </div>
+      <div class="input_contenedor">
+        <i class='fas fa-key' class="icon_form"></i>
+        <input type="password" class="coontraseña"  placeholder= "Contraseña">
+      </div>
+      <div class="btnIngresar"><button class="log-in">Ingresar</button></div> 
+      <div>
+        <span class="textoS">--Puedes iniciar sesión con--</span>
+      </div>
+      <div class="btnFG">
+        <button class="btn submits frgt-pass">Facebook  <i class="fab fa-facebook-f"></i></button>
+        <button class="btn submits sign-up">Google <i class="fab fa-google-plus-g"></i></button>
+      </div>
+      <div><span>No tienes cuenta?  <b><a href="" target="_blank">Registrate</a></b></span></div>
     </form>
-    <div>
-<div id="segunda_vista_registro">
-  <div><i class="fas fa-info-circle" ></i></div>
-  <header>
-    <img class="logo" src="./imagenes/primera_vista/logo_oficial.png" >
-  </header>
-  <section>
-  <form class="formulario_registro">
-    <br>
-    <h1>Registrate</h1>
-    <br>
-    <div class="input_contenedor">
-      <i class="fas fa-user"  class="icon_form"></i>
-      <input type="text" class="usuario" placeholder="Usuario">
-    </div> 
-    <div class="input_contenedor">
-      <i class="fas fa-envelope" class="icon_form"></i>
-      <input type="text" class="correo" placeholder="Correo">
-    </div>
-    <div class="input_contenedor">
-      <i class='fas fa-key' class="icon_form"></i>
-      <input type="password" class="coontraseña"  placeholder= "Contraseña">
-    </div>
-    <input type="checkbox" id="condiiones">
-    <label class="text_form"for="condiiones">Al registrarme acepto<a href="#" class="terminos">Terminos y Condiciones</a></label>
-    <br>
-    <input type="button" class="boton_registrarse" value="Registrarme">
-    <hr>
-    <p class="text_form" >¿Ya tienes una cuenta? <a href="#" class="inicio_sesion">Inicia Sesion</a></p>
-  </form>
-  </section>
-</div>
+    </section>
+  </div>
+
+  <div id="segunda_vista_registro">
+    <div><i class="fas fa-info-circle" ></i></div>
+    <header>
+      <img class="logo" src="./imagenes/primera_vista/logo_oficial.png" >
+    </header>
+    <section>
+    <form class="formulario_registro">
+      <br>
+      <h1>Registrate</h1>
+      <br>
+      <div class="input_contenedor">
+        <i class="fas fa-user"  class="icon_form"></i>
+        <input type="text" class="usuario" placeholder="Usuario">
+      </div> 
+      <div class="input_contenedor">
+        <i class="fas fa-envelope" class="icon_form"></i>
+        <input type="text" class="correo" placeholder="Correo">
+      </div>
+      <div class="input_contenedor">
+        <i class='fas fa-key' class="icon_form"></i>
+        <input type="password" class="coontraseña"  placeholder= "Contraseña">
+      </div>
+      <input type="checkbox" id="condiiones">
+      <label class="text_form"for="condiiones">Al registrarme acepto<a href="#" class="terminos">Terminos y Condiciones</a></label>
+      <br>
+      <input type="button" class="boton_registrarse" value="Registrarme">
+      <hr>
+      <p class="text_form" >¿Ya tienes una cuenta? <a href="#" class="inicio_sesion">Inicia Sesion</a></p>
+    </form>
+    </section>
+  </div>
   <script type="module" src="index.js"></script>
 </body>
 </html>
