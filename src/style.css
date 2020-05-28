@@ -14,7 +14,7 @@
 body{
     font-family:Fontmedium;
     margin: 0;
-    background: url(fondo_degradado.jpg);
+    background: url("./imagenes/fondeDegradado.jpg");
     background-size: cover;
     background-attachment: fixed;
 }
