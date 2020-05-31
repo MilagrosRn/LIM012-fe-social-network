@@ -10,68 +10,27 @@
   <script src="https://kit.fontawesome.com/b24a021b71.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id="primera_vista_registro">
-    <div><i class="fas fa-info-circle" ></i></div>
-    <header>
-      <img class="logo" src="./imagenes/logo_oficial.png" >
-    </header>
-    <section>
-    <form class="formulario_registro">
-      <br>
-      <h1>Iniciar Sesión</h1>
-      <br>
-      <div class="input_contenedor">
-        <i class="fas fa-envelope" class="icon_form"></i>
-        <input type="text" class="correo" placeholder="Correo">
-      </div>
-      <div class="input_contenedor">
-        <i class='fas fa-key' class="icon_form"></i>
-        <input type="password" class="coontraseña"  placeholder= "Contraseña">
-      </div>
-      <div class="btnIngresar"><button class="log-in">Ingresar</button></div> 
-      <div>
-        <span class="textoS">--Puedes iniciar sesión con--</span>
-      </div>
-      <div class="btnFG">
-        <button class="btn submits frgt-pass">Facebook  <i class="fab fa-facebook-f"></i></button>
-        <button class="btn submits sign-up">Google <i class="fab fa-google-plus-g"></i></button>
-      </div>
-      <div><span>No tienes cuenta?  <b><a href="" target="_blank">Registrate</a></b></span></div>
-    </form>
-    </section>
-  </div>
-
-  <div id="segunda_vista_registro">
-    <div><i class="fas fa-info-circle" ></i></div>
-    <header>
-      <img class="logo" src="./imagenes/logo_oficial.png" >
-    </header>
-    <section>
-    <form class="formulario_registro">
-      <br>
-      <h1>Registrate</h1>
-      <br>
-      <div class="input_contenedor">
-        <i class="fas fa-user"  class="icon_form"></i>
-        <input type="text" class="usuario" placeholder="Usuario">
-      </div> 
-      <div class="input_contenedor">
-        <i class="fas fa-envelope" class="icon_form"></i>
-        <input type="text" class="correo" placeholder="Correo">
-      </div>
-      <div class="input_contenedor">
-        <i class='fas fa-key' class="icon_form"></i>
-        <input type="password" class="coontraseña"  placeholder= "Contraseña">
-      </div>
-      <input type="checkbox" id="condiiones">
-      <label class="text_form"for="condiiones">Al registrarme acepto<a href="#" class="terminos">Terminos y Condiciones</a></label>
-      <br>
-      <input type="button" class="boton_registrarse" value="Registrarme">
-      <hr>
-      <p class="text_form" >¿Ya tienes una cuenta? <a href="#" class="inicio_sesion">Inicia Sesion</a></p>
-    </form>
-    </section>
-  </div>
-  <script type="module" src="index.js"></script>
+  <section id="seccion"></section>
+  <!-- <script src="/__/firebase/7.14.5/firebase-app.js"></script>
+  <script src="/__/firebase/7.14.5/firebase-analytics.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase/init.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyDSv47hDN_B_cE3_GHAKDvGGdhhkkQ8Kjg",
+      authDomain: "red-social-2085d.firebaseapp.com",
+      databaseURL: "https://red-social-2085d.firebaseio.com",
+      projectId: "red-social-2085d",
+      storageBucket: "red-social-2085d.appspot.com",
+      messagingSenderId: "603475371255",
+      appId: "1:603475371255:web:f81d07259172e52d041ff2",
+      measurementId: "G-WQ56DR07CB"
+    };
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+  </script>
+  <script type="module" src="main.js"></script>
 </body>
 </html>
