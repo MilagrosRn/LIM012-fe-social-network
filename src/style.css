@@ -4,12 +4,20 @@
     box-sizing: border-box;
 }
 @font-face {
+    font-family: FontRegular;
+    src: url(fuentes/Poppins-Regular.ttf);
+}
+@font-face {
     font-family: Fontmedium;
     src: url(fuentes/Poppins-Medium.ttf);
 }
 @font-face {
     font-family: FontSemibold;
     src: url(fuentes/Poppins-SemiBold.ttf);
+}
+@font-face {
+    font-family: FontligtItalic;
+    src: url(fuentes/Poppins-LightItalic.ttf);
 }
 body{
     font-family:Fontmedium;
@@ -35,7 +43,8 @@ header{
    margin-left: 5%;
    font-size:1.5rem;
 }
-section{
+
+.espacio-login{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,6 +66,7 @@ h1{
     line-height: 0.3em;
     font-size: 2em;
 }
+/* ------vista login----------- */
 .formulario_registro input[type="text"], input[type="password"]{
     font-family: Fontmedium;
     font-size: 1rem;
@@ -81,28 +91,33 @@ input:hover{
 }
 .btnIngresar{
     display: flex;
+    font-family: Fontmedium;
     justify-content: space-around;
 }
 button {
-    display: inline-block;
     color: #FFFFFF;
-    width: 60%;
-    height: 35px;
-    padding: 0 5px;
+    width: 58%;
+    margin: 5% auto;
+    height: 17%;
+    padding: 3.5% 5%;
     background: #E60712;
-    border-radius: 10px;
+    border-radius: 9px;
     outline: none;
     border: none;
     cursor: pointer;
+    display: inline-block;
     text-align: center;
     transition: all 0.2s linear;
-    margin: 6% auto;
     letter-spacing: 0.05em;
+    font-family: Fontmedium;
+    font-size: 0.9em;
 }
+
 .btnFG{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    font-family: Fontmedium;
 }
 .submits {
     width: 45%;
@@ -110,9 +125,9 @@ button {
 }
 .frgt-pass {background: #3A5898;}
 .sign-up {background: #A4A4A4;}
-.textoS{
+.texto_inicio_opcional{
     color: #575656;
-    font-size: 15px;
+    font-size: 0.9rem;
 }
 a{
     color: #FF0505;
@@ -124,6 +139,7 @@ a:hover {
     text-decoration: none;
     color: #FF0505;
   }
+  /* ------vista registro----------- */
 .boton_registrarse{
     font-family: Fontmedium;
     background: #E60712;
@@ -144,7 +160,7 @@ font-size: 0.8rem;
     padding: 0%;
 }
 .terminos{
-    color:  #575656;
+    color:  #333333;
 }
 .inicio_sesion{
     text-decoration: none;
@@ -152,3 +168,326 @@ font-size: 0.8rem;
     color: #FF0505;
     font-size: 1.1em;
 }
+.separador{
+    width: 13%;
+    display: inline-block;
+}
+.portada{
+    display: none;
+}
+/* ------vista home----------- */
+body{
+     background: white; 
+}
+.header_navigation_home{
+    background: linear-gradient(180deg, #0CE600 2.6%, #757D00 100%);
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    height: 4em;
+    width: 100%;
+} 
+
+.conteiner_menu{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+}
+
+.conteiner_logo{
+    width: 80%;
+    height: 100%;
+    padding-right: 20%;
+    justify-content: center;
+    display: flex;
+    align-items: flex-end;
+     
+ }
+ .header_logo{
+    width: 190px;
+    height: 62px;
+    
+}
+.menu{
+    width: 2rem;
+    height: 0.5rem;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.post{
+    width: 90%;
+    border: 2px solid #D1D1D1;
+    border-radius: 0px 0px 15px 15px;
+    margin:5% auto;
+
+
+}
+.description_text{
+    /* border: 2px solid rgba(0, 0, 0, 0.2); */
+    width: 100%;
+    height:4.5em;
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding:5%;
+    
+}
+.text_post{
+    display: flex;
+    font-family: FontligtItalic;
+    font-style: italic;
+    font-size: 0.7em;
+    text-align: center;
+    color: #575656;
+}
+
+h3{
+    color: #766E72;
+    font-size: 0.5em;
+}
+
+
+
+
+
+
+
+
+.button_send{
+    background: #E60712;
+    box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.53);
+    border-radius: 50%;
+    /* height: 40px;
+    width: 40px; */
+    padding-top: 3%;
+    padding-right: 3.7%;
+    padding-bottom: 3%;
+    padding-left: 3.7%;
+    align-items: center; 
+    text-align:center;
+}
+.fa-paper-plane{
+    color: white;
+    font-size: 1em;
+}
+.fa-lock, .fa-globe-americas {
+    font-size: 1rem;
+    color:  rgb(77, 77, 77);
+    
+}
+.title_user{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 2.5rem;
+    align-items: center;
+    padding:4%;
+    margin-top: 2%;
+}
+.img_user{
+    margin-right: 5%;
+    width: 2.3em;
+    height: 2.3em;
+    background-color: #D1D1D1;
+    border-radius: 50%;
+}
+
+.data_user{
+    display: flex;
+    align-items: center;
+    height: 2em;
+    width: 80%;
+}
+.name_user{
+    width: 50%;
+}
+h2{
+ font-family: FontRegular;
+ font-size: 0.8em;
+}
+.menu_privacity_user{
+    width: 20%;
+    height: 2em;
+  display: flex;
+  justify-content: space-around;
+}
+/* .icon_privacity:hover{
+background-color: #D1D1D1;
+border-radius: 50%;
+width: 50%;
+height: 2em;
+} */
+.fa-lock:hover, .fa-globe-americas:hover{
+    font-size: 1.6rem;
+}
+.options_post{
+    width: 100%;
+    height: 2em;
+    background-color: #D1D1D1;
+    display: flex;
+    border-bottom-right-radius:0.7em;
+    border-bottom-left-radius:0.7em;
+}
+.options_post p{
+    font-family: FontRegular;
+font-size: 0.8em;
+}
+
+
+.option{
+    width: 33%;
+    border-right: 2px solid rgb(77, 77, 77);
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+.option2{
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+.fa-camera, .fa-heart, .fa-map-marker-alt {
+ color: rgb(77, 77, 77) ;
+ font-size: 1em;
+}
+
+
+
+
+
+
+
+/* vista iphone 5 */
+@media screen and (max-width:320px){
+    h1{
+        font-size: 1.4em;
+    }
+    .texto_inicio_opcional{
+        font-size: 0.8rem;
+    }
+    .separador{
+        width: 8%;
+        display: inline-block;
+    }
+    button{
+        font-size: 0.7em;
+    }
+}
+/* / Móviles en horizontal o tablets en vertical
+   ------------------------------------------------------------------------- /
+@media (min-width: 768px) { }*/
+
+@media screen and (min-width:768px){
+/* ------vista registrarse----------- */
+h1{
+    font-size: 2.5em;
+}
+.formulario_registro input[type="text"], input[type="password"]{
+    font-size: 1.5rem;
+}
+.iconLogin{
+    font-size: 1.5rem;
+}
+button{
+    font-size: 1.6rem;
+}
+.texto_inicio_opcional{
+    font-size: 1.5rem;
+}
+.separador{
+    width: 16%;
+    display: inline-block;
+}
+.text_form{
+    font-size: 1.4rem;
+}
+.boton_registrarse{
+    font-size: 1.5rem;
+}
+.formulario_registro p{
+    font-size: 1.5rem;
+}
+.portada{
+    display: none;
+}
+}
+/* / Tablets en horizonal y escritorios normales
+   ------------------------------------------------------------------------- /
+@media (min-width: 1024px) { } */
+
+@media screen and (min-width:1024px){
+/* ------vista login----------- */
+.iconLogin{
+    font-size: 1.1rem;
+}
+.separador{
+    width: 1.4em;
+}
+.texto_inicio_opcional{
+    font-size:0.9em ;
+}
+button{
+    font-size: 0.9rem;
+}
+/* ------vista registrarse----------- */
+body{
+    background: none;
+}
+
+.icon_info{
+    display: none;
+}
+
+.espacio-portada{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.portada{
+    background: url("./imagenes/fondeDegradado.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;  
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    margin: auto;  
+}
+
+.espacio-login{
+    background: linear-gradient(180deg, rgba(12, 230, 0, 0.3) , rgba(117, 125, 0, 0.3));
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100vh;
+} 
+
+.text_form{
+    font-size: 0.9em;
+}
+.formulario_registro p{
+    font-size: 1.1em;
+}
+h1{
+    font-size: 1.8rem;
+}
+.boton_registrarse {
+    font-size: 1.05rem;
+}
+.formulario_registro input[type="text"], input[type="password"] {
+    font-size: 1.1rem;
+}
+}
+/* Escritorios muy anchos
+   ------------------------------------------------------------------------- 
+@media (min-width: 1200px) { } */
