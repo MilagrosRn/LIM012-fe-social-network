@@ -10,6 +10,7 @@ const changeView = (hashUrl) => {
     case '':
     case ' ':
     case '#':
+    case '#/':
     case '#/login': return seccion.appendChild(views.login());
     case '#/register': return seccion.appendChild(views.register());
     case '#/home': return seccion.appendChild(views.home());
