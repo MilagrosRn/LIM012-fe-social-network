@@ -3,6 +3,7 @@ import { changeView } from '../view-controler/router.js';
 // eslint-disable-next-line import/no-cycle
 import { signingIn } from '../view-controler/viewc-login.js';
 // eslint-disable-next-line import/named
+// eslint-disable-next-line import/no-cycle
 import { loginGoogle, loguinFacebook } from '../firebase/firebase-conexion.js';
 
 export default () => {

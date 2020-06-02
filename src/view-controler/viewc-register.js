@@ -12,8 +12,7 @@ export const registerIn = () => {
       if (user.emailVerifed === true) {
         changeView('#/home');
         console.log('creado');
-      }
-      else {
+      } else {
         changeView('#');
       }
     }).catch(() => {
