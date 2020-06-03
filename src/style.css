@@ -3,6 +3,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+.alerta{
+    color: #E60712;
+}
 @font-face {
     font-family: Fontmedium;
     src: url(fuentes/Poppins-Medium.ttf);
@@ -20,14 +23,14 @@ body{
 }
 header{
     display: flex;
-   align-items: center;
-   justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
 .logo{
    width:68%;
    display: flex;
    margin-bottom: 0;
-  margin-bottom: 9%;
+   margin-bottom: 9%;
 }
 .fa-info-circle{
    color: #FFFFFF;
@@ -35,7 +38,6 @@ header{
    margin-left: 5%;
    font-size:1.5rem;
 }
-
 .espacio-login{
     display: flex;
     align-items: center;
@@ -44,6 +46,7 @@ header{
 .formulario_registro{
     color: #575656;
     padding: 6%;
+    margin-left: 7%;
     text-align: center;
     width: 85%;
     border-radius: 16px;
@@ -104,7 +107,6 @@ button {
     font-family: Fontmedium;
     font-size: 0.9em;
 }
-
 .btnFG{
     width: 100%;
     display: flex;
@@ -293,17 +295,14 @@ button{
 body{
     background: none;
 }
-
 .icon_info{
     display: none;
 }
-
 .espacio-portada{
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-
 .portada{
     background: url("./imagenes/fondeDegradado.jpg");
     background-repeat: no-repeat;
@@ -314,11 +313,9 @@ body{
     justify-content: center;
     align-items: center;
 }
-
 form{
     margin: auto;  
 }
-
 .espacio-login{
     background: linear-gradient(180deg, rgba(12, 230, 0, 0.3) , rgba(117, 125, 0, 0.3));
     justify-content: space-evenly;

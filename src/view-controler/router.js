@@ -13,6 +13,7 @@ export const changeView = (hashUrl) => {
     case '#/login':
     case '':
     case ' ':
+    case '#/':
     case '#':
     { return seccion.appendChild(_login()); }
     case '#/register':

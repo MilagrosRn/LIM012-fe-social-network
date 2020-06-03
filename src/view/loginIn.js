@@ -2,39 +2,48 @@
 import { changeView } from '../view-controler/router.js';
 // eslint-disable-next-line import/no-cycle
 import { signingIn } from '../view-controler/viewc-login.js';
+// eslint-disable-next-line import/no-cycle
+import { btnInfo } from '../view-controler/view-info.js';
 // eslint-disable-next-line import/named
 // eslint-disable-next-line import/no-cycle
 import { loginGoogle, loguinFacebook } from '../firebase/firebase-conexion.js';
 
 export default () => {
   const viewLogin = `
-      <div><i class="fas fa-info-circle"></i></div>
+      <div><span class="info"><i class="fas fa-info-circle"></i></span></div>
       <header>
         <img class="logo" src="imagenes/logo_oficial.png" >
       </header>
+      <div id="modal" class="modalContainer">
+        <div class="content-modal">
+          <span class="closeInfo">×</span>
+          <h2>BIENVENIDO!!!</h2>
+          <h4  class="alerta">Esta red social es para ti</h4>
+          <p>Aquí encontraras personas que compartiran contigo habitos saludables como recetas bajo en grasa, rutinas de ejercicio, reseñas de restaurantes y muchisimo mas</p>
+        </div>
+      </div>
       <section>
-      <form class="formulario_registro">
-        <br>
-        <h1> Iniciar  Sesión </h1>
-        <br>
-        <div class="input_contenedor">
-          <i class="fas fa-envelope" class="icon_form"></i>
-          <input type="text" class="correoL" placeholder="Correo" required>
-        </div>
-        <div class="input_contenedor">
-          <i class='fas fa-key' class="icon_form"></i>
-          <input type="password" class="contraseñaL"  placeholder= "Contraseña" required>
-        </div>
-        <div class="btnIngresar"><button type="button" class="log-in">Ingresar</button></div> 
-        <div>
-          <span class="textoS">--Puedes iniciar sesión con--</span>
-        </div>
-        <div class="btnFG">
-          <button id="btnFacebook" class="btn submits frgt-pass">Facebook  <i class="fab fa-facebook-f"></i></button>
-          <button id="btnGoogle" class="btn submits sign-up">Google <i class="fab fa-google-plus-g"></i></button>
-        </div>
-        <div><span>No tienes cuenta?  <b><a href="#/register" id="registrarse">Registrate</a></b></span></div>
-      </form>
+        <form class="formulario_registro">
+          <br><h1> Iniciar  Sesión </h1><br>
+          <div class="input_contenedor">
+            <i class="fas fa-envelope" class="icon_form"></i>
+            <input type="text" class="correoL" placeholder="Correo" required>
+          </div>
+          <div class="input_contenedor">
+            <i class='fas fa-key' class="icon_form"></i>
+            <input type="password" class="contraseñaL"  placeholder="Contraseña" required>
+          </div>
+          <div id="msjError1"></div>     
+          <div class="btnIngresar"><button type="button" class="log-in">Ingresar</button></div> 
+          <div>
+            <span class="textoS">--Puedes iniciar sesión con--</span>
+          </div>
+          <div class="btnFG">
+            <button id="btnFacebook" class="btn submits frgt-pass">Facebook  <i class="fab fa-facebook-f"></i></button>
+            <button id="btnGoogle" class="btn submits sign-up">Google <i class="fab fa-google-plus-g"></i></button>
+          </div>
+          <div><span>No tienes cuenta?  <b><a href="#/register" id="registrarse">Registrate</a></b></span></div>
+        </form>
       </section>
     `;
   const divElement = document.createElement('div');
@@ -42,6 +51,9 @@ export default () => {
   divElement.innerHTML = viewLogin;
   const btnIngresar = divElement.querySelector('.log-in');
   btnIngresar.addEventListener('click', signingIn);
+
+  const btnInformacion = divElement.querySelector('.info');
+  btnInformacion.addEventListener('click', btnInfo);
 
   const btnFacebook = divElement.querySelector('#btnFacebook');
   btnFacebook.addEventListener('click', loguinFacebook);

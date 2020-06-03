@@ -6,16 +6,19 @@ import { changeView } from './router.js';
 export const signingIn = () => {
   const email = document.querySelector('.correoL').value;
   const password = document.querySelector('.contraseñaL').value;
+  const msjError1 = document.querySelector('#msjError1');
 
   loguearUser(email, password).then(() => {
-    // validation(changeView);
-    changeView('#/home');
-  }).catch((error) => {
-    console.log(error);
-    // msgAlert.classList.remove('ocult');
-    setTimeout(() => {
-      console.log('error catch viwe');
-    //   msgAlert.classList.add('ocult');
-    }, 3000);
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      console.log(user.emailVerified);
+      if (user.emailVerified === true) {
+        changeView('#/home');
+      } else {
+        msjError1.innerHTML = '<p class="alerta">Falta verificar correo</p>';
+      }
+    });
+  }).catch(() => {
+    msjError1.innerHTML = '<p class="alerta">Correo o contraseña invalida</p>';
   });
 };
