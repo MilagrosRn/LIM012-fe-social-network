@@ -18,7 +18,10 @@ const loginFunction = () => {
 };
 
 const loginFacebook = () => {
-  console.log('ingresar fb');
+  const provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+    .catch(() => console.log('error facebook'))
+    .then(() => changeView('#/home'));
 };
 
 const loginGoogle = () => {
