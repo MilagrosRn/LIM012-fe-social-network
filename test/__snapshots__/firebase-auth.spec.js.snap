@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`funcion createUser con email y password Deberia crearse un usuario con email y conraseña: exampleCreate@outlook.com 1`] = `"exampleCreate@outlook.com"`;
-
-exports[`funcion loguearUser con email y password Deberia loguearse un usuario con email y conraseña: example@gmail.com 1`] = `"example@gmail.com"`;

@@ -1,23 +1,17 @@
-//  tarear funciones puras de firebase
-
 import {
-  loguearUser, createUser, verificationEmail,
-} from '../src/firebase/firebase-conexion.js';
-
+  signIn, createUser, signInGoogle, signOut,
+} from '../src/firebase/auth-controller.js';
 
 const firebasemock = require('firebase-mock');
 
-const mockauth = new firebasemock.MockAuthentication();
-mockauth.autoFlush();
-
 global.firebase = firebasemock.MockFirebaseSdk(
   () => null,
-  () => mockauth,
+  () => new firebasemock.MockAuthentication().autoFlush(),
 );
-describe('funcion loguearUser con email y password', () => {
+describe('funcion signIn con email y password', () => {
   it('Deberia loguearse un usuario con email y conraseña', (done) => {
-    loguearUser('example@gmail.com', '123456').then((user) => {
-      expect(user.email).toMatchSnapshot('example@gmail.com');
+    signIn('example@gmail.com', '123456').then((user) => {
+      expect(user.email).toBe('example@gmail.com');
       done();
     });
   });
@@ -25,16 +19,23 @@ describe('funcion loguearUser con email y password', () => {
 describe('funcion createUser con email y password', () => {
   it('Deberia crearse un usuario con email y conraseña', (done) => {
     createUser('exampleCreate@outlook.com', '123456').then((user) => {
-      expect(user.email).toMatchSnapshot('exampleCreate@outlook.com');
+      expect(user.email).toBe('exampleCreate@outlook.com');
       done();
     });
   });
 });
+describe('funcion signInGoogle para iniciar sesion con google', () => {
+  it('Deberia iniciar sesion con Google', () => {
+    signInGoogle().then((user) => {
+      expect(user.emailVerified).toBe(true);
+    });
+  });
+});
 
-
-describe('funcion verificationEmail con email y password', () => {
-  it('Deberia enviarse un email a un usuario registrado', () => {
-    expect.assertions(1);
-    firebase.auth().currentUser.sendEmailVerification = verificationEmail();
+describe('funcion signOut para cerrar sesion', () => {
+  it('Deberia cerrar sesion', () => {
+    signOut().then((user) => {
+      expect(user.emailVerified).toBe(false);
+    });
   });
 });

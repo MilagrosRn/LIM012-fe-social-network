@@ -1,3 +1,7 @@
+/* eslint-disable import/no-cycle */
+import { signOut } from '../firebase/auth-controller.js';
+import { changeView } from '../view-controller/router.js';
+
 export default () => {
   const viewHome = `
   <div id="tercera_vista_home">
@@ -14,7 +18,8 @@ export default () => {
   <section class="post">
     <div class="title_user">
       <figure class="data_user">
-        <div class="img_user"></div>
+        <div class="img_user">
+        </div>
           <div class="name_user">
           <h2>PELUCHA REYNA</h2>
           <h3>hace dos minutos</h3>
@@ -46,10 +51,16 @@ export default () => {
       </div>
     </div>
   </section>
+  <input class="boton_salir" type="button" value="salir">
 </div>
 `;
 
   const divElement = document.createElement('div');
   divElement.innerHTML = viewHome;
+  const cerrarSesion = divElement.querySelector('.boton_salir');
+  cerrarSesion.addEventListener('click', () => {
+    signOut();
+    changeView('#/login');
+  });
   return divElement;
 };

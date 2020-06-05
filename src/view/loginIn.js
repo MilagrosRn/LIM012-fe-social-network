@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { changeView } from '../view-controller/router.js';
-import { loginFunction, loginFacebook, loginGoogle } from '../view-controller/view-loginIn.js';
+// import { loginFunction, loginFacebook, loginGoogle } from '../view-controller/view-loginIn.js';
+import { signInAccount, signInGoogleAccount, signInFacebookAccount } from '../firebase/authentification.js';
 
 export default () => {
   const viewLogin = `
@@ -27,6 +28,7 @@ export default () => {
             <i class='fas fa-key iconLogin' class="icon_form"></i>
             <input type="password" class="coontraseña"  placeholder= "Contraseña" >
           </div>
+          <div class ="divValidationsLogin"></div>
           <div class="btnIngresar"><button class="log-in">Ingresar</button></div> 
           <div>
           <hr class="separador"> <span class="texto_inicio_opcional">Puedes iniciar sesión con</span> <hr class="separador">
@@ -45,17 +47,30 @@ export default () => {
   divElement.innerHTML = viewLogin;
 
   const btnLogIn = divElement.querySelector('.log-in');
-  btnLogIn.addEventListener('click', loginFunction);
-
   const btnFacebook = divElement.querySelector('#btnFacebook');
-  btnFacebook.addEventListener('click', loginFacebook);
-
   const btnGoogle = divElement.querySelector('#btnGoogle');
-  btnGoogle.addEventListener('click', loginGoogle);
+  const btnRegistrarse = divElement.querySelector('#btnRegistrarse');
+  const divValidationsLogin = divElement.querySelector('.divValidationsLogin');
 
-  const registrarse = divElement.querySelector('#btnRegistrarse');
-  registrarse.addEventListener('click', () => {
+  btnLogIn.addEventListener('click', () => {
+    const email = document.querySelector('.correo').value;
+    const password = document.querySelector('.coontraseña').value;
+    if (email === '') {
+      divValidationsLogin.textContent = 'Querido usuario, ingresa un email';
+    } else if (!(email.includes('@'))) {
+      divValidationsLogin.textContent = 'Querido usuario, ingresa un email valido';
+    } else if (password === '') {
+      divValidationsLogin.textContent = 'Querido usuario, ingresa una contraseña';
+    } else {
+      signInAccount(email, password);
+    }
+  });
+
+  btnFacebook.addEventListener('click', signInFacebookAccount);
+  btnGoogle.addEventListener('click', signInGoogleAccount);
+  btnRegistrarse.addEventListener('click', () => {
     changeView('#/register');
   });
+
   return divElement;
 };
