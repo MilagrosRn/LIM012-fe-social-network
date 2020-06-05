@@ -33,8 +33,30 @@ const createAccount = (newEmail, newPassword, newUser) => {
   const divValidations = document.querySelector('.divValidations');
   createUser(newEmail, newPassword)
     .then((result) => {
-      divValidations.innerHTML = 'Querido usuario te hemos enviado un link para acceder al email que ingresaste';
-      divValidations.style.color = 'green';
+      // divValidations.innerHTML = 'Querido usuario te hemos enviado un link para acceder al email que ingresaste';
+      // divValidations.style.color = 'green';
+      const modal = document.getElementById('validarModal');
+    const span = document.getElementsByClassName('close')[0];
+    const body = document.getElementsByTagName('body')[0];
+    modal.style.display = 'block';
+    body.style.position = 'static';
+    body.style.height = '100%';
+    body.style.overflow = 'hidden';
+    span.onclick = () => {
+      modal.style.display = 'none';
+      body.style.position = 'inherit';
+      body.style.height = 'auto';
+      body.style.overflow = 'visible';
+      changeView('#/login');
+    };
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+        body.style.position = 'inherit';
+        body.style.height = 'auto';
+        body.style.overflow = 'visible';
+      }
+    };
       // esta accediendo y trayendo el nombre dle usuario
       result.user.updateProfile({
         displayName: newUser,
@@ -50,6 +72,7 @@ const createAccount = (newEmail, newPassword, newUser) => {
         });
       // que no guarde al usuario hasta clickear en el link
       firebase.auth().signOut();
+
     })
     .catch((error) => {
       const errorCode = error.code;

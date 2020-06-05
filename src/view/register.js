@@ -1,16 +1,25 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-cond-assign */
 import { createAccount } from '../firebase/authentification.js';
+import { btnInfo } from '../view-controller/view-info.js';
 
 export default () => {
   const viewRegistro = `
     <div class="icon_info">
-      <div ><i class="fas fa-info-circle" ></i></div>
-        <header>
-          <img class="logo" src="./imagenes/logo_oficial.png" >
-        </header>
+     <div><span class="info"><i class="fas fa-info-circle"></i></span></div>
+      <div class="header">
+       <img class="logo" src="./imagenes/logo_oficial.png" >
       </div>
-      <section class ="espacio-portada">
+    </div>
+    <div id="modal" class="modalContainer">
+      <div class="content-modal">
+        <span class="closeInfo">×</span>
+        <h2>BIENVENIDO!!!</h2>
+        <h4 class="alerta">Esta red social es para ti</h4>
+        <p>Aquí encontraras personas que compartiran contigo habitos saludables como recetas bajo en grasa, rutinas de ejercicio, reseñas de restaurantes y muchisimo mas</p>
+      </div>
+    </div>
+    <section class ="espacio-portada">
       <div class="portada">
       <img class="logo" src="./imagenes/logo_oficial.png" >
       </div>
@@ -40,10 +49,21 @@ export default () => {
         <b><p>¿Ya tienes una cuenta? <a href="#" class="inicio_sesion">Inicia Sesion</a></p></b>
       </form>
       </section>
-    </section>`;
+    </section>
+    <div id="validarModal" class="modalContainer">
+      <div class="modal-content">
+        <span class="close">×</span>
+        <h1>VALIDAR CORREO</h1>
+        <h4>Registros</h4>
+        <p>Te hemos enviado un mensaje de verificacion al correo ingresado, lo puedes ver en tu bandeja de entrada o en span</p>
+      </div>
+    </div>`;
   const divElement = document.createElement('div');
   divElement.id = 'segunda_vista_registro';
   divElement.innerHTML = viewRegistro;
+
+  const btnInformacion = divElement.querySelector('.info');
+  btnInformacion.addEventListener('click', btnInfo);
 
   const btnRegistrarse = divElement.querySelector('.boton_registrarse');
   btnRegistrarse.addEventListener('click', () => {

@@ -1,39 +1,43 @@
 /* eslint-disable import/no-cycle */
 import { signOut } from '../firebase/auth-controller.js';
-import { changeView } from '../view-controller/router.js';
 
 export default () => {
   const viewHome = `
   <div id="tercera_vista_home">
-  <header class="header_navigation_home">
-    <div class="conteiner_menu">
-      <hr class="menu">
-      <hr class="menu">
-      <hr class="menu">
-    </div>
-    <div class="conteiner_logo">
-      <img class="header_logo" src="./imagenes/logo_oficial.png" >
-    </div>
+  <header>
+    <input type="checkbox" id="btn-menu">
+    <label for="btn-menu">
+      <img src="https://image.flaticon.com/icons/png/512/56/56763.png" class="icono-menu" alt="">
+      <img src="imagenes/logo_oficial.png" class="img-logo-header">
+    </label>
+      <nav class="menu">
+        <ul>
+          <li class="logoNo"><a href=""><img src="imagenes/logo_oficial.png" class="img-logo-header"></a></li>
+          <li class="fondotransparente"><a href="#/home">INICIO</a></li>
+          <li class="fondotransparente"><a href="#/perfil">PERFIL</a></li>
+          <li class="fondoBlanco" id="close"><a href="#">CERRAR SESION</a></li>
+        </ul>
+      </nav>
   </header>
   <section class="post">
     <div class="title_user">
       <figure class="data_user">
         <div class="img_user">
         </div>
-          <div class="name_user">
+        <div class="name_user">
           <h2>PELUCHA REYNA</h2>
           <h3>hace dos minutos</h3>
         </div>
-      </figure>
+      </figure>   
       <div class="menu_privacity_user">
-        <div class="icon_privacity"><i class="fas fa-lock"></i></div>
-        <div class="icon_privacity"><i class="fas fa-globe-americas"></i></div>
-      </div>
+      <div class="icon_privacity"><i class="fas fa-lock"></i></div>
+      <div class="icon_privacity"><i class="fas fa-globe-americas"></i></div>
     </div>
+  </div>
     <div class="description_post">
       <div class="description_text">
       <p class="text_post">¿Qué estas pensando?</p>
-      <div class="button_send"><i class="fas fa-paper-plane"></i></div>
+        <div class="button_send"><i class="fas fa-paper-plane"></i></div>
       </div>
     </div>
     <div  class="options_post">
@@ -51,16 +55,18 @@ export default () => {
       </div>
     </div>
   </section>
-  <input class="boton_salir" type="button" value="salir">
 </div>
 `;
 
   const divElement = document.createElement('div');
   divElement.innerHTML = viewHome;
-  const cerrarSesion = divElement.querySelector('.boton_salir');
-  cerrarSesion.addEventListener('click', () => {
-    signOut();
-    changeView('#/login');
-  });
+  // const cerrarSesion = divElement.querySelector('.boton_salir');
+  // cerrarSesion.addEventListener('click', () => {
+  //   signOut();
+  //   changeView('#/login');
+  // });
+  const btnCerrarSesion = divElement.querySelector('#close');
+  btnCerrarSesion.addEventListener('click', signOut);
+
   return divElement;
 };
