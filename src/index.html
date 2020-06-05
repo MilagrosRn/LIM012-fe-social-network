@@ -7,11 +7,18 @@
   <title>Vida sana</title>
   <link rel="shortcut icon" href="./imagenes/primera_vista/logoColor.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="estilos.css" />
   <script src="https://kit.fontawesome.com/b24a021b71.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <section id="seccion"></section>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.14.5/firebase-app.js"></script>
+  <script src="/__/firebase/7.14.5/firebase-analytics.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
@@ -23,7 +30,7 @@
       messagingSenderId: "603475371255",
       appId: "1:603475371255:web:f81d07259172e52d041ff2",
       measurementId: "G-WQ56DR07CB"
-    }
+    };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
