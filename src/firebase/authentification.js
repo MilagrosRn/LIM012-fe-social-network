@@ -6,7 +6,6 @@ import {
 } from './auth-controller.js';
 
 // FUNCION PARA LOGUEAR UN USUARIO
-
 const signInAccount = (email, password) => {
   signIn(email, password)
     .then((result) => {
@@ -33,8 +32,7 @@ const createAccount = (newEmail, newPassword, newUser) => {
   const divValidations = document.querySelector('.divValidations');
   createUser(newEmail, newPassword)
     .then((result) => {
-      // divValidations.innerHTML = 'Querido usuario te hemos enviado un link para acceder al email que ingresaste';
-      // divValidations.style.color = 'green';
+      console.log(result);
       const modal = document.getElementById('validarModal');
       const span = document.getElementsByClassName('close')[0];
       const body = document.getElementsByTagName('body')[0];
@@ -63,7 +61,7 @@ const createAccount = (newEmail, newPassword, newUser) => {
       });
 
       const configuracion = {
-        url: 'http://localhost:5000/?#/home',
+        url: 'http://localhost:5000/#/home',
       };
 
       result.user.sendEmailVerification(configuracion)
