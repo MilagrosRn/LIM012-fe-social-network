@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 // funciones puras usando firebase
 import { changeView } from '../view-controller/router.js';
+import { createDBUser, createUserGooFac } from './user-firestore.js';
 import {
   signIn, createUser, signInGoogle,
 } from './auth-controller.js';
@@ -30,6 +31,7 @@ const signInAccount = (email, password) => {
 
 const createAccount = (newEmail, newPassword, newUser) => {
   const divValidations = document.querySelector('.divValidations');
+  createDBUser(newEmail, newUser);
   createUser(newEmail, newPassword)
     .then((result) => {
       console.log(result);
@@ -94,6 +96,13 @@ const signInGoogleAccount = () => {
     .then((result) => {
       // const imagenUser = document.querySelector('.img_logo_user');
       // imagenUser.attr('src', result.user.photoURL);
+      const name = result.additionalUserInfo.profile.name;
+      const email = result.additionalUserInfo.profile.email;
+      const image = result.additionalUserInfo.profile.picture;
+      if (result.additionalUserInfo.isNewUser === true) {
+        createUserGooFac(email, name, image);
+      }
+      // console.log(result.additionalUserInfo.isNewUser);funciona
       changeView('#/home');
     })
     .catch((error) => {
@@ -110,7 +119,15 @@ const signInGoogleAccount = () => {
 const signInFacebookAccount = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider)
-    .then(() => console.log('loguinfacebook'))
+    .then((result) => {
+      console.log('loguinfacebook');
+      const name = result.additionalUserInfo.profile.name;
+      const email = result.additionalUserInfo.profile.email;
+      const image = result.additionalUserInfo.profile.picture.data.url;
+      if (result.additionalUserInfo.isNewUser === true) {
+        createUserGooFac(email, name, image);
+      }
+    })
     .catch(() => console.log('error facebook'));
 };
 
