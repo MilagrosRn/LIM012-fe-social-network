@@ -1,31 +1,31 @@
 /* eslint-disable import/no-cycle */
 import { changeView } from '../view-controller/router.js';
 // import { loginFunction, loginFacebook, loginGoogle } from '../view-controller/view-loginIn.js';
-import { signInAccount, signInGoogleAccount, signInFacebookAccount } from '../firebase/authentification.js';
+import { signInAccount, signInGoogleAccount, signInFacebookAccount } from '../model/authentification.js';
 import { btnInfo } from '../view-controller/view-info.js';
 
 export default () => {
   const viewLogin = `
   <div class="icon_info">
-  <div><span class="info"><i class="fas fa-info-circle"></i></span></div>
-  <div class="header">
-    <img class="logo" src="imagenes/logo_oficial.png" >
-  </div>
-  </div>
-    <div id="modal" class="modalContainer">
-      <div class="content-modal">
-      <span class="closeInfo">×</span>
-      <h1>BIENVENIDO!!!</h1>
-      <h4  class="alerta">Esta red social es para ti</h4>
-      <p>Aquí encontraras personas que compartiran contigo habitos saludables como recetas bajo en grasa, rutinas de ejercicio, reseñas de restaurantes y muchisimo mas</p>
+    <div><span class="info"><i class="fas fa-info-circle"></i></span></div>
+    <div class="header">
+      <img class="logo" src="imagenes/logo_oficial.png" >
     </div>
   </div>
+  <div id="modal" class="modalContainer">
+    <div class="content-modal">
+      <span class="closeInfo">×</span>
+        <h1>BIENVENIDO!!!</h1>
+        <h4  class="alerta">Esta red social es para ti</h4>
+        <p>Aquí encontraras personas que compartiran contigo habitos saludables como recetas bajo en grasa, rutinas de ejercicio, reseñas de restaurantes y muchisimo mas</p>
+    </div>
+  </div>
+ 
+ 
   <section class ="espacio-portada">
       <div class="portada">
         <img class="logo" src="./imagenes/logo_oficial.png" >
       </div>
-
-
         <section class="espacio-login">
         <form class="formulario_registro">
           <br>

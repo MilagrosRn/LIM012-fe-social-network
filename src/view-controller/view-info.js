@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { changeView } from './router.js';
 
 export const btnInfo = () => {

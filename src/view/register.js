@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-cond-assign */
-import { createAccount } from '../firebase/authentification.js';
+import { createAccount } from '../model/authentification.js';
 import { btnInfo } from '../view-controller/view-info.js';
 
 export default () => {
@@ -41,7 +41,7 @@ export default () => {
           <input type="password" class="coontraseña"  placeholder= "Contraseña">
         </div>
         <input type="checkbox" id="condiciones">
-        <label class="text_form"for="condiciones">Al registrarme acepto<strong><a href="#" class="terminos"> Terminos y Condiciones</a></strong></label>
+        <label class="text_form"for="condiciones">Al registrarme acepto<strong><a href="#/conditions" class="terminos"> Terminos y Condiciones</a></strong></label>
         <div class ="divValidations"></div>
         <br>
         <input type="button" class="boton_registrarse" id="reg"value="Registrarme">
@@ -73,14 +73,13 @@ export default () => {
     const stateCheckbox = divElement.querySelector('#condiciones').checked;
     const divValidations = divElement.querySelector('.divValidations');
     divValidations.style.color = 'red';
-    // createAccount(email, password, user)
 
     if (email === '') {
-      divValidations.textContent = 'Querido usuario, ingresa un email';
+      divValidations.textContent = 'Porfavor, ingresa un email';
     } else if (password === '') {
-      divValidations.textContent = 'Querido usuario, ingresa una contraseña';
+      divValidations.textContent = 'Porfavor, ingresa una contraseña';
     } if (stateCheckbox === false) {
-      divValidations.textContent = 'Querido usuario, debe aceptar los términos y condiciones';
+      divValidations.textContent = 'Porfavor, debe aceptar los términos y condiciones';
     } else {
       createAccount(email, password, user);
     }
