@@ -1,7 +1,13 @@
 /* eslint-disable import/no-cycle */
 import { signOut } from '../firebase/auth-controller.js';
+import { consultarUsuario } from '../firebase/user-firestore.js';
 
 export default () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      consultarUsuario(user.email);
+    }
+  });
   const viewHome = `
   <div id="tercera_vista_home">
   <header>
@@ -19,6 +25,7 @@ export default () => {
         </ul>
       </nav>
   </header>
+  <section id="userDescription"></section>
   <section class="post">
     <div class="title_user">
       <figure class="data_user">
@@ -60,11 +67,7 @@ export default () => {
 
   const divElement = document.createElement('div');
   divElement.innerHTML = viewHome;
-  // const cerrarSesion = divElement.querySelector('.boton_salir');
-  // cerrarSesion.addEventListener('click', () => {
-  //   signOut();
-  //   changeView('#/login');
-  // });
+
   const btnCerrarSesion = divElement.querySelector('#close');
   btnCerrarSesion.addEventListener('click', signOut);
 

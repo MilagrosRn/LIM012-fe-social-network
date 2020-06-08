@@ -1,13 +1,17 @@
 /* eslint-disable import/no-cycle */
 // funciones puras usando firebase
 import { changeView } from '../view-controller/router.js';
-import { createDBUser, createUserGooFac } from './user-firestore.js';
+import { createDBUser, createUserGooFac, consultarUsuario } from './user-firestore.js';
 import {
   signIn, createUser, signInGoogle,
 } from './auth-controller.js';
+// obtener gmial del usuario logueado
+// export const obtenerGmail = (gmailUser) => {
 
+// };
 // FUNCION PARA LOGUEAR UN USUARIO
 const signInAccount = (email, password) => {
+  // consultarUsuario(email);
   signIn(email, password)
     .then((result) => {
       if (result.user.emailVerified === false) {
@@ -89,7 +93,6 @@ const createAccount = (newEmail, newPassword, newUser) => {
 };
 
 // FUNCION PARA LOGUEAR USUARIO CON GOOGLE
-
 const signInGoogleAccount = () => {
   // para acceder con un Proveedor de autenticación de Google.
   signInGoogle()
@@ -99,6 +102,8 @@ const signInGoogleAccount = () => {
       const name = result.additionalUserInfo.profile.name;
       const email = result.additionalUserInfo.profile.email;
       const image = result.additionalUserInfo.profile.picture;
+      const id = result.additionalUserInfo.profile.id;
+      console.log(id);
       if (result.additionalUserInfo.isNewUser === true) {
         createUserGooFac(email, name, image);
       }
@@ -124,6 +129,8 @@ const signInFacebookAccount = () => {
       const name = result.additionalUserInfo.profile.name;
       const email = result.additionalUserInfo.profile.email;
       const image = result.additionalUserInfo.profile.picture.data.url;
+      const id = result.additionalUserInfo.profile.id;
+      console.log(id);
       if (result.additionalUserInfo.isNewUser === true) {
         createUserGooFac(email, name, image);
       }

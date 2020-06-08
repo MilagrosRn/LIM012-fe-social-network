@@ -3,6 +3,7 @@ import { changeView } from '../view-controller/router.js';
 // import { loginFunction, loginFacebook, loginGoogle } from '../view-controller/view-loginIn.js';
 import { signInAccount, signInGoogleAccount, signInFacebookAccount } from '../firebase/authentification.js';
 import { btnInfo } from '../view-controller/view-info.js';
+// import { consultarUsuario } from '../firebase/user-firestore.js';
 
 export default () => {
   const viewLogin = `

@@ -9,24 +9,10 @@ const init = () => {
 window.addEventListener('load', init);
 // const db = firebase.firestore();
 firebase.auth().onAuthStateChanged((user) => {
-  // db.collection('users').add({
-  //   gmail: 'jud',
-  //   image_port: ' ',
-  //   image_profile: ' ',
-  //   lenguaje: 'Español',
-  //   location: 'Lima, peru',
-  //   name_user: 'judith',
-  //   ocupation: ' ',
-  // })
-  //   .then(() => {
-  //     console.log('guardado');
-  //   })
-  //   .catch((error) => {
-  //     console.error('No guardado', error);
-  //   });
   if (user) {
     // datos del objeto usuario
     console.log(`logeado${user.email}`);
+    console.log(user.uid);
     // propiedad verifica el estado de login o no
     if (user.emailVerified === false) {
       console.log('email no verificado');
