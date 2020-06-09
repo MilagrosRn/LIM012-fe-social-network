@@ -5,21 +5,25 @@ export default (doc) => {
   const divUser = `
     <div class="divtop">
         <img src="${doc.data().image_port}" class="imagePortada">
-        <img src="${doc.data().image_profile}" class="imagePerfile">
-        <p class="titulos">${doc.data().name_user}</p>
+        <center><img src="${doc.data().image_profile}" class="imagePerfile"></center>
+        <center><p class="titulos">${doc.data().name_user}</p></center>
     </div>
     <div class="divbottom">
-        <div>
-            <p class="titulos">Detalles</p>
-            <span class="btnEditUser"><img class="logo_editarUSer" src="https://image.flaticon.com/icons/png/512/61/61456.png"></span>
+        <div class="divTitleLogo">
+            <div><p class="titulos">Detalles</p></div>
+            <div class="logoLapiz">
+              <span class="btnEditUser">
+                <img class="logo_editarUSer" src="https://image.flaticon.com/icons/png/512/61/61456.png">
+              </span>
+            </div>
         </div>
         <div class="divPEditar">
-            <p class="editUser">${doc.data().ocupation}</p>
-            <p class="editUser">${doc.data().location}</p>
-            <p class="editUser">${doc.data().lenguaje}</p>
+            <center><p class="editUser">${doc.data().ocupation}</p></center>
+            <center><p class="editUser">${doc.data().location}</p></center>
+            <center><p class="editUser">${doc.data().lenguaje}</p></center>
         </div>
         <div class="divInputEdit">
-            <input type="text" class="editUser input_ocupation" value="${doc.data().ocupation}">
+            <center><input type="text" class="editUser input_ocupation" value="${doc.data().ocupation}">
             <input type="text" class="editUser input_location" value="${doc.data().location}">
             <input type="text" class="editUser input_lenguaje" value="${doc.data().lenguaje}">
         </div>
