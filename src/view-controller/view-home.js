@@ -1,35 +1,36 @@
-// // Initialize Cloud Firestore through Firebase
-// firebase.initializeApp({
-//   apiKey: 'AIzaSyDSv47hDN_B_cE3_GHAKDvGGdhhkkQ8Kjg',
-//   authDomain: 'red-social-2085d.firebaseapp.com',
-//   projectId: 'red-social-2085d',
-// });
-const db = firebase.firestore();// trae elementos de la coleccion de post en firebase
-export const agregarUser = () => {
-  // db.collection('users').add({
-  //   gmail: newGmail,
-  //   image_port: ' ',
-  //   image_profile: ' ',
-  //   lenguaje: 'Español',
-  //   location: 'Lima, peru',
-  //   name_user: newUser,
-  //   ocupation: ' ',
-  // })
-  db.collection('users').set({
-    gmail: 'judith@',
-    image_port: ' ',
-    image_profile: ' ',
-    lenguaje: 'Español',
-    location: 'Lima, peru',
-    name_user: 'judith',
-    ocupation: ' ',
-  })
-    .then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
-    })
-    .catch((error) => {
-      console.error('Error adding document: ', error);
+// eslint-disable-next-line import/no-cycle
+import views from '../view/index.js';
+
+const db = firebase.firestore();
+export const MostrarUsuario = (gmailUser) => {
+  const mostrarUsuario = document.getElementById('userDescription');
+  // db.collection('users').where('gmail', '==', gmailUser)
+  //   .get()
+  //   .then((querySnapshot) => {
+  //     querySnapshot.forEach((doc) => {
+  //       // console.log(doc.id, ' => ', doc.data());
+  //       mostrarUsuario.innerHTML = ' ';
+  //       mostrarUsuario.appendChild(views.user(doc));
+  //     });
+  //   })
+  //   .catch((error) => {
+  //     console.log('Error extraer documents: ', error);
+  //   });
+  db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
+    mostrarUsuario.innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      mostrarUsuario.innerHTML = ' ';
+      mostrarUsuario.appendChild(views.user(doc));
     });
+  });
+};
+
+export const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => {
+  db.collection('users').doc(emailUser).update({
+    lenguaje: lenguajeUser,
+    location: locacionUser,
+    ocupation: ocupacionUser,
+  });
 };
 // console.log(result.user.displayName);
 // console.log(result.user.email);
@@ -38,17 +39,3 @@ export const agregarUser = () => {
 // console.log(result.user.isAnonymous);
 // console.log(result.user.uid);
 // console.log(result.user.providerData);
-
-// export const getPosts = (data) => {
-//   if (data.length) {
-//     const datosHTML = '';
-//     data.forEach((element) => {
-//       const liPost = `
-//         <li>
-//             <h3>${element.title}<h3>
-//             <p>${element.descrip}</p>
-//         </li>
-//         `;
-//     });
-//   }
-// };

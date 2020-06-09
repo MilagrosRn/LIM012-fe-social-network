@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { changeView } from './router.js';
 
 export const btnInfo = () => {

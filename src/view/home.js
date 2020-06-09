@@ -1,11 +1,14 @@
 /* eslint-disable import/no-cycle */
 import { signOut } from '../firebase/auth-controller.js';
-import { consultarUsuario } from '../firebase/user-firestore.js';
+// import { consultarUsuario } from '../firebase/user-firestore.js';
+import { MostrarUsuario } from '../view-controller/view-home.js';
 
 export default () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      consultarUsuario(user.email);
+      // consultarUsuario(user.email);
+      // console.log('usuario', user.email);
+      MostrarUsuario(user.email);
     }
   });
   const viewHome = `

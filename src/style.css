@@ -659,20 +659,34 @@ h1{
 #mostrarUsuario{
     width: 95%;
     height: 50%;
-}.divtop{
+    color: #474343;
+}
+.titulos{
+    /* font-size: smaller; */
+    font-size: x-large;
+}
+.divtop{
     height: 60%;
     margin: 5%;
+    border: 1px solid white;
+    border-radius: 15px 15px 15px 15px;
     background: #ECEBEB;
 }
 .divbottom{
     height: 30%;
     margin: 5%;
     padding: 5%;
+    border: 1px solid #ECEBEB;
+    border-radius: 15px 15px 15px 15px;
     background: #ECEBEB;
+    /* display: flex;
+    justify-content: center; */
 }
 .imagePortada{
     width: 100%;
     height: 40%;
+    border: 2px solid #ECEBEB;
+    border-radius: 15px 15px 0px 0px;
 }
 .imagePerfile{
     width: 50%;
@@ -681,4 +695,19 @@ h1{
     margin-left: 25%;
     border: 1px solid rgba(255, 255, 255, 0.582);
     border-radius: 50%;
+}
+.logo_editarUSer{
+    width: 5%;
+    height: 5%;
+}
+.editUser{
+    background: #ECEBEB;
+    border: 0px;
+    font-size: 20px;
+}
+.divInputEdit{
+    display: none;
+}
+.botonGuardarUserEdit{
+    display: none;
 }
