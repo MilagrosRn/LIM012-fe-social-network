@@ -6,6 +6,7 @@ import _profile from './profile.js';
 import _notFound from './404.js';
 import _user from './user.js';
 import _userModificado from './userModificado.js';
+import _terminoscondiciones from './terminos-condiciones.js';
 
 export default {
   login: _login,
@@ -15,4 +16,5 @@ export default {
   notFound: _notFound,
   user: _user,
   userModificado: _userModificado,
+  conditions: _terminoscondiciones,
 };

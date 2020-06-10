@@ -42,7 +42,7 @@ export default () => {
           <input type="password" class="coontraseña"  placeholder= "Contraseña">
         </div>
         <input type="checkbox" id="condiciones">
-        <label class="text_form"for="condiciones">Al registrarme acepto<strong><a href="#" class="terminos"> Terminos y Condiciones</a></strong></label>
+        <label class="text_form"for="condiciones">Al registrarme acepto<strong><a href="#/conditions" class="terminos"> Terminos y Condiciones</a></strong></label>
         <div class ="divValidations"></div>
         <br>
         <input type="button" class="boton_registrarse" id="reg"value="Registrarme">
