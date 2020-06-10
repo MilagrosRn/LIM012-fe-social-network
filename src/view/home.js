@@ -1,14 +1,12 @@
 /* eslint-disable import/no-cycle */
 import { signOut } from '../firebase/auth-controller.js';
 // import { consultarUsuario } from '../firebase/user-firestore.js';
-import { MostrarUsuario } from '../view-controller/view-home.js';
+import { MostrarUsuarioHome } from '../view-controller/view-home.js';
 
 export default () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      // consultarUsuario(user.email);
-      // console.log('usuario', user.email);
-      MostrarUsuario(user.email);
+      MostrarUsuarioHome(user.email);
     }
   });
   const viewHome = `
@@ -28,7 +26,7 @@ export default () => {
           </ul>
         </nav>
     </header>
-    <div>
+    <div class="containerHome">
       <section id="userDescription"></section>
       <section class="post">
         <div class="title_user">
@@ -67,8 +65,7 @@ export default () => {
         </div>
       </section>
     </div>
-  </div>
-`;
+  </div>`;
 
   const divElement = document.createElement('div');
   divElement.innerHTML = viewHome;

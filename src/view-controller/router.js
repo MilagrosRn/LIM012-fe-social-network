@@ -14,6 +14,7 @@ const changeView = (hashUrl) => {
     case '#/login': return seccion.appendChild(views.login());
     case '#/register': return seccion.appendChild(views.register());
     case '#/home': return seccion.appendChild(views.home());
+    case '#/perfil': return seccion.appendChild(views.profile());
     default: return seccion.appendChild(views.notFound());
   }
 };

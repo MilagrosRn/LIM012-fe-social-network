@@ -5,6 +5,7 @@ import _home from './home.js';
 import _profile from './profile.js';
 import _notFound from './404.js';
 import _user from './user.js';
+import _userModificado from './userModificado.js';
 
 export default {
   login: _login,
@@ -13,4 +14,5 @@ export default {
   profile: _profile,
   notFound: _notFound,
   user: _user,
+  userModificado: _userModificado,
 };

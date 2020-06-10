@@ -1,14 +1,11 @@
 /* eslint-disable import/no-cycle */
 // funciones puras usando firebase
 import { changeView } from '../view-controller/router.js';
-import { createDBUser, createUserGooFac, consultarUsuario } from './user-firestore.js';
+import { createDBUser, createUserGooFac } from './user-firestore.js';
 import {
   signIn, createUser, signInGoogle,
 } from './auth-controller.js';
-// obtener gmial del usuario logueado
-// export const obtenerGmail = (gmailUser) => {
 
-// };
 // FUNCION PARA LOGUEAR UN USUARIO
 const signInAccount = (email, password) => {
   // consultarUsuario(email);
@@ -72,6 +69,7 @@ const createAccount = (newEmail, newPassword, newUser) => {
 
       result.user.sendEmailVerification(configuracion)
         .catch((error) => {
+          console.log(error);
           divValidations.textContent = 'ha ocurrido un error intente nuevamente';
         });
       // que no guarde al usuario hasta clickear en el link
@@ -97,8 +95,6 @@ const signInGoogleAccount = () => {
   // para acceder con un Proveedor de autenticación de Google.
   signInGoogle()
     .then((result) => {
-      // const imagenUser = document.querySelector('.img_logo_user');
-      // imagenUser.attr('src', result.user.photoURL);
       const name = result.additionalUserInfo.profile.name;
       const email = result.additionalUserInfo.profile.email;
       const image = result.additionalUserInfo.profile.picture;

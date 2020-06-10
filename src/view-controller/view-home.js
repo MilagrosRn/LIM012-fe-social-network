@@ -2,8 +2,18 @@
 import views from '../view/index.js';
 
 const db = firebase.firestore();
+export const MostrarUsuarioHome = (gmailUser) => {
+  const userDescription = document.getElementById('userDescription');
+  db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
+    userDescription.innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      userDescription.innerHTML = ' ';
+      userDescription.appendChild(views.userModificado(doc.data()));
+    });
+  });
+};
 export const MostrarUsuario = (gmailUser) => {
-  const mostrarUsuario = document.getElementById('userDescription');
+  const mostrarUsuario = document.getElementById('userDescription2');
   // db.collection('users').where('gmail', '==', gmailUser)
   //   .get()
   //   .then((querySnapshot) => {
@@ -20,7 +30,7 @@ export const MostrarUsuario = (gmailUser) => {
     mostrarUsuario.innerHTML = '';
     querySnapshot.forEach((doc) => {
       mostrarUsuario.innerHTML = ' ';
-      mostrarUsuario.appendChild(views.user(doc));
+      mostrarUsuario.appendChild(views.user(doc.data()));
     });
   });
 };

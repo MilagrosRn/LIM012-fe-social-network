@@ -5,6 +5,7 @@ import { btnInfo } from '../view-controller/view-info.js';
 
 export default () => {
   const viewRegistro = `
+  <div class="containerFondo">
     <div class="icon_info">
      <div><span class="info"><i class="fas fa-info-circle"></i></span></div>
       <div class="header">
@@ -57,7 +58,8 @@ export default () => {
         <h4>Registros</h4>
         <p>Te hemos enviado un mensaje de verificacion al correo ingresado, lo puedes ver en tu bandeja de entrada o en span</p>
       </div>
-    </div>`;
+    </div>
+  </div>`;
   const divElement = document.createElement('div');
   divElement.id = 'segunda_vista_registro';
   divElement.innerHTML = viewRegistro;

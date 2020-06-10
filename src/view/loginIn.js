@@ -7,6 +7,7 @@ import { btnInfo } from '../view-controller/view-info.js';
 
 export default () => {
   const viewLogin = `
+<div class="containerFondo">
   <div class="icon_info">
   <div><span class="info"><i class="fas fa-info-circle"></i></span></div>
   <div class="header">
@@ -25,8 +26,6 @@ export default () => {
       <div class="portada">
         <img class="logo" src="./imagenes/logo_oficial.png" >
       </div>
-
-
         <section class="espacio-login">
         <form class="formulario_registro">
           <br>
@@ -53,6 +52,7 @@ export default () => {
         </form>
         </section>
      </section>
+</div>
       `;
   const divElement = document.createElement('div');
   divElement.id = 'primera_vista_registro';

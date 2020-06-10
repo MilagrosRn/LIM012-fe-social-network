@@ -11,7 +11,7 @@ window.addEventListener('load', init);
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     // datos del objeto usuario
-    console.log(`logeado${user.email}`);
+    console.log(`logeado ${user.email}`);
     console.log(user.uid);
     // propiedad verifica el estado de login o no
     if (user.emailVerified === false) {

@@ -22,10 +22,13 @@
 body{
     font-family:Fontmedium;
     margin: 0;
-    background: url("./imagenes/fondeDegradado.jpg");
     background-size: cover;
     background-attachment: fixed;
 }
+.containerFondo{
+    background: url("./imagenes/fondeDegradado.jpg");
+}
+/* PC  */
 .header{
     display: flex;
    align-items: center;
@@ -612,8 +615,8 @@ body{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    background: white;
 }
-
 .portada{
     background: url("./imagenes/fondeDegradado.jpg");
     background-repeat: no-repeat;
@@ -628,7 +631,6 @@ body{
 form{
     margin: auto;  
 }
-
 .espacio-login{
     background: linear-gradient(180deg, rgba(12, 230, 0, 0.3) , rgba(117, 125, 0, 0.3));
     justify-content: space-evenly;
@@ -712,4 +714,27 @@ h1{
 }
 .botonGuardarUserEdit{
     display: none;
+}
+#userDescription{
+    display: none;
+}
+/* para pc y tablet horizontal */
+@media screen and (min-width:1025px){
+    #userDescription{
+        display: block;
+    }
+    .titulos{
+        font-size: 25px;
+    }
+    .editUser{
+        font-size: 20px;
+    }
+    .containerHome, .containerProfile{
+        display: flex;
+    }
+    #userDescription, #userDescription2, .post{
+        width: 40%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
 }
