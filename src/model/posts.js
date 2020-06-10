@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable max-len */
 import { postTemplate } from '../view-controller/view-post.js';
 
@@ -22,10 +24,9 @@ const constructorPost = () => {
 };
 
 // CREAR POST
+// si usamos add crea un id
 
 const createPost = (_uid, _nameUser, _description, _privacity, _likes) =>
-  // entra ala coleccion y si no hay la crea
-  // si usamos add crea un id
   firebase.firestore().collection('posts').add({
     uid: _uid,
     autor: _nameUser,
@@ -43,41 +44,84 @@ const createPost = (_uid, _nameUser, _description, _privacity, _likes) =>
 
 // CONSULTAR UN DATOS DEL POST
 
-// const questionPost = (data) => {
-// //   firebase.firestore().collection('posts').onSnapshot((changeSnapshot) => {
-//   // si hay un documento nuevo o se actualiza
-//   const dataPost = document.querySelector('.post');
-// //   dataPost.innerText = '';
-//   if (dataPost === '') {
-//     //   // const sinPost = document.createElement('p');
-//     //   //   sinPost.textContent();
-//     //   dataPost.appendChild(this.liPost());
-//     // } else {
-//     data.forEach((posts) => {
-//       // const postHtml = this;
-//       const value = mio(posts.data().autor,
-//         posts.data().date, posts.data().description,
-//         posts.data().likes, posts.data().privacity, posts.data().fecha);
-//       const sinPost = document.createElement('div');
-
-//       value.appendChild(sinPost);
-//       sinPost(dataPost);
-//       // dataPost.appendChild(postHtml);
-//     });
-//   }
-// };
+const holePostTemplate = () => `
+<section class ="vacio_post">
+    <img class="logo_vacio_post"src="../imagenes/logoColor.png" >
+    <h2>Es momento de publicar un post</h2>
+</section>
+`;
 
 
 const questionPost = () => {
-  firebase.firestore().collection('posts').onSnapshot((querySnapshot) => {
+  // onSnapshot permite controlar los cambios en tiempo real
+  firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
     const dataPost = document.querySelector('.space_post');
     dataPost.innerHTML = '';
-    querySnapshot.forEach((postData) => {
-      console.log(`${postData.id} => ${postData.data()}`);
-      dataPost.innerHTML
+    if (querySnapshot === '') {
+      dataPost.innerHTML = holePostTemplate();
+    } else {
+      querySnapshot.forEach((postData) => {
+        console.log(`${postData.id} `);
+        dataPost.innerHTML
     += postTemplate(postData);
-    });
+      });
+    }
   });
 };
 
-export { createPost, questionPost };
+// CARGAR UNA IMAGEN AL POST
+
+const loadImage = (input, divShowContent) => {
+  const file = input.files[0];
+  const imageType = /image.*/;
+
+  if (file.type.match(imageType)) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      divShowContent.innerHTML = '';
+
+      const img = new Image();
+      img.src = reader.result;
+
+      divShowContent.appendChild(img);
+    };
+
+    reader.readAsDataURL(file);
+  } else {
+    divShowContent.innerHTML = 'El archivo debe ser una imagen';
+  }
+};
+
+// ENVIAR UNA IMAGEN A LA COLECCION
+// referenciando la ruta de carpeta para cada usuario
+const updateImagePost = (file, uid) => {
+  const refStorage = firebase.storage().ref(`imagesUsers/${uid}/${file.name}`);
+  // sube archivo
+  const task = refStorage.put(file);
+
+  // informa el estado de subida de archivo
+  task.on('state_changed',
+    (snapshot) => {
+      // ver cuantos bytes se suben
+      const porcent = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+      const progress = document.querySelector('.progress_graphic');
+      progress.style.width = `${porcent} %`;
+      console.log(task);
+    },
+    (err) => {
+      console.log('error imagen');
+    },
+    () => {
+      // trae la url de descarga de la imagen
+      task.snapshot.ref.getDownloadURL().then((url) => {
+        console.log(url);
+        sessionStorage.setItem('imgNewPost', url)
+          .catch(error => console.log(error));
+      });
+    });
+};
+
+export {
+  createPost, questionPost, loadImage, updateImagePost,
+};

@@ -508,6 +508,30 @@ header label:hover{
         width: 50%;
     }
   }
+/*----------------post por publicar-------------*/
+.text_post{
+border: none;
+width: 100%;
+height: 100%;
+text-align: start;
+}
+.image_current_user{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.logo_vacio_post{
+    width: 100%;
+    height: 4em;
+}
+#fileDisplayArea {
+    margin-top: 2em;
+    width: 100%;
+    overflow-x: auto;
+  }
+  #fileDisplayArea img{
+    width: 100%;
+  }
 /*---------------post ya publicados-------------*/
 
 #cuarta_vista{

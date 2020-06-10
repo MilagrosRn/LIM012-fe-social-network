@@ -18,17 +18,17 @@ firebase.auth().onAuthStateChanged((user) => {
     const providerData = user.providerData;
     console.log(`logeado${user.email}`);
 
-    // if (photoURL) {
-    //   // const imagenUser = document.querySelector('.img_avatar_user');
-    //   const imagenUser = document.createElement('img');
-    //   document.body.appendChild(imagenUser);
-    //   imagenUser.src = photoURL;
+
+    // if (user.photoURL) {
+    //   setTimeout(document.querySelector('.img_user_post').src = user.photoURL,
+    //     15000);
     // } else {
-    //   // const imagenUser = document.querySelector('.img_avatar_user');
-    //   const imagenUser = document.createElement('img');
-    //   document.body.appendChild(imagenUser);
-    //   imagenUser.src = '../imagenes/degradado.png';
+    //   setTimeout(
+    //     document.querySelector('.img_user_post').src = 'degradado.png',
+    //     15009,
+    //   );
     // }
+
     if (emailVerified) {
       console.log('email verificado y logeado');
       changeView('#/home');

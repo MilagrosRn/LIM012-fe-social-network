@@ -70,6 +70,7 @@ const createAccount = (newEmail, newPassword, newUser) => {
         }
       });
       // esta accediendo y trayendo el nombre del usuario de un objeto user
+      // solo cuando decide registrarse
       result.user.updateProfile({
         displayName: newUser,
       });
