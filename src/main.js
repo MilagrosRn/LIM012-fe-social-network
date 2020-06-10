@@ -16,7 +16,8 @@ firebase.auth().onAuthStateChanged((user) => {
     // propiedad verifica el estado de login o no
     if (user.emailVerified === false) {
       console.log('email no verificado');
-    } else {
+    }
+    if (user.emailVerified === true) {
       changeView('#/home');
       // getPosts();
     }
