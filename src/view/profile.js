@@ -3,7 +3,6 @@ import { signOut } from '../firebase/auth-controller.js';
 // import { consultarUsuario } from '../firebase/user-firestore.js';
 import { MostrarUsuario } from '../view-controller/view-home.js';
 import { changeView } from '../view-controller/router.js';
-import { signOut } from '../firebase/auth-controller.js';
 
 export default () => {
   firebase.auth().onAuthStateChanged((user) => {
