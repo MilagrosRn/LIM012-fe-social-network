@@ -12,23 +12,12 @@ window.addEventListener('load', init);
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    const displayName = user.displayName;
-    const email = user.email;
-    const emailVerified = user.emailVerified;
-    const photoURL = user.photoURL;
-    const isAnonymous = user.isAnonymous;
-    const uid = user.uid;
-    const providerData = user.providerData;
-    console.log(`logeado${user.email}`);
-
-    if (emailVerified) {
-      console.log('email verificado y logeado');
+    console.log(user);
+    if (user.emailVerified === false) {
+      console.log('email no verificado');
+    } else {
       changeView('#/home');
       // getPosts();
-    } else {
-      const divValidationsLogin = document.querySelector('.divValidationsLogin');
-      divValidationsLogin.textContent = 'Debes validar tu email para continuar';
-      console.log('email no verificado');
     }
   } else {
     changeView('#/');
@@ -44,3 +33,37 @@ firebase.auth().onAuthStateChanged((user) => {
 // const providerData = user.providerData;
 // console.log(displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData);
 // console.log(user);
+// if (user) {
+//   const displayName = user.displayName;
+//   const email = user.email;
+//   const emailVerified = user.emailVerified;
+//   const photoURL = user.photoURL;
+//   const isAnonymous = user.isAnonymous;
+//   const uid = user.uid;
+//   const providerData = user.providerData;
+//   console.log(`logeado${user.email}`);
+
+
+// if (user.photoURL) {
+//   setTimeout(document.querySelector('.img_user_post').src = user.photoURL,
+//     15000);
+// } else {
+//   setTimeout(
+//     document.querySelector('.img_user_post').src = 'degradado.png',
+//     15009,
+//   );
+// }
+
+//   if (emailVerified) {
+//     console.log('email verificado y logeado');
+//     changeView('#/home');
+//     // getPosts();
+//   } else {
+//     const divValidationsLogin = document.querySelector('.divValidationsLogin');
+//     divValidationsLogin.textContent = 'Debes validar tu email para continuar';
+//     console.log('email no verificado');
+//   }
+// } else {
+//   changeView('#/');
+//   console.log('No logeado');
+// }

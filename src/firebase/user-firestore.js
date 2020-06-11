@@ -1,5 +1,6 @@
 const db = firebase.firestore();
 export const createDBUser = (gmailUser, nameUser) => {
+      console.log('entro al guardar');
   db.collection('users').doc(gmailUser).set({
     gmail: gmailUser,
     image_port: 'https://tremus.cl/wp-content/uploads/2018/04/HealthyFood.jpg',

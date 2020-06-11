@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-cond-assign */
 import { createAccount } from '../firebase/authentification.js';
+import { createDBUser } from '../firebase/user-firestore.js';
 import { btnInfo } from '../view-controller/view-info.js';
 
 export default () => {

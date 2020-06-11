@@ -131,7 +131,7 @@ const signInFacebookAccount = () => {
         createUserGooFac(email, name, image);
       }
     })
-    .catch(() => console.log('error facebook'));
+    .catch(error => console.log('error facebook', error.credential));
 };
 
 export {

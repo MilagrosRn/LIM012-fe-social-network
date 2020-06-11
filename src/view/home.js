@@ -13,6 +13,7 @@ export default () => {
   });
   // usuario logeado actualmente
   const user = firebase.auth().currentUser;
+  console.log(user.photoURL);
   const viewHome = `
   <div id="tercera_vista_home">
     <header>

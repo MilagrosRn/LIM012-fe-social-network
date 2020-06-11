@@ -27,7 +27,7 @@ export const MostrarUsuario = (gmailUser) => {
   //     console.log('Error extraer documents: ', error);
   //   });
   db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
-    mostrarUsuario.innerHTML = '';
+    mostrarUsuario.innerHTML = ' ';
     querySnapshot.forEach((doc) => {
       mostrarUsuario.innerHTML = ' ';
       mostrarUsuario.appendChild(views.user(doc.data()));
