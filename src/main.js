@@ -21,17 +21,6 @@ firebase.auth().onAuthStateChanged((user) => {
     const providerData = user.providerData;
     console.log(`logeado${user.email}`);
 
-
-    // if (user.photoURL) {
-    //   setTimeout(document.querySelector('.img_user_post').src = user.photoURL,
-    //     15000);
-    // } else {
-    //   setTimeout(
-    //     document.querySelector('.img_user_post').src = 'degradado.png',
-    //     15009,
-    //   );
-    // }
-
     if (emailVerified) {
       console.log('email verificado y logeado');
       changeView('#/home');
