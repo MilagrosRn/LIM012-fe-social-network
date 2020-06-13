@@ -53,6 +53,11 @@ class Utilidad {
 
 // plantilla publicar un post
 export const postTemplate = (doc) => {
+  // let imagePublic = '';
+  // if(doc.data().img_post){
+  //   imagePublic = doc.data().img_post
+  // }
+  console.log(doc.data().img_post);
   const divPostPublicado = `
   <section class="post_public">
         <div class="title_user title_user_public">
@@ -61,7 +66,7 @@ export const postTemplate = (doc) => {
           </div>
           <figure class="data_user">
             <div class="img_user" id="img_user">
-            <img src =""class="img_user_post">
+            <img src ="${doc.data().img_autor_post}"class="img_user_post">
             </div>
             <div class="name_user">
               <div class="name_date_post">
@@ -73,10 +78,15 @@ export const postTemplate = (doc) => {
             </div>
           </figure>  
          </div>
-      <div class="description_post">
-        <div class="description_text">
+      <div class="description_post_Public">
+        <div class="description_text_Public">
        <p class="content_description_text" >${doc.data().description}</p>
+       <br>
+       
           </div>
+          <div class = "div_image" >
+         <img class="imgPublic"src="${doc.data().imagenLink}">
+       </div>
       </div>
       <div  class="options_post_public">
         <div class ="space_likes">

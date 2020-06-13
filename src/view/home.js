@@ -1,11 +1,18 @@
 /* eslint-disable import/no-cycle */
 import { signOut } from '../firebase/auth-controller.js';
-import { createPost, questionPost, loadImage } from '../model/posts.js';
+import {
+  createPost, questionPost, loadImage, updateImagePost,
+} from '../model/posts.js';
 import { changeView } from '../view-controller/router.js';
 
 export default () => {
   // usuario logeado actualmente
   const user = firebase.auth().currentUser;
+
+  let image = 'https://i1.wp.com/unimooc.com/wp-content/uploads/2015/04/corazon-comida-sana.jpg';
+  if (user.photoURL) {
+    image = user.photoURL;
+  }
   const viewHome = `
   <div id="tercera_vista_home">
     <header>
@@ -34,7 +41,7 @@ export default () => {
           <div class="title_user">
             <figure class="data_user">
               <div class="img_user" id="img_user">
-              <img  class="image_current_user"src="${user.photoURL}">
+              <img  class="image_current_user"src="${image}">
               </div>
               <div class="name_user">
                    <div class="name_date_post">
@@ -57,7 +64,7 @@ export default () => {
             </div>
             <div class ="option_image_public" style="display:none">
             Select an image file: 
-            <hr style = "green"class="progress_graphic">
+            <hr style = "color :red"class="progress_graphic">
             <input type="file" id="fileInput">
             <div id="fileDisplayArea"></div>
             </div>
@@ -113,18 +120,33 @@ export default () => {
   const btnPublicPhoto = divElement.querySelector('.photo_post');
   const btnPublicState = divElement.querySelector('.state_post');
   const btnPublicLocation = divElement.querySelector('.location_post');
+  // img
 
+
+  // let files ='';
   btnPublicPhoto.addEventListener('click', () => {
     const divImage = divElement.querySelector('.option_image_public');
     divImage.style.display = 'block';
+
     const fileInput = document.getElementById('fileInput');
     const fileDisplayArea = document.getElementById('fileDisplayArea');
 
-    fileInput.addEventListener('change', (e) => {
+    fileInput.addEventListener('change', () => {
       loadImage(fileInput, fileDisplayArea);
     });
-  });
+    fileInput.addEventListener('change', (e) => {
+    //  if (fileInput !== '') {
 
+      const file = e.target.files[1];
+      // file = files;
+      console.log(file);
+      updateImagePost(file, user.uid);
+
+    });
+  });
+  const imagenLink = sessionStorage.getItem('imgNewPost') === 'null'
+    ? null
+    : sessionStorage.getItem('imgNewPost');
   //  option plantilla estado y ubicacion
   btnPublicState.addEventListener('click', () => {
     const divState = divElement.querySelector('.option_state_public');
@@ -151,11 +173,6 @@ export default () => {
     const likes = 0;
 
 
-    // const fileInput = document.getElementById('fileInput');
-    // if (fileInput !== '') {
-    //   const file = fileInput.files[0];
-    //   updateImagePost(file, user.uid);
-    // }
     let privacityCollection = '';
     if (privacityMarked) {
       privacityCollection = true;
@@ -166,7 +183,7 @@ export default () => {
     if (user === null) {
       console.log('no autenticado para post');
     }
-    createPost(user.uid, user.displayName, description, privacityCollection, likes)
+    createPost(user.uid, user.displayName, user.email, image, description, privacityCollection, likes, imagenLink)
       .then(res => console.log('post creado correcto'))
       .catch(error => console.log('error con post'));
   }));

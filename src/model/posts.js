@@ -26,14 +26,36 @@ const constructorPost = () => {
 // CREAR POST
 // si usamos add crea un id
 
-const createPost = (_uid, _nameUser, _description, _privacity, _likes) =>
-  firebase.firestore().collection('posts').add({
+const createPost = (_uid, _nameUser, _email, _image, _description, _privacity, _likes, _imagenLink) => {
+  // const Ref = firebase.firestore().collection('users');
+  // const query = Ref.where('gmail', '==', _email);
+  const image = _image;
+  // if (query) {
+  //   let img = '';
+  //   firebase.firestore().collection('users').onSnapshot((querySnapshot) => {
+  //     querySnapshot.forEach((postData) => {
+  //       img = postData.image_profile;
+  //     });
+  //   });
+
+  //   if (img) {
+  //     let image = img;
+  //   } else {
+  //    let image = _image;
+  //   }
+  //   return image;
+  // }
+  return firebase.firestore().collection('posts').add({
     uid: _uid,
     autor: _nameUser,
+    img_autor_post: image,
+    email: _email,
     description: _description,
     likes: _likes,
     privacity: _privacity,
     date: firebase.firestore.FieldValue.serverTimestamp(),
+    imagenLink: _imagenLink,
+
   })
     .then((ref) => {
       console.log(ref.id);
@@ -41,6 +63,7 @@ const createPost = (_uid, _nameUser, _description, _privacity, _likes) =>
     .catch((error) => {
       console.log(error);
     });
+};
 
 // CONSULTAR UN DATOS DEL POST
 
@@ -116,8 +139,9 @@ const updateImagePost = (file, uid) => {
       // trae la url de descarga de la imagen
       task.snapshot.ref.getDownloadURL().then((url) => {
         console.log(url);
-        sessionStorage.setItem('imgNewPost', url)
-          .catch(error => console.log(error));
+        sessionStorage.setItem('imgNewPost', url);
+      }).catch((err) => {
+        console.error(`Error obteniendo downloadURL = > ${err}`, 4000);
       });
     });
 };
