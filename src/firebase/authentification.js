@@ -121,6 +121,8 @@ const signInFacebookAccount = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
+      console.log(result.credential.accessToken);
+      console.log(result.user);
       console.log('loguinfacebook');
       const name = result.additionalUserInfo.profile.name;
       const email = result.additionalUserInfo.profile.email;

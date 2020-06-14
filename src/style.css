@@ -789,12 +789,18 @@ h1{
 .botonGuardarUserEdit{
     display: none;
 }
-#userDescription{
+/* #userDescription{
+    
+} */
+.contenedorUser{
     display: none;
 }
 /* para pc y tablet horizontal */
 @media screen and (min-width:1025px){
-    #userDescription{
+    /* #userDescription{
+        display: block;
+    } */
+    .contenedorUser{
         display: block;
     }
     .titulos{

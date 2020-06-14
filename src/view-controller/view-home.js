@@ -12,36 +12,21 @@ export const MostrarUsuarioHome = (gmailUser) => {
     });
   });
 };
-export const MostrarUsuario = (gmailUser) => {
-  const mostrarUsuario = document.getElementById('userDescription2');
-  // db.collection('users').where('gmail', '==', gmailUser)
-  //   .get()
-  //   .then((querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //       // console.log(doc.id, ' => ', doc.data());
-  //       mostrarUsuario.innerHTML = ' ';
-  //       mostrarUsuario.appendChild(views.user(doc));
-  //     });
-  //   })
-  //   .catch((error) => {
-  //     console.log('Error extraer documents: ', error);
-  //   });
-  db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
-    mostrarUsuario.innerHTML = ' ';
-    querySnapshot.forEach((doc) => {
-      mostrarUsuario.innerHTML = ' ';
-      mostrarUsuario.appendChild(views.user(doc.data()));
-    });
-  });
-};
+// export const MostrarUsuarioForPost = (gmailUser) => {
+//   const seccion = document.getElementById('seccion');
+//   db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
+//     querySnapshot.forEach((doc) => {
+//       seccion.innerHTML = '';
+//       querySnapshot.forEach((doc) => {
+//         seccion.innerHTML = ' ';
+//         seccion.appendChild(views.home(doc.data()));
+//       });
+//     // console.log();
+//     });
+//   });
+// };
+// console.log(MostrarUsuarioForPost('judith086.jpc@gmail.com'));
 
-export const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => {
-  db.collection('users').doc(emailUser).update({
-    lenguaje: lenguajeUser,
-    location: locacionUser,
-    ocupation: ocupacionUser,
-  });
-};
 // console.log(result.user.displayName);
 // console.log(result.user.email);
 // console.log(result.user.emailVerified);
@@ -49,3 +34,10 @@ export const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUs
 // console.log(result.user.isAnonymous);
 // console.log(result.user.uid);
 // console.log(result.user.providerData);
+// correo: doc.data().gmail,
+// portada: doc.data().image_port,
+// perfil: doc.data().image_profile,
+// idioma: doc.data().lenguaje,
+// nacionalidad: doc.data().location,
+// nombre: doc.data().name_user,
+// ocupacionUser: doc.data().ocupation,

@@ -47,10 +47,10 @@ class Utilidad {
 }
 // //publicar una foto
 // const photoPostTemplate= ()=>{
-  
+
 // }
 
-
+// <img src ="${doc.data().imageProfile}"class="img_user_post">
 // plantilla publicar un post
 export const postTemplate = (doc) => {
   const divPostPublicado = `
@@ -61,7 +61,7 @@ export const postTemplate = (doc) => {
           </div>
           <figure class="data_user">
             <div class="img_user" id="img_user">
-            <img src =""class="img_user_post">
+            <img src ="${doc.data().imageProfile}"class="image_current_user">
             </div>
             <div class="name_user">
               <div class="name_date_post">
@@ -104,11 +104,12 @@ export const postTemplate = (doc) => {
   // }
   // const textStateOption = document.querySelector('.option_state_public');
   // // Creamos el nuevo párrafo
+  // eslint-disable-next-line max-len
   // var nuevo_parrafo = document.createElement('p').appendChild(document.createTextNode('Nuevo párrafo.'));
-    
+
   // // Recojemos en una variable el segundo párrafo
   // var descriptionElement= document.getElementById('padre').getElementsByTagName('p')[1];
-  
+
   // // Y ahora lo insertamos
   // document.getElementById('padre').insertBefore(nuevo_parrafo,segundo_p);
 

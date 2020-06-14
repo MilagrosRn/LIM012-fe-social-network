@@ -26,10 +26,12 @@ const constructorPost = () => {
 // CREAR POST
 // si usamos add crea un id
 
-const createPost = (_uid, _nameUser, _description, _privacity, _likes) =>
+const createPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privacity, _likes) =>
   firebase.firestore().collection('posts').add({
     uid: _uid,
     autor: _nameUser,
+    gmail: _gmail,
+    imageProfile: _imageProfile,
     description: _description,
     likes: _likes,
     privacity: _privacity,

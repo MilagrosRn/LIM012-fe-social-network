@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { modificarUser } from './view-home.js';
+import { modificarUser } from './view-profile.js';
 
 export const mostrarEditarUser = () => {
   const divInputEdit = document.querySelector('.divInputEdit');

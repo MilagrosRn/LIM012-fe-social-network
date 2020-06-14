@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { signOut } from '../firebase/auth-controller.js';
 // import { consultarUsuario } from '../firebase/user-firestore.js';
-import { MostrarUsuario } from '../view-controller/view-home.js';
+import { MostrarUsuario } from '../view-controller/view-profile.js';
 import { changeView } from '../view-controller/router.js';
 
 export default () => {

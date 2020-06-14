@@ -17,7 +17,6 @@ firebase.auth().onAuthStateChanged((user) => {
       console.log('email no verificado');
     } else {
       changeView('#/home');
-      // getPosts();
     }
   } else {
     changeView('#/');
