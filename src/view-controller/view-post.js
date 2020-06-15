@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { eliminarPost } from '../model/posts.js';
+import { mostrarEditarUser } from './view-user.js';
 // fecha en el post
 class Utilidad {
   static obtenerFecha(timeStamp) {
@@ -59,26 +60,10 @@ export const postTemplate = (doc) => {
   let divPostPublicado = `
     <section class="post_public">
       <div class="title_user title_user_public">
-      
-      
       <div class = "menu_edit_post">
-        <div class="divBtnEliminarPost"><span class="btnElimPost1">🗑</span></div>
-        <br>
-        <div><input type="button" id="btnElimPost" value="eliminar"></div>
-        
-        <br>
+        <div class="divBtnEliminarPost"><span class="btnElimPost">🗑</span></div>
         <div class="divBtnEditUser"><span class="btnEditUser">✏</span></div>
-      </div>`;
-
-  // if (user.email === doc.data().gmail) {
-  //   divPostPublicado += `
-  //       <div class = "menu_edit_post">
-  //         <div class="divBtnEliminarPost"><span class="btnElimPost">🗑</span></div>
-  //         <div class="divBtnEditUser"><span class="btnEditUser">✏</span></div>
-  //       </div>`;
-  // } else {
-  //   divPostPublicado += ' ';
-  // }
+      </div> `;
 
   divPostPublicado += `
         <figure class="data_user">
@@ -98,20 +83,26 @@ export const postTemplate = (doc) => {
   }
   divPostPublicado += `
           </div>
-        </figure>  
+        </figure> 
       </div>
       <div class="description_post">
         <div class="description_text">
           <p class="content_description_text" >${doc.data().description}</p>
-        </div>
-        <div class = "div_image" >
+        </div>`;
+  if (doc.data().imagenLink === undefined || doc.data().imagenLink === null) {
+    divPostPublicado += ' ';
+  } else {
+    divPostPublicado += `
+        <div class = "div_image">
           <img class="imgPublic"src="${doc.data().imagenLink}">
-        </div>
+        </div>`;
+  }
+  divPostPublicado += `
       </div>
       <div  class="options_post_public">
         <div class ="space_likes">
           <img class="icon_like" src="../imagenes/logoColorCorte.png">
-          <p class = "contador_likes">${doc.data().likes}</p>
+          <p class = "contador_likes">${doc.data().likes.length}</p>
           <p class = "like_text">Me gusta</p>
         </div>
         <div class ="space_comment">
@@ -127,11 +118,11 @@ export const postTemplate = (doc) => {
         <div class="title_user">
           <figure class="data_user">
             <div class="img_user" id="img_user">
-              <img  class="image_current_user"src="${doc.image_profile}">
+              <img  class="image_current_user"src="${doc.data().imageProfile}">
             </div>
             <div class="name_user">
               <div class="name_date_post">
-                <h2 class ="name">${doc.name_user}</h2>
+                <h2 class ="name">${doc.data().autor}</h2>
               </div>
             </div>
           </figure>   
@@ -175,8 +166,23 @@ export const postTemplate = (doc) => {
 
   // console.log(doc.id);
   // if (user.email === doc.data().gmail) {
+  const menuEditPost = divElement.querySelector('.menu_edit_post');
+  const editarPost = divElement.querySelector('.editarPost');
 
-  const btnElimPost = divElement.querySelector('#btnElimPost');
+
+
+  if (user.email === doc.data().gmail) {
+    // const modal = document.getElementById('modal');
+    menuEditPost.style.display = 'block';
+    editarPost.style.display = 'none';
+  } else {
+    menuEditPost.style.display = 'none';
+    editarPost.style.display = 'none';
+  }
+
+
+  
+  const btnElimPost = divElement.querySelector('.btnElimPost');
   btnElimPost.addEventListener('click', () => {
     console.log('eliminar post');
     eliminarPost(doc.id);
@@ -212,5 +218,5 @@ export const postTemplate = (doc) => {
   // } else {
   //   divPrivacity.innerHTML = iconPriv;
   // }
-  return divPostPublicado;
+  return divElement;
 };

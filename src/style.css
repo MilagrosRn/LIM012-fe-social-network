@@ -293,6 +293,7 @@ h3{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    justify-content: flex-end;
     height: 2.5rem;
     align-items: center;
     padding:4%;
