@@ -1,4 +1,4 @@
-import { createPost, loadImage } from '../model/posts.js';
+import { createPost, loadImage, updateImagePost } from '../model/posts.js';
 
 export default (doc) => {
   const user = firebase.auth().currentUser;
@@ -95,13 +95,26 @@ export default (doc) => {
   btnPublicPhoto.addEventListener('click', () => {
     const divImage = divElement.querySelector('.option_image_public');
     divImage.style.display = 'block';
+
     const fileInput = document.getElementById('fileInput');
     const fileDisplayArea = document.getElementById('fileDisplayArea');
 
-    fileInput.addEventListener('change', (e) => {
+    fileInput.addEventListener('change', () => {
       loadImage(fileInput, fileDisplayArea);
     });
+    fileInput.addEventListener('change', (e) => {
+    //  if (fileInput !== '') {
+
+      const file = e.target.files[1];
+      // file = files;
+      console.log(file);
+      updateImagePost(file, user.uid);
+    });
   });
+  const imagenLink = sessionStorage.getItem('imgNewPost') === 'null'
+    ? null
+    : sessionStorage.getItem('imgNewPost');
+
 
   //  option plantilla estado y ubicacion
   btnPublicState.addEventListener('click', () => {
@@ -128,12 +141,6 @@ export default (doc) => {
     const description = divElement.querySelector('.text_post').value;
     const likes = 0;
 
-
-    // const fileInput = document.getElementById('fileInput');
-    // if (fileInput !== '') {
-    //   const file = fileInput.files[0];
-    //   updateImagePost(file, user.uid);
-    // }
     let privacityCollection = '';
     if (privacityMarked) {
       privacityCollection = true;
@@ -144,7 +151,8 @@ export default (doc) => {
     if (user === null) {
       console.log('no autenticado para post');
     }
-    createPost(user.uid, doc.name_user, user.email, doc.image_profile, description, privacityCollection, likes)
+
+    createPost(user.uid, doc.name_user, user.email, doc.image_profile, description, privacityCollection, imagenLink, likes)
       .then(res => console.log('post creado correcto'))
       .catch(error => console.log('error con post'));
   }));

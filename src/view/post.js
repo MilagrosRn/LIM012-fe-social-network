@@ -62,11 +62,7 @@ export const postTemplate = (doc) => {
       
       
       <div class = "menu_edit_post">
-        <div class="divBtnEliminarPost"><span class="btnElimPost1">🗑</span></div>
-        <br>
-        <div><input type="button" id="btnElimPost" value="eliminar"></div>
-        
-        <br>
+        <div class="divBtnEliminarPost"><span class="btnElimPost">🗑</span></div>
         <div class="divBtnEditUser"><span class="btnEditUser">✏</span></div>
       </div>`;
 
@@ -173,14 +169,13 @@ export const postTemplate = (doc) => {
   const divElement = document.createElement('div');
   divElement.innerHTML = divPostPublicado;
 
-  // console.log(doc.id);
+  console.log(doc.id);
   // if (user.email === doc.data().gmail) {
 
-  const btnElimPost = divElement.querySelector('#btnElimPost');
-  btnElimPost.addEventListener('click', () => {
-    console.log('eliminar post');
-    eliminarPost(doc.id);
-  });
+  // const btnElimPost = document.querySelector('.btnElimPost');
+  // btnElimPost.addEventListener('click', () => {
+  //   eliminarPost(doc.id);
+  // });
   // }
 
   // const user = firebase.auth().currentUser;

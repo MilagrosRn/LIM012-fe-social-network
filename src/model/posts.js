@@ -26,7 +26,7 @@ const constructorPost = () => {
 // CREAR POST
 // si usamos add crea un id
 
-const createPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privacity, _likes) =>
+const createPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privacity, _imagenLink, _likes) =>
   firebase.firestore().collection('posts').add({
     uid: _uid,
     autor: _nameUser,
@@ -35,6 +35,7 @@ const createPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _priva
     description: _description,
     likes: _likes,
     privacity: _privacity,
+    imagenLink: _imagenLink,
     date: firebase.firestore.FieldValue.serverTimestamp(),
   })
     .then((ref) => {
@@ -52,7 +53,6 @@ const holePostTemplate = () => `
     <h2>Es momento de publicar un post</h2>
 </section>
 `;
-
 
 const questionPost = () => {
   // onSnapshot permite controlar los cambios en tiempo real
@@ -72,7 +72,6 @@ const questionPost = () => {
 };
 
 // CARGAR UNA IMAGEN AL POST
-
 const loadImage = (input, divShowContent) => {
   const file = input.files[0];
   const imageType = /image.*/;
@@ -80,7 +79,7 @@ const loadImage = (input, divShowContent) => {
   if (file.type.match(imageType)) {
     const reader = new FileReader();
 
-    reader.onload = function (e) {
+    reader.onload = (e) => {
       divShowContent.innerHTML = '';
 
       const img = new Image();
@@ -118,12 +117,23 @@ const updateImagePost = (file, uid) => {
       // trae la url de descarga de la imagen
       task.snapshot.ref.getDownloadURL().then((url) => {
         console.log(url);
-        sessionStorage.setItem('imgNewPost', url)
-          .catch(error => console.log(error));
+        sessionStorage.setItem('imgNewPost', url);
+      }).catch((err) => {
+        console.error(`Error obteniendo downloadURL = > ${err}`, 4000);
       });
     });
 };
 
+const eliminarPost = (documento) => {
+  firebase.firestore().collection('posts').doc(documento).delete()
+    .then(() => {
+      console.log('Document successfully deleted!');
+    })
+    .catch((error) => {
+      console.error('Error removing document: ', error);
+    });
+};
+
 export {
-  createPost, questionPost, loadImage, updateImagePost,
+  createPost, questionPost, loadImage, updateImagePost, constructorPost, eliminarPost,
 };
