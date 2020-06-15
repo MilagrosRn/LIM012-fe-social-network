@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { signOut } from '../firebase/auth-controller.js';
 import { questionPost } from '../model/posts.js';
@@ -71,7 +72,7 @@ export default () => {
             </div>
             <div class ="option_image_public" style="display:none">
             Select an image file: 
-            <hr style = "color :red"class="progress_graphic">
+            <div class=".progress_graphic" style="width: 0%"></div>
             <input type="file" id="fileInput">
             <div id="fileDisplayArea"></div>
             </div>
