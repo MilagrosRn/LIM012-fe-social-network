@@ -45,6 +45,7 @@ const createPost = (_uid, _nameUser, _email, _image, _description, _privacity, _
   //   }
   //   return image;
   // }
+  console.log(_imagenLink);
   return firebase.firestore().collection('posts').add({
     uid: _uid,
     autor: _nameUser,
@@ -101,14 +102,15 @@ const loadImage = (input, divShowContent) => {
   if (file.type.match(imageType)) {
     const reader = new FileReader();
 
-    reader.onload = function (e) {
+    reader.addEventListener('load', () => {
       divShowContent.innerHTML = '';
 
       const img = new Image();
       img.src = reader.result;
 
       divShowContent.appendChild(img);
-    };
+    });
+
 
     reader.readAsDataURL(file);
   } else {
@@ -126,20 +128,16 @@ const updateImagePost = (file, uid) => {
   // informa el estado de subida de archivo
   task.on('state_changed',
     (snapshot) => {
-      // ver cuantos bytes se suben
-      const porcent = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-      const progress = document.querySelector('.progress_graphic');
-      progress.style.width = `${porcent} %`;
-      console.log(task);
+
     },
     (err) => {
       console.log('error imagen');
     },
     () => {
       // trae la url de descarga de la imagen
-      task.snapshot.ref.getDownloadURL().then((url) => {
+    task.snapshot.ref.getDownloadURL().then((url) => {
         console.log(url);
-        sessionStorage.setItem('imgNewPost', url);
+        localStorage.setItem('imgNewPost', url);
       }).catch((err) => {
         console.error(`Error obteniendo downloadURL = > ${err}`, 4000);
       });

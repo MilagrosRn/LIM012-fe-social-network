@@ -47,23 +47,26 @@ class Utilidad {
 }
 // //publicar una foto
 // const photoPostTemplate= ()=>{
-  
+
 // }
 
 
 // plantilla publicar un post
 export const postTemplate = (doc) => {
-  // let imagePublic = '';
-  // if(doc.data().img_post){
-  //   imagePublic = doc.data().img_post
-  // }
-  console.log(doc.data().img_post);
   const divPostPublicado = `
   <section class="post_public">
         <div class="title_user title_user_public">
-          <div class = "menu_edit_post">
-           <i class="fas fa-ellipsis-h"></i>
-          </div>
+         <button class="menu_burger">
+         <i class="fas fa-ellipsis-h"></i>
+         </button>
+          <nav class="menu_select" id="hidden-menu">
+          <ul class="menu_select_ul " >
+            <li class="menu_edit">Editar</li>
+            <li class="menu_delete">Eliminar</li>
+          </ul>
+          </nav>
+          
+          
           <figure class="data_user">
             <div class="img_user" id="img_user">
             <img src ="${doc.data().img_autor_post}"class="img_user_post">
@@ -74,6 +77,14 @@ export const postTemplate = (doc) => {
                 <h3 class ="date">${Utilidad.obtenerFecha(doc.data().date.toDate())}</h3>
               </div>
               <div class="icon_privacity_public">
+              <div id= "icon">
+                
+                <i class="fas fa-globe-americas"></i>
+              </div>
+              <select name="option_priv_Public">
+                <option>Publico</option>
+                <option>Privado</option>
+              </select> 
               </div>
             </div>
           </figure>  
@@ -103,33 +114,21 @@ export const postTemplate = (doc) => {
     </section>`;
   const divElement = document.createElement('div');
   divElement.innerHTML = divPostPublicado;
-  // const user = firebase.auth().currentUser;
-  // console.log(user);
-  // if (user.photoURL) {
-  //   const imagenUser = divElement.querySelector('.img_user_post');
-  //   imagenUser.src=user.photoURL;
+  const btnmenuedit = divElement.querySelector('.menu_burger');
+  const showEdit = () => {
+    console.log('menu');
+  };
+  btnmenuedit.addEventListener('click', showEdit());
+
+  // const divPrivacity = divPostPublicado.querySelectorAll('.icon');
+  // // divPrivacity.innerHTML = '';
+  // divPrivacity.innerHTML = '<p>hola</p>';
+  // const iconPubic = '<i class="fas fa-globe-americas"></i>';
+  // const iconPriv = '<i class="fas fas fa-lock"></i>';
+  // if (doc.data().privacity === true) {
+  //   divPrivacity.innerHTML = iconPubic;
   // } else {
-  //   const imagenUser = divElement.querySelector('.img_user_post');
-  //   imagenUser.src ='degradado.png';
+  //   divPrivacity.innerHTML = iconPriv;
   // }
-  // const textStateOption = document.querySelector('.option_state_public');
-  // // Creamos el nuevo párrafo
-  // var nuevo_parrafo = document.createElement('p').appendChild(document.createTextNode('Nuevo párrafo.'));
-    
-  // // Recojemos en una variable el segundo párrafo
-  // var descriptionElement= document.getElementById('padre').getElementsByTagName('p')[1];
-  
-  // // Y ahora lo insertamos
-  // document.getElementById('padre').insertBefore(nuevo_parrafo,segundo_p);
-
-
-  const divPrivacity = divElement.querySelector('.icon_privacity_public');
-  const iconPubic = '<i class="fas fa-globe-americas"></i>';
-  const iconPriv = '<i class="fas fas fa-lock"></i>';
-  if (doc.data().privacity === true) {
-    divPrivacity.innerHTML = iconPubic;
-  } else {
-    divPrivacity.innerHTML = iconPriv;
-  }
   return divPostPublicado;
 };

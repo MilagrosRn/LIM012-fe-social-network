@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { signOut } from '../firebase/auth-controller.js';
 import {
@@ -64,7 +65,7 @@ export default () => {
             </div>
             <div class ="option_image_public" style="display:none">
             Select an image file: 
-            <hr style = "color :red"class="progress_graphic">
+            <div class=".progress_graphic" style="width: 0%"></div>
             <input type="file" id="fileInput">
             <div id="fileDisplayArea"></div>
             </div>
@@ -108,6 +109,9 @@ export default () => {
   });
 
   btnCerrarSesion.addEventListener('click', signOut);
+  // menu edit
+
+
   // opciones privacidad
   let privacityMarked = '';
   btnPrivacityPriv.addEventListener('click', () => {
@@ -123,7 +127,7 @@ export default () => {
   // img
 
 
-  // let files ='';
+  // const files = [];
   btnPublicPhoto.addEventListener('click', () => {
     const divImage = divElement.querySelector('.option_image_public');
     divImage.style.display = 'block';
@@ -137,16 +141,14 @@ export default () => {
     fileInput.addEventListener('change', (e) => {
     //  if (fileInput !== '') {
 
-      const file = e.target.files[1];
-      // file = files;
+      const file = e.target.files[0];
+      // file.push(files);
       console.log(file);
       updateImagePost(file, user.uid);
-
     });
   });
-  const imagenLink = sessionStorage.getItem('imgNewPost') === 'null'
-    ? null
-    : sessionStorage.getItem('imgNewPost');
+
+
   //  option plantilla estado y ubicacion
   btnPublicState.addEventListener('click', () => {
     const divState = divElement.querySelector('.option_state_public');
@@ -183,6 +185,11 @@ export default () => {
     if (user === null) {
       console.log('no autenticado para post');
     }
+    const imagenLink = localStorage.getItem('imgNewPost') === 'null'
+      ? null
+      : sessionStorage.getItem('imgNewPost');
+
+    console.log(imagenLink);
     createPost(user.uid, user.displayName, user.email, image, description, privacityCollection, likes, imagenLink)
       .then(res => console.log('post creado correcto'))
       .catch(error => console.log('error con post'));
