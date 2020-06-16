@@ -102,18 +102,16 @@ const updateImagePost = (file, uid) => {
   const refStorage = firebase.storage().ref(`imagesUsers/${uid}/${file.name}`);
   // sube archivo
   const task = refStorage.put(file);
-
   // informa el estado de subida de archivo
   task.on('state_changed',
     (snapshot) => {
-
     },
     (err) => {
-      console.log('error imagen');
+      console.log('error imagen', err);
     },
     () => {
       // trae la url de descarga de la imagen
-    task.snapshot.ref.getDownloadURL().then((url) => {
+      task.snapshot.ref.getDownloadURL().then((url) => {
         console.log(url);
         localStorage.setItem('imgNewPost', url);
       }).catch((err) => {

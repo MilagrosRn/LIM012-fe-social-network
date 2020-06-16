@@ -149,9 +149,9 @@ export default (doc) => {
     if (user === null) {
       console.log('no autenticado para post');
     }
-    const imagenLink = localStorage.getItem('imgNewPost') === 'null'
+    const imagenLink = sessionStorage.getItem('imgNewPost') === 'null'
       ? null
-      : sessionStorage.getItem('imgNewPost');
+      : localStorage.getItem('imgNewPost');
 
     createPost(user.uid, doc.name_user, user.email, doc.image_profile, description, privacityCollection, imagenLink, likes)
       .then(() => {

@@ -10,3 +10,11 @@
 // // // limpiar todo el objeto
 // // localStorage.clear();
 // document.getElementById('prueba').innerHTML = (`Hola, mi nombre es ${firstName} ${lastName}`);
+const db = firebase.firestore();
+export const modificarPost = (_idPost, _description, _privacity, _imagenLink) => {
+  db.collection('posts').doc(_idPost).update({
+    description: _description,
+    privacity: _privacity,
+    imagenLink: _imagenLink,
+  });
+};
