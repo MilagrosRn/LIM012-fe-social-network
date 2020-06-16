@@ -14,7 +14,7 @@ export default (doc) => {
           <div class="divTitleLogo">
               <div><p class="titulos">Detalles</p></div>
           </div>
-          <div class="divPEditar">fa-lock
+          <div class="divPEditar">
               <center><p class="editUser">${doc.ocupation}</p></center>
               <center><p class="editUser">${doc.location}</p></center>
               <center><p class="editUser">${doc.lenguaje}</p></center>
