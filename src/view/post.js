@@ -117,7 +117,6 @@ export const postTemplate = (doc) => {
         </div>
       </div>
     </section>
-
     <section class="editarPost post">
       <section id="post_init">
         <div class="title_user">

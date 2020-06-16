@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { eliminarPost } from '../model/posts.js';
+import { mostrarEditarUser } from './view-user.js';
 // fecha en el post
 class Utilidad {
   static obtenerFecha(timeStamp) {
@@ -111,7 +112,6 @@ export const postTemplate = (doc) => {
         </div>
       </div>
     </section>
-
     <section class="editarPost post">
       <section id="post_init">
         <div class="title_user">
@@ -182,6 +182,5 @@ export const postTemplate = (doc) => {
     console.log('eliminar post');
     eliminarPost(doc.id);
   });
-
   return divElement;
 };

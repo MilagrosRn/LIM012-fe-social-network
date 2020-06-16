@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
 import { createPost, loadImage, updateImagePost } from '../model/posts.js';
 

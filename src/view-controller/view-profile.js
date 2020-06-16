@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import views from '../view/index.js';
 
 const db = firebase.firestore();
