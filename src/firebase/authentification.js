@@ -64,7 +64,7 @@ const createAccount = (newEmail, newPassword, newUser) => {
       });
 
       const configuracion = {
-        url: 'http://localhost:5000/#/home',
+        url: 'http://localhost',
       };
 
       result.user.sendEmailVerification(configuracion)
