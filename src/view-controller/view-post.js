@@ -168,8 +168,6 @@ export const postTemplate = (doc) => {
   const menuEditPost = divElement.querySelector('.menu_edit_post');
   const editarPost = divElement.querySelector('.editarPost');
 
-
-
   if (user.email === doc.data().gmail) {
     // const modal = document.getElementById('modal');
     menuEditPost.style.display = 'block';
@@ -179,43 +177,10 @@ export const postTemplate = (doc) => {
     editarPost.style.display = 'none';
   }
 
-
-  
   const btnElimPost = divElement.querySelector('.btnElimPost');
   btnElimPost.addEventListener('click', () => {
     console.log('eliminar post');
     eliminarPost(doc.id);
   });
-  // }
-
-  // const user = firebase.auth().currentUser;
-  // console.log(user);
-  // if (user.photoURL) {
-  //   const imagenUser = divElement.querySelector('.img_user_post');
-  //   imagenUser.src=user.photoURL;
-  // } else {
-  //   const imagenUser = divElement.querySelector('.img_user_post');
-  //   imagenUser.src ='degradado.png';
-  // }
-  // const textStateOption = document.querySelector('.option_state_public');
-  // // Creamos el nuevo párrafo
-  // eslint-disable-next-line max-len
-  // var nuevo_parrafo = document.createElement('p').appendChild(document.createTextNode('Nuevo párrafo.'));
-
-  // // Recojemos en una variable el segundo párrafo
-  // var descriptionElement= document.getElementById('padre').getElementsByTagName('p')[1];
-
-  // // Y ahora lo insertamos
-  // document.getElementById('padre').insertBefore(nuevo_parrafo,segundo_p);
-
-
-  // const divPrivacity = divElement.querySelector('.icon_privacity_public');
-  // const iconPubic = '<i class="fas fa-globe-americas"></i>';
-  // const iconPriv = '<i class="fas fas fa-lock"></i>';
-  // if (doc.data().privacity === true) {
-  //   divPrivacity.innerHTML = iconPubic;
-  // } else {
-  //   divPrivacity.innerHTML = iconPriv;
-  // }
   return divElement;
 };
