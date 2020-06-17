@@ -2,7 +2,7 @@
 import { signOut } from '../firebase/auth-controller.js';
 // import { consultarUsuario } from '../firebase/user-firestore.js';
 import { MostrarUsuarioHome } from '../view-controller/view-home.js';
-import { createPost, questionPost, loadImage } from '../model/posts.js';
+import { questionPost } from '../view-controller/view-posts.js';
 import { changeView } from '../view-controller/router.js';
 
 export default () => {
@@ -11,9 +11,6 @@ export default () => {
       MostrarUsuarioHome(user.email);
     }
   });
-  // usuario logeado actualmente
-  // const user = firebase.auth().currentUser;
-  // console.log(user.photoURL);
   const viewHome = `
   <div id="tercera_vista_home">
     <header>
@@ -58,11 +55,9 @@ export default () => {
   btninicio.addEventListener('click', (() => {
     changeView('#/home');
   }));
-
   btnprofile.addEventListener('click', () => {
     changeView('#/profile');
   });
-
   btnCerrarSesion.addEventListener('click', signOut);
 
   return divElement;

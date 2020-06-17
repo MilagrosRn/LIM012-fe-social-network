@@ -1,4 +1,5 @@
 import views from '../view/index.js';
+import { postTemplate } from '../view/post.js';
 
 const db = firebase.firestore();
 export const MostrarUsuario = (gmailUser) => {
@@ -7,13 +8,9 @@ export const MostrarUsuario = (gmailUser) => {
   //   .get()
   //   .then((querySnapshot) => {
   //     querySnapshot.forEach((doc) => {
-  //       // console.log(doc.id, ' => ', doc.data());
-  //       mostrarUsuario.innerHTML = ' ';
-  //       mostrarUsuario.appendChild(views.user(doc));
   //     });
   //   })
   //   .catch((error) => {
-  //     console.log('Error extraer documents: ', error);
   //   });
   db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
     mostrarUsuario.innerHTML = ' ';
@@ -29,5 +26,25 @@ export const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUs
     lenguaje: lenguajeUser,
     location: locacionUser,
     ocupation: ocupacionUser,
+  });
+};
+
+const holePostTemplate = () => `
+<section class ="vacio_post">
+    <img class="logo_vacio_post" src="../imagenes/logoColor.png" >
+    <h2>Es momento de publicar un post</h2>
+</section>
+`;
+export const MostrarPostDelUsuario = (gmailUser) => {
+  db.collection('posts').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
+    const containerPost = document.getElementById('containerPost');
+    containerPost.innerHTML = ' ';
+    if (querySnapshot === '') {
+      containerPost.innerHTML = holePostTemplate();
+    } else {
+      querySnapshot.forEach((doc) => {
+        containerPost.appendChild(postTemplate(doc));
+      });
+    }
   });
 };

@@ -8,24 +8,10 @@ export const MostrarUsuarioHome = (gmailUser) => {
     userDescription.innerHTML = '';
     querySnapshot.forEach((doc) => {
       userDescription.innerHTML = ' ';
-      userDescription.appendChild(views.userModificado(doc.data()));
+      userDescription.appendChild(views.user(doc.data()));
     });
   });
 };
-// export const MostrarUsuarioForPost = (gmailUser) => {
-//   const seccion = document.getElementById('seccion');
-//   db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
-//     querySnapshot.forEach((doc) => {
-//       seccion.innerHTML = '';
-//       querySnapshot.forEach((doc) => {
-//         seccion.innerHTML = ' ';
-//         seccion.appendChild(views.home(doc.data()));
-//       });
-//     // console.log();
-//     });
-//   });
-// };
-// console.log(MostrarUsuarioForPost('judith086.jpc@gmail.com'));
 
 // console.log(result.user.displayName);
 // console.log(result.user.email);

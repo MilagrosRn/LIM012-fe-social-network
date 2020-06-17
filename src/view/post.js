@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import { eliminarPost } from '../model/posts.js';
+import { eliminarPost, modificarPost } from '../view-controller/view-posts.js';
+
 // fecha en el post
 class Utilidad {
   static obtenerFecha(timeStamp) {
@@ -46,36 +47,17 @@ class Utilidad {
     }
   }
 }
-// //publicar una foto
-// const photoPostTemplate= ()=>{
 
-// }
-
-// <img src ="${doc.data().imageProfile}"class="img_user_post">
-// plantilla publicar un post
 export const postTemplate = (doc) => {
   const user = firebase.auth().currentUser;
 
   let divPostPublicado = `
-    <section class="post_public">
+  <section class="post_public">
       <div class="title_user title_user_public">
-      
-      
       <div class = "menu_edit_post">
         <div class="divBtnEliminarPost"><span class="btnElimPost">🗑</span></div>
-        <div class="divBtnEditUser"><span class="btnEditUser">✏</span></div>
-      </div>`;
-
-  // if (user.email === doc.data().gmail) {
-  //   divPostPublicado += `
-  //       <div class = "menu_edit_post">
-  //         <div class="divBtnEliminarPost"><span class="btnElimPost">🗑</span></div>
-  //         <div class="divBtnEditUser"><span class="btnEditUser">✏</span></div>
-  //       </div>`;
-  // } else {
-  //   divPostPublicado += ' ';
-  // }
-
+        <div class="divBtnEditarPost"><span class="btnEditPost">✏</span></div>
+      </div> `;
   divPostPublicado += `
         <figure class="data_user">
           <div class="img_user" id="img_user">
@@ -94,20 +76,26 @@ export const postTemplate = (doc) => {
   }
   divPostPublicado += `
           </div>
-        </figure>  
+        </figure> 
       </div>
       <div class="description_post">
         <div class="description_text">
           <p class="content_description_text" >${doc.data().description}</p>
-        </div>
-        <div class = "div_image" >
+        </div>`;
+  if (doc.data().imagenLink === undefined || doc.data().imagenLink === null) {
+    divPostPublicado += ' ';
+  } else {
+    divPostPublicado += `
+        <div class = "div_image">
           <img class="imgPublic"src="${doc.data().imagenLink}">
-        </div>
+        </div>`;
+  }
+  divPostPublicado += `
       </div>
       <div  class="options_post_public">
         <div class ="space_likes">
           <img class="icon_like" src="../imagenes/logoColorCorte.png">
-          <p class = "contador_likes">${doc.data().likes}</p>
+          <p class = "contador_likes">${doc.data().likes.length}</p>
           <p class = "like_text">Me gusta</p>
         </div>
         <div class ="space_comment">
@@ -117,17 +105,16 @@ export const postTemplate = (doc) => {
         </div>
       </div>
     </section>
-
     <section class="editarPost post">
       <section id="post_init">
         <div class="title_user">
           <figure class="data_user">
             <div class="img_user" id="img_user">
-              <img  class="image_current_user"src="${doc.image_profile}">
+              <img  class="image_current_user"src="${doc.data().imageProfile}">
             </div>
             <div class="name_user">
               <div class="name_date_post">
-                <h2 class ="name">${doc.name_user}</h2>
+                <h2 class ="name">${doc.data().autor}</h2>
               </div>
             </div>
           </figure>   
@@ -139,73 +126,72 @@ export const postTemplate = (doc) => {
         <div class="description_post">
           <div class="description_text">
             <h2 class ="option_state_public" style="display:none"></h2>
-            <input type="text"  class="text_post" value="${doc.data().description}">
-            <div><input type="button" class="botonGuardarUserEdit" value="Guardar"></div>
+
+            <input type="text"  class="textPost text_post" value="${doc.data().description}">
           </div>
-        </div>
-        <div><input type="button" class="botonEdit" value="Guardar"></div>
-        <div class ="option_image_public" style="display:none">
-          Select an image file: 
-          <hr style = "green"class="progress_graphic">
-          <input type="file" id="fileInput">
-          <div id="fileDisplayArea"></div>
-        </div>
-        <div class="options_post">
-          <div class="option photo_post">
-            <i class="fas fa-camera"></i>
-            <p>Foto</p>
-          </div>
-          <div class="option state_post">
-            <i class="fas fa-heart"></i>
-            <p>Estado</p>
-          </div>
-          <div class="option2 location_post">
-            <i class="fas fa-map-marker-alt"></i>
-            <p>Estoy aquí</p>
-          </div>
-        </div>
+        </div>`;
+  if (doc.data().imagenLink === undefined || doc.data().imagenLink === null) {
+    divPostPublicado += ' ';
+  } else {
+    divPostPublicado += `
+              <div class = "div_image">
+                <img class="imgPublic"src="${doc.data().imagenLink}">
+              </div>`;
+  }
+  divPostPublicado += `<div><input type="button" class="btnSaveEdit" value="Guardar Cambios"></div>
       </section>
     </section>`;
   const divElement = document.createElement('div');
   divElement.innerHTML = divPostPublicado;
 
-  console.log(doc.id);
-  // if (user.email === doc.data().gmail) {
+  const menuEditPost = divElement.querySelector('.menu_edit_post');
+  const editarPost = divElement.querySelector('.editarPost');
+  const postPublic = divElement.querySelector('.post_public');
 
-  // const btnElimPost = document.querySelector('.btnElimPost');
-  // btnElimPost.addEventListener('click', () => {
-  //   eliminarPost(doc.id);
-  // });
-  // }
+  if (user.email === doc.data().gmail) {
+    // const modal = document.getElementById('modal');
+    menuEditPost.style.display = 'block';
+    editarPost.style.display = 'none';
+  } else {
+    menuEditPost.style.display = 'none';
+    editarPost.style.display = 'none';
+  }
 
-  // const user = firebase.auth().currentUser;
-  // console.log(user);
-  // if (user.photoURL) {
-  //   const imagenUser = divElement.querySelector('.img_user_post');
-  //   imagenUser.src=user.photoURL;
-  // } else {
-  //   const imagenUser = divElement.querySelector('.img_user_post');
-  //   imagenUser.src ='degradado.png';
-  // }
-  // const textStateOption = document.querySelector('.option_state_public');
-  // // Creamos el nuevo párrafo
-  // eslint-disable-next-line max-len
-  // var nuevo_parrafo = document.createElement('p').appendChild(document.createTextNode('Nuevo párrafo.'));
+  const btnEditPost = divElement.querySelector('.btnEditPost');
+  btnEditPost.addEventListener('click', () => {
+    editarPost.style.display = 'block';
+    postPublic.style.display = 'none';
+  });
 
-  // // Recojemos en una variable el segundo párrafo
-  // var descriptionElement= document.getElementById('padre').getElementsByTagName('p')[1];
+  const btnPrivacityPriv = divElement.querySelector('.fa-lock');
+  const btnPrivacityPublic = divElement.querySelector('.fa-globe-americas');
+  // opciones privacidad
+  let privacityMarked = '';
+  btnPrivacityPriv.addEventListener('click', () => {
+    privacityMarked = false;
+  });
+  btnPrivacityPublic.addEventListener('click', () => {
+    privacityMarked = true;
+  });
 
-  // // Y ahora lo insertamos
-  // document.getElementById('padre').insertBefore(nuevo_parrafo,segundo_p);
+  const btnSaveEdit = divElement.querySelector('.btnSaveEdit');
+  btnSaveEdit.addEventListener('click', () => {
+    const description = divElement.querySelector('.textPost').value;
+    let privacityCollection = '';
+    if (privacityMarked) {
+      privacityCollection = true;
+    } else {
+      privacityCollection = false;
+    }
+    modificarPost(doc.id, description, privacityCollection);
+    editarPost.style.display = 'none';
+    postPublic.style.display = 'block';
+  });
 
+  const btnElimPost = divElement.querySelector('.btnElimPost');
+  btnElimPost.addEventListener('click', () => {
+    eliminarPost(doc.id);
+  });
 
-  // const divPrivacity = divElement.querySelector('.icon_privacity_public');
-  // const iconPubic = '<i class="fas fa-globe-americas"></i>';
-  // const iconPriv = '<i class="fas fas fa-lock"></i>';
-  // if (doc.data().privacity === true) {
-  //   divPrivacity.innerHTML = iconPubic;
-  // } else {
-  //   divPrivacity.innerHTML = iconPriv;
-  // }
-  return divPostPublicado;
+  return divElement;
 };
