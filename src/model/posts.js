@@ -46,7 +46,7 @@ const createPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _priva
     .catch((error) => {
       console.log(error);
     });
-};
+
 
 // CONSULTAR UN DATOS DEL POST
 
