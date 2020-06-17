@@ -116,7 +116,6 @@ const signInGoogleAccount = () => {
 };
 
 // FUNCION PARA LOGUEAR USUARIO CON FACEBOOK
-
 const signInFacebookAccount = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider)
