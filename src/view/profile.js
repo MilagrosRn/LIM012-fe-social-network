@@ -8,6 +8,7 @@ export default () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       MostrarUsuario(user.email);
+      console.log('hi')
     }
   });
   const viewHome = `

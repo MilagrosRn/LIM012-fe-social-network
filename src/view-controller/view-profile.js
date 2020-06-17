@@ -4,6 +4,7 @@ import views from '../view/index.js';
 const db = firebase.firestore();
 export const MostrarUsuario = (gmailUser) => {
   const mostrarUsuario = document.getElementById('userDescription2');
+  console.log('lo')
   // db.collection('users').where('gmail', '==', gmailUser)
   //   .get()
   //   .then((querySnapshot) => {

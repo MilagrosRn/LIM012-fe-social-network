@@ -1,5 +1,4 @@
 // eslint-disable-next-line import/no-cycle
-// eslint-disable-next-line import/no-cycle
 import { modificarUser } from './view-profile.js';
 
 export const mostrarEditarUser = () => {

@@ -38,8 +38,6 @@ const createPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _priva
     privacity: _privacity,
     imagenLink: _imagenLink,
     date: firebase.firestore.FieldValue.serverTimestamp(),
-    imagenLink: _imagenLink,
-
   })
     .then((ref) => {
       console.log(ref.id);
@@ -47,7 +45,6 @@ const createPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _priva
     .catch((error) => {
       console.log(error);
     });
-};
 
 // CONSULTAR UN DATOS DEL POST
 
@@ -116,9 +113,9 @@ const updateImagePost = (file, uid) => {
     },
     () => {
       // trae la url de descarga de la imagen
-      task.snapshot.ref.getDownloadURL().then((url) => {
+    task.snapshot.ref.getDownloadURL().then((url) => {
         console.log(url);
-        sessionStorage.setItem('imgNewPost', url);
+        localStorage.setItem('imgNewPost', url);
       }).catch((err) => {
         console.error(`Error obteniendo downloadURL = > ${err}`, 4000);
       });
