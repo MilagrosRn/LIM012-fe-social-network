@@ -84,6 +84,7 @@ const updateImagePost = (file, uid) => {
   // informa el estado de subida de archivo
   task.on('state_changed',
     (snapshot) => {
+      console.log(snapshot);
     },
     (err) => {
       console.log('error imagen', err);

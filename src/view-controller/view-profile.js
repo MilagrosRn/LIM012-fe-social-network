@@ -16,7 +16,7 @@ export const MostrarUsuario = (gmailUser) => {
     mostrarUsuario.innerHTML = ' ';
     querySnapshot.forEach((doc) => {
       mostrarUsuario.innerHTML = ' ';
-      mostrarUsuario.appendChild(views.user(doc.data()));
+      mostrarUsuario.appendChild(views.userProfile(doc.data()));
     });
   });
 };

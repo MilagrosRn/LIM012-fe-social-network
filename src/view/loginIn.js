@@ -2,6 +2,7 @@
 import { changeView } from '../view-controller/router.js';
 import { signInAccount, signInGoogleAccount, signInFacebookAccount } from '../firebase/authentification.js';
 import { btnInfo } from '../view-controller/view-info.js';
+import { inicioSesion } from '../view-controller/view-signIn.js';
 
 export default () => {
   const viewLogin = `
@@ -60,24 +61,11 @@ export default () => {
   const btnFacebook = divElement.querySelector('#btnFacebook');
   const btnGoogle = divElement.querySelector('#btnGoogle');
   const btnRegistrarse = divElement.querySelector('#btnRegistrarse');
-  const divValidationsLogin = divElement.querySelector('.divValidationsLogin');
   const btnInformacion = divElement.querySelector('.info');
 
   btnInformacion.addEventListener('click', btnInfo);
 
-  btnLogIn.addEventListener('click', () => {
-    const email = document.querySelector('.correo').value;
-    const password = document.querySelector('.coontraseña').value;
-    if (email === '') {
-      divValidationsLogin.textContent = 'Querido usuario, ingresa un email';
-    } else if (!(email.includes('@'))) {
-      divValidationsLogin.textContent = 'Querido usuario, ingresa un email valido';
-    } else if (password === '') {
-      divValidationsLogin.textContent = 'Querido usuario, ingresa una contraseña';
-    } else {
-      signInAccount(email, password);
-    }
-  });
+  btnLogIn.addEventListener('click', inicioSesion);
 
   btnFacebook.addEventListener('click', signInFacebookAccount);
   btnGoogle.addEventListener('click', signInGoogleAccount);

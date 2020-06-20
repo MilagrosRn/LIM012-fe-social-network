@@ -1,5 +1,9 @@
 // eslint-disable-next-line import/no-cycle
 import views from '../view/index.js';
+// eslint-disable-next-line import/no-cycle
+// import mostrarCabecera from '../view/header.js';
+// import { changeView } from '../view-controller/router.js';
+// import { signOut } from '../firebase/auth-controller.js';
 
 const db = firebase.firestore();
 export const MostrarUsuarioHome = (gmailUser) => {
@@ -12,6 +16,10 @@ export const MostrarUsuarioHome = (gmailUser) => {
     });
   });
 };
+
+// export const llamarCabecera = (contenedor) => {
+
+// };
 
 // console.log(result.user.displayName);
 // console.log(result.user.email);

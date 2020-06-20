@@ -1,7 +1,8 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-cond-assign */
-import { createAccount } from '../firebase/authentification.js';
 import { btnInfo } from '../view-controller/view-info.js';
+import { registrarUsuario } from '../view-controller/view-signIn.js';
+
 
 export default () => {
   const viewRegistro = `
@@ -68,25 +69,7 @@ export default () => {
   btnInformacion.addEventListener('click', btnInfo);
 
   const btnRegistrarse = divElement.querySelector('.boton_registrarse');
-  btnRegistrarse.addEventListener('click', () => {
-    const email = divElement.querySelector('.correo').value;
-    const password = divElement.querySelector('.coontraseña').value;
-    const user = divElement.querySelector('.usuario').value;
-    const stateCheckbox = divElement.querySelector('#condiciones').checked;
-    const divValidations = divElement.querySelector('.divValidations');
-    divValidations.style.color = 'red';
-    // createAccount(email, password, user)
-
-    if (email === '') {
-      divValidations.textContent = 'Querido usuario, ingresa un email';
-    } else if (password === '') {
-      divValidations.textContent = 'Querido usuario, ingresa una contraseña';
-    } if (stateCheckbox === false) {
-      divValidations.textContent = 'Querido usuario, debe aceptar los términos y condiciones';
-    } else {
-      createAccount(email, password, user);
-    }
-  });
+  btnRegistrarse.addEventListener('click', registrarUsuario);
 
   return divElement;
 };

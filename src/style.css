@@ -800,7 +800,7 @@ h1{
 /* #userDescription{
     
 } */
-.contenedorUser{
+.containerUserHome{
     display: none;
 }
 /* para pc y tablet horizontal */
@@ -808,7 +808,7 @@ h1{
     /* #userDescription{
         display: block;
     } */
-    .contenedorUser{
+    .containerUserHome{
         display: block;
     }
     .titulos{
