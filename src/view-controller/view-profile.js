@@ -4,14 +4,6 @@ import { postTemplate } from '../view/post.js';
 const db = firebase.firestore();
 export const MostrarUsuario = (gmailUser) => {
   const mostrarUsuario = document.getElementById('userDescription2');
-  // db.collection('users').where('gmail', '==', gmailUser)
-  //   .get()
-  //   .then((querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //     });
-  //   })
-  //   .catch((error) => {
-  //   });
   db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
     mostrarUsuario.innerHTML = ' ';
     querySnapshot.forEach((doc) => {

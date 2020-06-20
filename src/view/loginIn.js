@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { changeView } from '../view-controller/router.js';
-import { signInAccount, signInGoogleAccount, signInFacebookAccount } from '../firebase/authentification.js';
+import { signInGoogleAccount, signInFacebookAccount } from '../firebase/authentification.js';
 import { btnInfo } from '../view-controller/view-info.js';
 import { inicioSesion } from '../view-controller/view-signIn.js';
 

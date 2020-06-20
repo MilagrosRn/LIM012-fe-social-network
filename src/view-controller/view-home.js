@@ -1,25 +1,21 @@
-// eslint-disable-next-line import/no-cycle
+import mostrarCabecera from '../view/header.js';
+import vistaUsuario from '../view/user.js';
 import views from '../view/index.js';
-// eslint-disable-next-line import/no-cycle
-// import mostrarCabecera from '../view/header.js';
-// import { changeView } from '../view-controller/router.js';
-// import { signOut } from '../firebase/auth-controller.js';
 
-const db = firebase.firestore();
-export const MostrarUsuarioHome = (gmailUser) => {
-  const userDescription = document.getElementById('userDescription');
-  db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
-    userDescription.innerHTML = '';
-    querySnapshot.forEach((doc) => {
-      userDescription.innerHTML = ' ';
-      userDescription.appendChild(views.user(doc.data()));
-    });
-  });
+export const llamarCabecera = (contenedor) => {
+  contenedor.appendChild(mostrarCabecera());
+};
+export const traerDataPost = (data) => {
+  const seccion = document.getElementById('seccion');
+  seccion.innerHTML = '';
+  seccion.appendChild(views.home(data, llamarCabecera));
 };
 
-// export const llamarCabecera = (contenedor) => {
-
-// };
+export const traerDataUsuario = (dataUser) => {
+  const descriptionUsuario = document.querySelector('#userDescription');
+  descriptionUsuario.innerHTML = '';
+  descriptionUsuario.appendChild(vistaUsuario(dataUser));
+};
 
 // console.log(result.user.displayName);
 // console.log(result.user.email);
