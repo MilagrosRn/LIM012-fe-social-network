@@ -27,4 +27,4 @@ export default function vistaUsuario(doc) {
   post.appendChild(crearPostTemplate(doc));
 
   return divElement;
-};
+}

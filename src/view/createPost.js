@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import { createPost, loadImage, updateImagePost } from '../view-controller/view-posts.js';
+import { loadImage, updateImagePost } from '../view-controller/view-posts.js';
+import { createPost } from '../firebase/firestore-controller.js';
 
 export default function crearPostTemplate(doc) {
   const user = firebase.auth().currentUser;
@@ -80,9 +81,7 @@ export default function crearPostTemplate(doc) {
       loadImage(fileInput, fileDisplayArea);
     });
     fileInput.addEventListener('change', (e) => {
-    //  if (fileInput !== '') {
       const file = e.target.files[0];
-      // file.push(files);
       console.log(file);
       updateImagePost(file, user.uid);
     });
@@ -133,4 +132,4 @@ export default function crearPostTemplate(doc) {
   }));
 
   return divElement;
-};
+}

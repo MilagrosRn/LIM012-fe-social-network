@@ -17,6 +17,7 @@ export const traerDataUsuario = (dataUser) => {
   descriptionUsuario.appendChild(vistaUsuario(dataUser));
 };
 
+
 // console.log(result.user.displayName);
 // console.log(result.user.email);
 // console.log(result.user.emailVerified);

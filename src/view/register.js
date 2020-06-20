@@ -3,7 +3,6 @@
 import { btnInfo } from '../view-controller/view-info.js';
 import { registrarUsuario } from '../view-controller/view-signIn.js';
 
-
 export default () => {
   const viewRegistro = `
   <div class="containerFondo">

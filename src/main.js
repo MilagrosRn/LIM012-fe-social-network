@@ -12,7 +12,6 @@ window.addEventListener('load', init);
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    // console.log(user);
     if (user.emailVerified === false) {
       console.log('email no verificado');
     } else {

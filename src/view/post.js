@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { eliminarPost, modificarPost } from '../view-controller/view-posts.js';
+import { eliminarPost, modificarPost } from '../firebase/firestore-controller.js';
 
 // fecha en el post
 class Utilidad {
@@ -50,7 +50,6 @@ class Utilidad {
 
 export const postTemplate = (doc) => {
   const user = firebase.auth().currentUser;
-
   let divPostPublicado = `
   <section class="post_public">
       <div class="title_user title_user_public">
@@ -189,9 +188,7 @@ export const postTemplate = (doc) => {
   });
 
   const btnElimPost = divElement.querySelector('.btnElimPost');
-  btnElimPost.addEventListener('click', () => {
-    eliminarPost(doc.id);
-  });
+  btnElimPost.addEventListener('click', eliminarPost(doc.id));
 
   return divElement;
 };
