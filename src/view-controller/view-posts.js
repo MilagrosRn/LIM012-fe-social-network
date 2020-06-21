@@ -1,32 +1,6 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable max-len */
-// eslint-disable-next-line import/no-cycle
-import { postTemplate } from '../view/post.js';
-
-// CONSULTAR UN DATOS DEL POST
-const holePostTemplate = () => `
-<section class ="vacio_post">
-    <img class="logo_vacio_post" src="../imagenes/logoColor.png" >
-    <h2>Es momento de publicar un post</h2>
-</section>
-`;
-
-const questionPost = () => {
-  // onSnapshot permite controlar los cambios en tiempo real
-  firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-    const dataPost = document.querySelector('.space_post');
-    dataPost.innerHTML = '';
-    if (querySnapshot === '') {
-      dataPost.innerHTML = holePostTemplate();
-    } else {
-      querySnapshot.forEach((postData) => {
-        console.log(postData.id);
-        dataPost.appendChild(postTemplate(postData));
-      });
-    }
-  });
-};
+import { createPost } from '../firebase/firestore-controller.js';
 
 // CARGAR UNA IMAGEN AL POST
 const loadImage = (input, divShowContent) => {
@@ -71,7 +45,31 @@ const updateImagePost = (file, uid) => {
       });
     });
 };
+const mostrarEstado = (divState, fatherText) => {
+  divState.textContent = '';
+  const textState = 'Me siento...';
+  divState.textContent = textState;
+  fatherText.setAttribute('value', divState.textContent);
+};
+const mostrarLocacion = (divState, fatherText) => {
+  divState.textContent = '';
+  divState.textContent = 'Estoy en...';
+  fatherText.setAttribute('value', divState.textContent);
+};
+const crearPostFuncion = (uid, nameUser, gmail, imageProfile, description, privacity, imagenLink) => {
+  const fatherText = document.querySelector('.text_post');
+  const divImage = document.querySelector('.option_image_public');
+  createPost(uid, nameUser, gmail, imageProfile, description, privacity, imagenLink)
+    .then(() => {
+      fatherText.value = '';
+      divImage.style.display = 'none';
+    }).catch(error => console.log('error con post', error));
+};
 
 export {
-  questionPost, loadImage, updateImagePost,
+  loadImage,
+  updateImagePost,
+  mostrarEstado,
+  mostrarLocacion,
+  crearPostFuncion,
 };

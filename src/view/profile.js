@@ -1,7 +1,9 @@
 /* eslint-disable import/no-cycle */
-import { MostrarUsuario, MostrarPostDelUsuario } from '../view-controller/view-profile.js';
+import { getUsers } from '../firebase/firestore-controller.js';
+import { postTemplate } from './post.js';
+import { traerDataUsuarioProfile } from '../view-controller/view-profile.js';
 
-export default (cb) => {
+export default (data, cb) => {
   const viewHome = `
   <div id="cuarta_vista">
     <div class="contenedorCabecera"></div>
@@ -11,14 +13,18 @@ export default (cb) => {
     </div>
 </div> `;
 
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      MostrarUsuario(user.email);
-      MostrarPostDelUsuario(user.email);
-    }
-  });
   const divElement = document.createElement('div');
   divElement.innerHTML = viewHome;
+
+  const user = firebase.auth().currentUser;
+  const containerPost = divElement.querySelector('#containerPost');
+  for (let i = 0; i < data.length; i += 1) {
+    if (data[i].data().gmail === user.email) {
+      containerPost.appendChild(postTemplate(data[i]));
+    }
+  }
+
+  getUsers(user.email, traerDataUsuarioProfile);
 
   const contenedorCabecera = divElement.querySelector('.contenedorCabecera');
   cb(contenedorCabecera);

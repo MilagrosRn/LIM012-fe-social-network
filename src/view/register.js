@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-cond-assign */
+import { changeView } from '../view-controller/router.js';
 import { btnInfo } from '../view-controller/view-info.js';
 import { registrarUsuario } from '../view-controller/view-signIn.js';
 
@@ -39,7 +40,7 @@ export default () => {
         </div>
         <div class="input_contenedor">
           <i class='fas fa-key' class="icon_form"></i>
-          <input type="password" class="coontraseña"  placeholder= "Contraseña">
+          <input type="password" class="coontraseña"  placeholder="Contraseña" autocomplete="nope">
         </div>
         <input type="checkbox" id="condiciones">
         <label class="text_form"for="condiciones">Al registrarme acepto<strong><a href="#/conditions" class="terminos"> Terminos y Condiciones</a></strong></label>
@@ -47,7 +48,7 @@ export default () => {
         <br>
         <input type="button" class="boton_registrarse" id="reg"value="Registrarme">
         <hr>
-        <b><p>¿Ya tienes una cuenta? <a href="#" class="inicio_sesion">Inicia Sesion</a></p></b>
+        <b><p>¿Ya tienes una cuenta? <a href="#/login" class="inicio_sesion">Inicia Sesion</a></p></b>
       </form>
       </section>
     </section>
@@ -69,6 +70,11 @@ export default () => {
 
   const btnRegistrarse = divElement.querySelector('.boton_registrarse');
   btnRegistrarse.addEventListener('click', registrarUsuario);
+
+  const btnInicioSesion = divElement.querySelector('.inicio_sesion');
+  btnInicioSesion.addEventListener('click', () => {
+    window.location.hash = '#/login';
+  });
 
   return divElement;
 };

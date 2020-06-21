@@ -148,7 +148,6 @@ export const postTemplate = (doc) => {
   const postPublic = divElement.querySelector('.post_public');
 
   if (user.email === doc.data().gmail) {
-    // const modal = document.getElementById('modal');
     menuEditPost.style.display = 'block';
     editarPost.style.display = 'none';
   } else {
@@ -188,7 +187,8 @@ export const postTemplate = (doc) => {
   });
 
   const btnElimPost = divElement.querySelector('.btnElimPost');
-  btnElimPost.addEventListener('click', eliminarPost(doc.id));
-
+  btnElimPost.addEventListener('click', () => {
+    eliminarPost(doc.id);
+  });
   return divElement;
 };

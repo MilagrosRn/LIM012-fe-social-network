@@ -18,7 +18,9 @@ export default (data, cb) => {
 
   const spacePost = divElement.querySelector('.space_post');
   for (let i = 0; i < data.length; i += 1) {
-    spacePost.appendChild(postTemplate(data[i]));
+    if (data[i].data().privacity === true) {
+      spacePost.appendChild(postTemplate(data[i]));
+    }
   }
 
   const user = firebase.auth().currentUser;

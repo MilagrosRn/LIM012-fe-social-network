@@ -66,7 +66,10 @@ export default () => {
   btnLogIn.addEventListener('click', inicioSesion);
   btnFacebook.addEventListener('click', signInFacebookAccount);
   btnGoogle.addEventListener('click', signInGoogleAccount);
-  btnRegistrarse.addEventListener('click', changeView('#/register'));
+  btnRegistrarse.addEventListener('click', () => {
+    window.location.hash = '#/register';
+  });
+  // btnRegistrarse.addEventListener('click', changeView('#/register'));
 
   return divElement;
 };

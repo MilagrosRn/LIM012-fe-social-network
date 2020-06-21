@@ -74,3 +74,10 @@ export const getUsers = (email, cb) => {
     cb(querySnapshot.data());
   });
 };
+export const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => {
+  db.collection('users').doc(emailUser).update({
+    lenguaje: lenguajeUser,
+    location: locacionUser,
+    ocupation: ocupacionUser,
+  });
+};
