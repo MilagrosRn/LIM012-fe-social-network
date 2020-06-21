@@ -1,9 +1,6 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable max-len */
-// eslint-disable-next-line import/no-cycle
-// import { postTemplate } from '../view/post.js';
-
+import { createPost } from '../firebase/firestore-controller.js';
 
 // CARGAR UNA IMAGEN AL POST
 const loadImage = (input, divShowContent) => {
@@ -33,6 +30,7 @@ const updateImagePost = (file, uid) => {
   // informa el estado de subida de archivo
   task.on('state_changed',
     (snapshot) => {
+      console.log(snapshot);
     },
     (err) => {
       console.log('error imagen', err);
@@ -47,6 +45,31 @@ const updateImagePost = (file, uid) => {
       });
     });
 };
+const mostrarEstado = (divState, fatherText) => {
+  divState.textContent = '';
+  const textState = 'Me siento...';
+  divState.textContent = textState;
+  fatherText.setAttribute('value', divState.textContent);
+};
+const mostrarLocacion = (divState, fatherText) => {
+  divState.textContent = '';
+  divState.textContent = 'Estoy en...';
+  fatherText.setAttribute('value', divState.textContent);
+};
+const crearPostFuncion = (uid, nameUser, gmail, imageProfile, description, privacity, imagenLink) => {
+  const fatherText = document.querySelector('.text_post');
+  const divImage = document.querySelector('.option_image_public');
+  createPost(uid, nameUser, gmail, imageProfile, description, privacity, imagenLink)
+    .then(() => {
+      fatherText.value = '';
+      divImage.style.display = 'none';
+    }).catch(error => console.log('error con post', error));
+};
 
-
-export { loadImage, updateImagePost };
+export {
+  loadImage,
+  updateImagePost,
+  mostrarEstado,
+  mostrarLocacion,
+  crearPostFuncion,
+};

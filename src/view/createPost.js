@@ -1,8 +1,13 @@
 // eslint-disable-next-line import/no-cycle
-import { loadImage, updateImagePost } from '../view-controller/view-posts.js';
-import { createPost } from '../firebase/firestore-controller.js';
+import {
+  loadImage,
+  updateImagePost,
+  mostrarEstado,
+  mostrarLocacion,
+  crearPostFuncion,
+} from '../view-controller/view-posts.js';
 
-export default function createPostTemplate(doc) {
+export default function crearPostTemplate(doc) {
   const user = firebase.auth().currentUser;
   const divPost = `
   <section id="post_init">
@@ -54,7 +59,6 @@ export default function createPostTemplate(doc) {
 
   const btnPrivacityPriv = divElement.querySelector('.fa-lock');
   const btnPrivacityPublic = divElement.querySelector('.fa-globe-americas');
-  const btnCrearPost = divElement.querySelector('.button_send');
   // opciones privacidad
   let privacityMarked = '';
   btnPrivacityPriv.addEventListener('click', () => {
@@ -63,12 +67,11 @@ export default function createPostTemplate(doc) {
   btnPrivacityPublic.addEventListener('click', () => {
     privacityMarked = true;
   });
-
   // option publicar una imagen
   const btnPublicPhoto = divElement.querySelector('.photo_post');
   const btnPublicState = divElement.querySelector('.state_post');
   const btnPublicLocation = divElement.querySelector('.location_post');
-
+  const btnCrearPost = divElement.querySelector('.button_send');
   // const files = [];
   btnPublicPhoto.addEventListener('click', () => {
     const divImage = divElement.querySelector('.option_image_public');
@@ -91,22 +94,13 @@ export default function createPostTemplate(doc) {
   const fatherText = divElement.querySelector('.text_post');
   //  option plantilla estado y ubicacion
   btnPublicState.addEventListener('click', () => {
-    divState.textContent = '';
-    const textState = 'Me siento...';
-    divState.textContent = textState;
-    fatherText.setAttribute('value', divState.textContent);
+    mostrarEstado(divState, fatherText);
   });
   btnPublicLocation.addEventListener('click', () => {
-    divState.textContent = '';
-    divState.textContent = 'Estoy en...';
-    fatherText.setAttribute('value', divState.textContent);
+    mostrarLocacion(divState, fatherText);
   });
-
   // crear un post
   btnCrearPost.addEventListener('click', (() => {
-    // const nameUser = divElement.querySelector('.name');
-    // const divName = divElement.createElement('p');
-    // nameUser.appendChild(divName);
     const description = divElement.querySelector('.text_post').value;
     let privacityCollection = '';
     if (privacityMarked) {
@@ -114,21 +108,14 @@ export default function createPostTemplate(doc) {
     } else {
       privacityCollection = false;
     }
-    // comprueba que este autenticado el usuario antes de un post
+    // comprueba que este autenticado el usuario antes de un 
     if (user === null) {
       console.log('no autenticado para post');
     }
     const imagenLink = sessionStorage.getItem('imgNewPost') === 'null'
       ? null
       : localStorage.getItem('imgNewPost');
-
-    // eslint-disable-next-line max-len
-    createPost(user.uid, doc.name_user, user.email, doc.image_profile, description, privacityCollection, imagenLink)
-      .then(() => {
-        fatherText.value = '';
-        const divImage = divElement.querySelector('.option_image_public');
-        divImage.style.display = 'none';
-      }).catch(error => console.log('error con post', error));
+    crearPostFuncion(user.uid, doc.name_user, user.email, doc.image_profile, description, privacityCollection, imagenLink);
   }));
 
   return divElement;

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { changeView } from '../view-controller/router.js';
-import { inicioSesion, signInGoogleAccount, signInFacebookAccount } from '../view-controller/view-signIn.js';
 import { btnInfo } from '../view-controller/view-info.js';
+import { signInGoogleAccount, signInFacebookAccount, inicioSesion } from '../view-controller/view-signIn.js';
 
 export default () => {
   const viewLogin = `
@@ -63,12 +63,13 @@ export default () => {
   const btnInformacion = divElement.querySelector('.info');
 
   btnInformacion.addEventListener('click', btnInfo);
-
   btnLogIn.addEventListener('click', inicioSesion);
-
   btnFacebook.addEventListener('click', signInFacebookAccount);
   btnGoogle.addEventListener('click', signInGoogleAccount);
-  btnRegistrarse.addEventListener('click', changeView('#/register'));
+  btnRegistrarse.addEventListener('click', () => {
+    window.location.hash = '#/register';
+  });
+  // btnRegistrarse.addEventListener('click', changeView('#/register'));
 
   return divElement;
 };

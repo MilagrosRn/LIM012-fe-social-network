@@ -1,6 +1,5 @@
-/* eslint-disable max-len */
-// TRAE LOS POSTS ORDENADOS
 const db = firebase.firestore();
+
 export const createDBUser = (gmailUser, nameUser) => {
   db.collection('users').doc(gmailUser).set({
     gmail: gmailUser,
@@ -23,34 +22,14 @@ export const createUserGooFac = (gmailUser, nameUser, imageProfileUser) => {
     ocupation: 'Ocupacion',
   });
 };
-
-const getPosts = (callback) => {
-  firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-    const data = [];
-    querySnapshot.forEach((postData) => {
-      data.push(postData);
-    });
-    callback(data);
-  });
-};
-
-const getUsers = (email, cb) => {
-  firebase.firestore().collection('users').doc(email).onSnapshot((querySnapshot) => {
-    cb(querySnapshot.data());
-  });
-};
-
-
-// HABILITA TIMESTAMPS EN TIEMPO REAL
-const constructorPost = () => {
+export const constructorPost = () => {
   const settings = {
     timestampsInSnapshots: true,
   };
   firebase.firestore().settings(settings);
 };
-
-// CREAR POST
-const createPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privacity, _imagenLink) => firebase.firestore().collection('posts').add({
+// eslint-disable-next-line max-len
+export const createPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privacity, _imagenLink) => db.collection('posts').add({
   uid: _uid,
   autor: _nameUser,
   gmail: _gmail,
@@ -60,16 +39,10 @@ const createPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _priva
   privacity: _privacity,
   imagenLink: _imagenLink,
   date: firebase.firestore.FieldValue.serverTimestamp(),
-})
-  .then((ref) => {
-    console.log(ref.id);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+});
 
-const eliminarPost = (documento) => {
-  firebase.firestore().collection('posts').doc(documento).delete()
+export const eliminarPost = (documento) => {
+  db.collection('posts').doc(documento).delete()
     .then(() => {
       console.log('Document successfully deleted!');
     })
@@ -78,13 +51,32 @@ const eliminarPost = (documento) => {
     });
 };
 
-const modificarPost = (_idPost, _description, _privacity) => {
-  firebase.firestore().collection('posts').doc(_idPost).update({
+export const modificarPost = (_idPost, _description, _privacity) => {
+  db.collection('posts').doc(_idPost).update({
     description: _description,
     privacity: _privacity,
   });
 };
 
-export {
-  getPosts, getUsers, createPost, eliminarPost, modificarPost,
+export const getPosts = (callback) => {
+  db.collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+    const data = [];
+    querySnapshot.forEach((postData) => {
+      data.push(postData);
+    });
+    callback(data);
+  });
+};
+
+export const getUsers = (email, cb) => {
+  db.collection('users').doc(email).onSnapshot((querySnapshot) => {
+    cb(querySnapshot.data());
+  });
+};
+export const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => {
+  db.collection('users').doc(emailUser).update({
+    lenguaje: lenguajeUser,
+    location: locacionUser,
+    ocupation: ocupacionUser,
+  });
 };

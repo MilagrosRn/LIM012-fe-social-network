@@ -50,7 +50,6 @@ class Utilidad {
 
 export const postTemplate = (doc) => {
   const user = firebase.auth().currentUser;
-
   let divPostPublicado = `
   <section class="post_public">
       <div class="title_user title_user_public">
@@ -149,7 +148,6 @@ export const postTemplate = (doc) => {
   const postPublic = divElement.querySelector('.post_public');
 
   if (user.email === doc.data().gmail) {
-    // const modal = document.getElementById('modal');
     menuEditPost.style.display = 'block';
     editarPost.style.display = 'none';
   } else {
@@ -192,6 +190,5 @@ export const postTemplate = (doc) => {
   btnElimPost.addEventListener('click', () => {
     eliminarPost(doc.id);
   });
-
   return divElement;
 };
