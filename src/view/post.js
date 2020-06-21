@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { eliminarPost, modificarPost } from '../view-controller/view-posts.js';
+import { eliminarPost, modificarPost } from '../firebase/firestore-controller.js';
 
 // fecha en el post
 class Utilidad {

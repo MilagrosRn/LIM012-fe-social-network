@@ -5,22 +5,15 @@ import { postTemplate } from '../view/post.js';
 const db = firebase.firestore();
 export const MostrarUsuario = (gmailUser) => {
   const mostrarUsuario = document.getElementById('userDescription2');
-  console.log('lo')
-  // db.collection('users').where('gmail', '==', gmailUser)
-  //   .get()
-  //   .then((querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //     });
-  //   })
-  //   .catch((error) => {
-  //   });
-  db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
-    mostrarUsuario.innerHTML = ' ';
-    querySnapshot.forEach((doc) => {
+  if (mostrarUsuario !== null) {
+    db.collection('users').where('gmail', '==', gmailUser).onSnapshot((querySnapshot) => {
       mostrarUsuario.innerHTML = ' ';
-      mostrarUsuario.appendChild(views.user(doc.data()));
+      querySnapshot.forEach((doc) => {
+        mostrarUsuario.innerHTML = ' ';
+        mostrarUsuario.appendChild(views.userProfile(doc.data()));
+      });
     });
-  });
+  }
 };
 
 export const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => {
@@ -45,7 +38,8 @@ export const MostrarPostDelUsuario = (gmailUser) => {
       containerPost.innerHTML = holePostTemplate();
     } else {
       querySnapshot.forEach((doc) => {
-        containerPost.appendChild(postTemplate(doc));
+        console.log(doc)
+        containerPost.appendChild(postTemplate(doc.data()));
       });
     }
   });

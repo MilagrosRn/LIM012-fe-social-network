@@ -4,7 +4,7 @@ import _registro from './register.js';
 import _home from './home.js';
 import _profile from './profile.js';
 import _notFound from './404.js';
-import _user from './user.js';
+import _userProfile from './userProfile.js';
 import _terminoscondiciones from './terminos-condiciones.js';
 
 export default {
@@ -13,6 +13,6 @@ export default {
   home: _home,
   profile: _profile,
   notFound: _notFound,
-  user: _user,
+  userProfile: _userProfile,
   conditions: _terminoscondiciones,
 };

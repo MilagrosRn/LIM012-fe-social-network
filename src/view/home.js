@@ -1,65 +1,31 @@
-/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
-import { signOut } from '../firebase/auth-controller.js';
-// import { consultarUsuario } from '../firebase/user-firestore.js';
-import { MostrarUsuarioHome } from '../view-controller/view-home.js';
-import { questionPost } from '../view-controller/view-posts.js';
-import { changeView } from '../view-controller/router.js';
+import { postTemplate } from './post.js';
+import { getUsers } from '../firebase/firestore-controller.js';
+import { traerDataUsuario } from '../view-controller/view-home.js';
 
-export default () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      MostrarUsuarioHome(user.email);
-    }
-  });
+export default (data, cb) => {
   const viewHome = `
   <div id="tercera_vista_home">
-    <header>
-      <input type="checkbox" id="btn-menu">
-      <div class = "div_header_menu">
-        <label for="btn-menu">
-          <i class="fas fa-bars icono-menu"></i>
-        </label>
-      </div>
-      <nav class="menu">
-        <ul>
-          <li class="option_menu_list link_inicio"><i class="fas fa-user-circle"></i>
-            <a >Inicio</a>
-          </li>
-          <li class="option_menu_list link_profile"><i class="fas fa-home"></i>
-            <a >Perfil</a>
-          </li>
-          <li class="option_menu_list2 cerrar_sesion" id="close" ><i class="fas fa-times-circle"></i>
-            <a >Cerrar sesión</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="div_header_logo">
-        <img src="imagenes/logo_oficial.png" class="img-logo-header">
-      </div>
-    </header>
-    <div class="containerHome">
+    <div class="contenedorCabecera"></div>
+    <div>
       <section id="userDescription"></section>
+      <section class="space_post"></section>
     </div>
-    <section class="space_post"></section>
   </div>`;
 
-  questionPost();
   const divElement = document.createElement('div');
   divElement.innerHTML = viewHome;
 
-  const btninicio = divElement.querySelector('.link_inicio');
-  const btnprofile = divElement.querySelector('.link_profile');
-  const btnCerrarSesion = divElement.querySelector('.cerrar_sesion');
+  const spacePost = divElement.querySelector('.space_post');
+  for (let i = 0; i < data.length; i += 1) {
+    spacePost.appendChild(postTemplate(data[i]));
+  }
 
-  // menu hamburguesa
-  btninicio.addEventListener('click', (() => {
-    changeView('#/home');
-  }));
-  btnprofile.addEventListener('click', () => {
-    changeView('#/profile');
-  });
-  btnCerrarSesion.addEventListener('click', signOut);
+  const user = firebase.auth().currentUser;
+  getUsers(user.email, traerDataUsuario);
+
+  const contenedorCabecera = divElement.querySelector('.contenedorCabecera');
+  cb(contenedorCabecera);
 
   return divElement;
 };

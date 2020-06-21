@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { changeView } from './view-controller/router.js';
-// import { getPosts } from './view-controller/view-home.js';
+// import { getPostss } from './view-controller/view-home.js';
 
 
 const init = () => {
@@ -56,7 +56,7 @@ firebase.auth().onAuthStateChanged((user) => {
 //   if (emailVerified) {
 //     console.log('email verificado y logeado');
 //     changeView('#/home');
-//     // getPosts();
+//     // getPostss();
 //   } else {
 //     const divValidationsLogin = document.querySelector('.divValidationsLogin');
 //     divValidationsLogin.textContent = 'Debes validar tu email para continuar';
