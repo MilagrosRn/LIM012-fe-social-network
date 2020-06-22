@@ -6,7 +6,7 @@ import views from '../view/index.js';
 export const llamarCabecera = (contenedor) => {
   contenedor.appendChild(mostrarCabecera());
 };
-export const traerDataPost = (data) => {
+export const mostrarDataPost = (data) => {
   const seccion = document.getElementById('seccion');
   seccion.innerHTML = '';
   seccion.appendChild(views.home(data, llamarCabecera));

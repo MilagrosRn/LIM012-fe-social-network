@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { postTemplate } from './post.js';
-import { getUsers } from '../firebase/firestore-controller.js';
+import { traerUsuarios } from '../firebase/firestore-controller.js';
 import { traerDataUsuario } from '../view-controller/view-home.js';
 
 export default (data, cb) => {
@@ -24,7 +24,7 @@ export default (data, cb) => {
   }
 
   const user = firebase.auth().currentUser;
-  getUsers(user.email, traerDataUsuario);
+  traerUsuarios(user.email, traerDataUsuario);
 
   const contenedorCabecera = divElement.querySelector('.contenedorCabecera');
   cb(contenedorCabecera);

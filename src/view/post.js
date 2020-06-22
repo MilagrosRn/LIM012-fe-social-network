@@ -54,7 +54,7 @@ export const postTemplate = (doc) => {
   <section class="post_public">
       <div class="title_user title_user_public">
       <div class = "menu_edit_post">
-        <div class="divBtnEliminarPost"><span class="btnElimPost">🗑</span></div>
+        <div class="divBtnEliminarPost"><span class="btnBorrarPost">🗑</span></div>
         <div class="divBtnEditarPost"><span class="btnEditPost">✏</span></div>
       </div> `;
   divPostPublicado += `
@@ -137,7 +137,7 @@ export const postTemplate = (doc) => {
                 <img class="imgPublic"src="${doc.data().imagenLink}">
               </div>`;
   }
-  divPostPublicado += `<div><input type="button" class="btnSaveEdit" value="Guardar Cambios"></div>
+  divPostPublicado += `<div><input type="button" class="btnGuardarEdicion" value="Guardar Cambios"></div>
       </section>
     </section>`;
   const divElement = document.createElement('div');
@@ -161,19 +161,19 @@ export const postTemplate = (doc) => {
     postPublic.style.display = 'none';
   });
 
-  const btnPrivacityPriv = divElement.querySelector('.fa-lock');
-  const btnPrivacityPublic = divElement.querySelector('.fa-globe-americas');
+  const btnPrivacidadPriv = divElement.querySelector('.fa-lock');
+  const btnPrivacidadPublic = divElement.querySelector('.fa-globe-americas');
   // opciones privacidad
   let privacityMarked = '';
-  btnPrivacityPriv.addEventListener('click', () => {
+  btnPrivacidadPriv.addEventListener('click', () => {
     privacityMarked = false;
   });
-  btnPrivacityPublic.addEventListener('click', () => {
+  btnPrivacidadPublic.addEventListener('click', () => {
     privacityMarked = true;
   });
 
-  const btnSaveEdit = divElement.querySelector('.btnSaveEdit');
-  btnSaveEdit.addEventListener('click', () => {
+  const btnGuardarEdicion = divElement.querySelector('.btnGuardarEdicion');
+  btnGuardarEdicion.addEventListener('click', () => {
     const description = divElement.querySelector('.textPost').value;
     let privacityCollection = '';
     if (privacityMarked) {
@@ -186,9 +186,9 @@ export const postTemplate = (doc) => {
     postPublic.style.display = 'block';
   });
 
-  const btnElimPost = divElement.querySelector('.btnElimPost');
-  btnElimPost.addEventListener('click', () => {
-    eliminarPost(doc.id);
+  const btnBorrarPost = divElement.querySelector('.btnBorrarPost');
+  btnBorrarPost.addEventListener('click', () => {
+    eliminarPost(doc);
   });
   return divElement;
 };

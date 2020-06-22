@@ -1,9 +1,8 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
-import { createPost } from '../firebase/firestore-controller.js';
+import { crearPost } from '../firebase/firestore-controller.js';
 
-// CARGAR UNA IMAGEN AL POST
-const loadImage = (input, divShowContent) => {
+const previsualizarImagen = (input, divShowContent) => {
   const file = input.files[0];
   const imageType = /image.*/;
 
@@ -21,54 +20,53 @@ const loadImage = (input, divShowContent) => {
   }
 };
 
-// ENVIAR UNA IMAGEN A LA COLECCION
-// referenciando la ruta de carpeta para cada usuario
-const updateImagePost = (file, uid) => {
+const subirImagen = (file, uid, uploader) => {
   const refStorage = firebase.storage().ref(`imagesUsers/${uid}/${file.name}`);
-  // sube archivo
   const task = refStorage.put(file);
-  // informa el estado de subida de archivo
   task.on('state_changed',
     (snapshot) => {
-      console.log(snapshot);
+      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      uploader.value = percentage;
     },
     (err) => {
       console.log('error imagen', err);
     },
     () => {
-      // trae la url de descarga de la imagen
       task.snapshot.ref.getDownloadURL().then((url) => {
-        console.log(url);
         localStorage.setItem('imgNewPost', url);
       }).catch((err) => {
         console.error(`Error obteniendo downloadURL = > ${err}`, 4000);
       });
     });
 };
+
 const mostrarEstado = (divState, fatherText) => {
   divState.textContent = '';
   const textState = 'Me siento...';
   divState.textContent = textState;
   fatherText.setAttribute('value', divState.textContent);
 };
+
 const mostrarLocacion = (divState, fatherText) => {
   divState.textContent = '';
   divState.textContent = 'Estoy en...';
   fatherText.setAttribute('value', divState.textContent);
 };
-const crearPostFuncion = (uid, nameUser, gmail, imageProfile, description, privacity, imagenLink) => {
+
+const crearPostFuncion = (uid, nameUser, gmail, imageProfile, description, privacity, imagenLink, imagenName) => {
   const fatherText = document.querySelector('.text_post');
   const divImage = document.querySelector('.option_image_public');
-  createPost(uid, nameUser, gmail, imageProfile, description, privacity, imagenLink)
+  crearPost(uid, nameUser, gmail, imageProfile, description, privacity, imagenLink, imagenName)
     .then(() => {
       fatherText.value = '';
       divImage.style.display = 'none';
+      localStorage.removeItem('imgNewPost');
     }).catch(error => console.log('error con post', error));
 };
 
 export {
-  loadImage,
-  updateImagePost,
+  previsualizarImagen,
+  subirImagen,
   mostrarEstado,
   mostrarLocacion,
   crearPostFuncion,

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { getUsers } from '../firebase/firestore-controller.js';
+import { traerUsuarios } from '../firebase/firestore-controller.js';
 import { postTemplate } from './post.js';
 import { traerDataUsuarioProfile } from '../view-controller/view-profile.js';
 
@@ -24,7 +24,7 @@ export default (data, cb) => {
     }
   }
 
-  getUsers(user.email, traerDataUsuarioProfile);
+  traerUsuarios(user.email, traerDataUsuarioProfile);
 
   const contenedorCabecera = divElement.querySelector('.contenedorCabecera');
   cb(contenedorCabecera);

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { changeView } from './view-controller/router.js';
-// import { getPostss } from './view-controller/view-home.js';
+// import { traerPosts } from './view-controller/view-home.js';
 
 
 const init = () => {
@@ -8,7 +8,7 @@ const init = () => {
   window.addEventListener('hashchange', () => changeView(window.location.hash));
 };
 window.addEventListener('load', init);
-// const db = firebase.firestore();
+// const firebase.firestore() = firebase.firestore();
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
@@ -56,7 +56,7 @@ firebase.auth().onAuthStateChanged((user) => {
 //   if (emailVerified) {
 //     console.log('email verificado y logeado');
 //     changeView('#/home');
-//     // getPostss();
+//     // traerPosts();
 //   } else {
 //     const divValidationsLogin = document.querySelector('.divValidationsLogin');
 //     divValidationsLogin.textContent = 'Debes validar tu email para continuar';
