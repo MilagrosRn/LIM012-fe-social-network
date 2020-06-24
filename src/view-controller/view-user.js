@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { modificarUser } from '../firebase/firestore-controller.js';
 
 export const mostrarEditarUser = () => {

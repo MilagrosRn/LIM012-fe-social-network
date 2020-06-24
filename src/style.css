@@ -50,7 +50,6 @@ body{
    margin-left: 5%;
    font-size:1.5rem;
 }
-
 .espacio-login{
     display: flex;
     align-items: center;
@@ -119,7 +118,6 @@ button {
     font-family: Fontmedium;
     font-size: 0.9em;
 }
-
 .btnFG{
     width: 100%;
     display: flex;
@@ -136,18 +134,15 @@ button {
     color: #575656;
     font-size: 0.9rem;
 }
-
 a:link {
     text-decoration: none;
 }
 a:hover {
     text-decoration: none;
 }
-
 .inicio_sesion, #btnRegistrarse{
     color: #FF0505;
 }
-
   /* ------vista registro----------- */
 .boton_registrarse{
     font-family: Fontmedium;
@@ -197,61 +192,22 @@ background-attachment: fixed;
 background-size: cover;
 background: white;
 height: 100%;
-}
-.header_navigation_home{
-    background: linear-gradient(180deg, #0CE600 2.6%, #757D00 100%);
-    align-items: center;
-    justify-content: space-around;
-    display: flex;
-    height: 4em;
-    width: 100%;
-} 
-
-.conteiner_menu{
-    width: 20%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction:column;
-    align-items: center;
-}
-
-.conteiner_logo{
-    width: 80%;
-    height: 100%;
-    padding-right: 20%;
-    justify-content: center;
-    display: flex;
-    align-items: flex-end;
-     
-}
- .header_logo{
-    width: 190px;
-    height: 62px;
-    
+width: 100%;
 }
 .post{
     width: 90%;
     border: 2px solid #D1D1D1;
     border-radius: 0px 0px 15px 15px;
     margin:5% auto;
-
-}
-.img_avatar_user{
-    width:100%;
-    height: 100%;
-    border-radius: 50%;
 }
 .description_text{
-    /* border: 2px solid rgba(0, 0, 0, 0.2); */
     width: 100%;
     height:4.5em;
     align-items: flex-end;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    padding:5%;
-    
+    padding:5%;  
 }
 .text_post{
     display: flex;
@@ -261,18 +217,14 @@ height: 100%;
     text-align: center;
     color: #575656;
 }
-
 h3{
     color: #766E72;
     font-size: 0.5em;
 }
-
 .button_send{
     background: #E60712;
     box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.53);
     border-radius: 50%;
-    /* height: 40px;
-    width: 40px; */
     padding-top: 3%;
     padding-right: 3.7%;
     padding-bottom: 3%;
@@ -287,7 +239,6 @@ h3{
 .fa-lock, .fa-globe-americas {
     font-size: 1rem;
     color:  rgb(77, 77, 77);
-    
 }
 .title_user{
     width: 100%;
@@ -323,8 +274,8 @@ h2{
 .menu_privacity_user{
     width: 20%;
     height: 2em;
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 .fa-lock:hover, .fa-globe-americas:hover{
     font-size: 1.6rem;
@@ -339,7 +290,7 @@ h2{
 }
 .options_post p{
     font-family: FontRegular;
-font-size: 0.8em;
+    font-size: 0.8em;
 }
 .option{
     width: 33%;
@@ -381,14 +332,12 @@ font-size: 0.8em;
     border-top: 10px solid #E60712;
     width: 60%;
 }
-
 .modalContainer .closeInfo {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-
 .modalContainer .closeInfo:hover,
 .modalContainer .closeInfo:focus {
     color: #000;
@@ -404,14 +353,12 @@ font-size: 0.8em;
     border-top: 10px solid #E60712;
     width: 60%;
 }
-
 .modalContainer .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-
 .modalContainer .close:hover,
 .modalContainer .close:focus {
     color: #000;
@@ -444,19 +391,15 @@ font-size: 2em;
     height: 90%;
     display: flex;
     margin: 0% auto 0 9%;
-
 }
-
  header label{
     display: none;
     border: none;
     padding: 10px;
     width: 100%;
  }
-
 header label:hover{
-    cursor: pointer; 
-    
+    cursor: pointer;  
   } 
   .menu{
     display: flex;
@@ -538,22 +481,23 @@ text-align: start;
 /*---------------post ya publicados-------------*/
 .imgPublic{
     width: 100%;
-height: 100%;
+    height: 100%;
 }
 .div_image{
     width: 95%;
     height: 100%;
 }
 #cuarta_vista{
-
     background: white;
     height: 100%;
+    width: 100%;
 }
 .post_public{ 
     width: 90%;
     border: 2px solid #D1D1D1;
     border-radius: 0px 0px 15px 15px;
     margin:5% auto;
+    margin-bottom: 0;
 }
 .title_user_public{
     flex-direction: row-reverse;
@@ -709,7 +653,6 @@ body{
     justify-content: center;
     align-items: center;
 }
-
 form{
     margin: auto;  
 }
@@ -719,7 +662,6 @@ form{
     width: 100%;
     height: 100vh;
 } 
-
 .text_form{
     font-size: 0.9em;
 }
@@ -797,11 +739,43 @@ h1{
 .botonGuardarUserEdit{
     display: none;
 }
-/* #userDescription{
-    
-} */
 .containerUserHome{
     display: none;
+}
+.crearComentario{ 
+    width: 90%;
+    border: 2px solid #D1D1D1;
+    border-radius: 15px 15px 15px 15px;
+    margin:5% auto;
+    margin-top: 1%;
+    padding-bottom: 2%;
+}
+.titleComentario{
+    display: flex;
+    justify-content: flex-start;
+}
+.nombreCometario{
+    padding:4%;
+    padding-bottom: 2%;
+    margin-top: 2%;
+}
+.description_comentario{
+    padding-left: 4%; 
+    display: flex;
+}
+.text_comentario{
+    width: 80%;
+    padding-left: 2%;
+    background: #ADE4A1;
+    border: 1px solid #D1D1D1;
+    border-radius: 15px 15px 15px 15px;
+}
+.GuardarComentario{
+    background: #E60712;
+    box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.53);
+    border-radius: 50%;
+    margin-left: 3%;
+    padding: 3%;
 }
 /* para pc y tablet horizontal */
 @media screen and (min-width:1025px){
@@ -817,12 +791,19 @@ h1{
     .editUser{
         font-size: 20px;
     }
-    .containerHome, .containerProfile{
+    .containerHome{
         display: flex;
     }
+    .contenedorCabecera, .contenedorContenido{
+        display: flex;
+        justify-content: space-between;        
+    }    
     #userDescription, #userDescription2, .post{
-        width: 40%;
+        width: 30%;
         padding-left: 5%;
         padding-right: 5%;
+    }
+    .space_post, #containerPost{
+        width: 60%;
     }
 }

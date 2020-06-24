@@ -1,10 +1,10 @@
-import { changeView } from '../view-controller/router.js';
+/* eslint-disable import/no-cycle */
+import { changeView } from './router.js';
 import { createDBUser, createUserGooFac } from '../firebase/firestore-controller.js';
 import { signIn, createUser, signInGoogle } from '../firebase/auth-controller.js';
 
 // FUNCION PARA LOGUEAR UN USUARIO
 const signInAccount = (email, password) => {
-  // consultarUsuario(email);
   signIn(email, password)
     .then((result) => {
       if (result.user.emailVerified === false) {

@@ -1,4 +1,4 @@
-import crearPostTemplate from './createPost.js';
+import createPostTemplate from './createPost.js';
 
 export default function vistaUsuario(doc) {
   const divUser = `
@@ -24,7 +24,7 @@ export default function vistaUsuario(doc) {
   divElement.innerHTML = divUser;
 
   const post = divElement.querySelector('.post');
-  post.appendChild(crearPostTemplate(doc));
+  post.appendChild(createPostTemplate(doc));
 
   return divElement;
 }

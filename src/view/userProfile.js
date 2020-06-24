@@ -1,7 +1,8 @@
+// eslint-disable-next-line import/no-cycle
 import { mostrarEditarUser, GuardarModificadoUser } from '../view-controller/view-user.js';
-import crearPostTemplate from './createPost.js';
+import createPostTemplate from './createPost.js';
 
-export default function vistaUsuarioProfile(doc) {
+export default (doc) => {
   const divUser = `
   <div class="containerUser">
     <div class="divtop">
@@ -43,7 +44,7 @@ export default function vistaUsuarioProfile(doc) {
   });
 
   const post = divElement.querySelector('.post');
-  post.appendChild(crearPostTemplate(doc));
+  post.appendChild(createPostTemplate(doc));
 
   return divElement;
 };

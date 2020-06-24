@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { eliminarPost, modificarPost } from '../firebase/firestore-controller.js';
+import { crearComentario2 } from '../view-controller/view-comentario.js';
 
 // fecha en el post
 class Utilidad {
@@ -52,9 +53,9 @@ export const postTemplate = (doc) => {
   const user = firebase.auth().currentUser;
   let divPostPublicado = `
   <section class="post_public">
-      <div class="title_user title_user_public">
+    <div class="title_user title_user_public">
       <div class = "menu_edit_post">
-        <div class="divBtnEliminarPost"><span class="btnElimPost">🗑</span></div>
+        <div class="divBtnEliminarPost"><span class="btnBorrarPost">🗑</span></div>
         <div class="divBtnEditarPost"><span class="btnEditPost">✏</span></div>
       </div> `;
   divPostPublicado += `
@@ -137,11 +138,42 @@ export const postTemplate = (doc) => {
                 <img class="imgPublic"src="${doc.data().imagenLink}">
               </div>`;
   }
-  divPostPublicado += `<div><input type="button" class="btnSaveEdit" value="Guardar Cambios"></div>
+  divPostPublicado += `<div><input type="button" class="btnGuardarEdicion" value="Guardar Cambios"></div>
       </section>
     </section>`;
+  divPostPublicado += `
+  <section class="crearComentario">
+      <div class="titleComentario">
+        <h2 class ="nombreCometario">${user.displayName}</h2>
+      </div>
+      <div class="description_comentario">
+          <input type="text" class="text_comentario" placeholder="Escribe un comentario">
+          <div class="GuardarComentario"><i class="fas fa-paper-plane"></i></div>
+      </div>
+  </section>
+  <section class="mostrarComentarios"></section>`;
+
   const divElement = document.createElement('div');
   divElement.innerHTML = divPostPublicado;
+
+  const crearComentario = divElement.querySelector('.crearComentario');
+  crearComentario.style.display = 'none';
+  const iconComment = divElement.querySelector('.icon_comment');
+  iconComment.addEventListener('click', () => {
+    crearComentario.style.display = 'block';
+  });
+
+  const GuardarComentario = divElement.querySelector('.GuardarComentario');
+  GuardarComentario.addEventListener('click', () => {
+    const textComentario = divElement.querySelector('.text_comentario');
+    crearComentario2(user.email, doc.id, user.displayName, textComentario.value)
+      .then(() => {
+        textComentario.value = '';
+      }).catch(error => console.log('error con post', error));
+  });
+
+
+
 
   const menuEditPost = divElement.querySelector('.menu_edit_post');
   const editarPost = divElement.querySelector('.editarPost');
@@ -161,19 +193,19 @@ export const postTemplate = (doc) => {
     postPublic.style.display = 'none';
   });
 
-  const btnPrivacityPriv = divElement.querySelector('.fa-lock');
-  const btnPrivacityPublic = divElement.querySelector('.fa-globe-americas');
+  const btnPrivacidadPriv = divElement.querySelector('.fa-lock');
+  const btnPrivacidadPublic = divElement.querySelector('.fa-globe-americas');
   // opciones privacidad
   let privacityMarked = '';
-  btnPrivacityPriv.addEventListener('click', () => {
+  btnPrivacidadPriv.addEventListener('click', () => {
     privacityMarked = false;
   });
-  btnPrivacityPublic.addEventListener('click', () => {
+  btnPrivacidadPublic.addEventListener('click', () => {
     privacityMarked = true;
   });
 
-  const btnSaveEdit = divElement.querySelector('.btnSaveEdit');
-  btnSaveEdit.addEventListener('click', () => {
+  const btnGuardarEdicion = divElement.querySelector('.btnGuardarEdicion');
+  btnGuardarEdicion.addEventListener('click', () => {
     const description = divElement.querySelector('.textPost').value;
     let privacityCollection = '';
     if (privacityMarked) {
@@ -186,9 +218,9 @@ export const postTemplate = (doc) => {
     postPublic.style.display = 'block';
   });
 
-  const btnElimPost = divElement.querySelector('.btnElimPost');
-  btnElimPost.addEventListener('click', () => {
-    eliminarPost(doc.id);
+  const btnBorrarPost = divElement.querySelector('.btnBorrarPost');
+  btnBorrarPost.addEventListener('click', () => {
+    eliminarPost(doc);
   });
   return divElement;
 };
