@@ -1,27 +1,27 @@
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 @font-face {
     font-family: FontRegular;
-    src: url(fuentes/Poppins-Regular.ttf);
+    src: url(../fuentes/Poppins-Regular.ttf);
 }
 @font-face {
     font-family: Fontmedium;
-    src: url(fuentes/Poppins-Medium.ttf);
+    src: url(../fuentes/Poppins-Medium.ttf);
 }
 @font-face {
     font-family: FontSemibold;
-    src: url(fuentes/Poppins-SemiBold.ttf);
+    src: url(../fuentes/Poppins-SemiBold.ttf);
 }
 @font-face {
     font-family: FontligtItalic;
-    src: url(fuentes/Poppins-LightItalic.ttf);
+    src: url(../fuentes/Poppins-LightItalic.ttf);
 }
 @font-face {
     font-family: FontMediumItalic;
-    src: url(fuentes/Poppins-MediumItalic.ttf);
+    src: url(../fuentes/Poppins-MediumItalic.ttf);
 }
 body{
     font-family:Fontmedium;
@@ -30,7 +30,7 @@ body{
     background-attachment: fixed;
 }
 .containerFondo{
-    background: url("./imagenes/fondeDegradado.jpg");
+    background: url("../imagenes/fondeDegradado.jpg");
 }
 /* PC  */
 .header{
@@ -50,6 +50,7 @@ body{
    margin-left: 5%;
    font-size:1.5rem;
 }
+
 .espacio-login{
     display: flex;
     align-items: center;
@@ -118,6 +119,7 @@ button {
     font-family: Fontmedium;
     font-size: 0.9em;
 }
+
 .btnFG{
     width: 100%;
     display: flex;
@@ -134,15 +136,18 @@ button {
     color: #575656;
     font-size: 0.9rem;
 }
+
 a:link {
     text-decoration: none;
 }
 a:hover {
     text-decoration: none;
 }
+
 .inicio_sesion, #btnRegistrarse{
     color: #FF0505;
 }
+
   /* ------vista registro----------- */
 .boton_registrarse{
     font-family: Fontmedium;
@@ -192,39 +197,84 @@ background-attachment: fixed;
 background-size: cover;
 background: white;
 height: 100%;
-width: 100%;
+}
+.header_navigation_home{
+    background: linear-gradient(180deg, #0CE600 2.6%, #757D00 100%);
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    height: 4em;
+    width: 100%;
+} 
+
+.conteiner_menu{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+}
+
+.conteiner_logo{
+    width: 80%;
+    height: 100%;
+    padding-right: 20%;
+    justify-content: center;
+    display: flex;
+    align-items: flex-end;
+     
+}
+ .header_logo{
+    width: 190px;
+    height: 62px;
+    
 }
 .post{
     width: 90%;
     border: 2px solid #D1D1D1;
     border-radius: 0px 0px 15px 15px;
     margin:5% auto;
+
+}
+.img_avatar_user{
+    width:100%;
+    height: 100%;
+    border-radius: 50%;
 }
 .description_text{
+    /* border: 2px solid rgba(0, 0, 0, 0.2); */
     width: 100%;
     height:4.5em;
-    align-items: flex-end;
+    align-items: flex-start;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    padding:5%;  
+    padding: 5%;
 }
+
 .text_post{
     display: flex;
-    font-family: FontligtItalic;
+    font-family: FontMediumItalic;
     font-style: italic;
     font-size: 0.7em;
     text-align: center;
-    color: #575656;
+    color: #999999e6;
+}
+.description_post  {
+    margin-bottom: 3%;
 }
 h3{
     color: #766E72;
     font-size: 0.5em;
 }
+
 .button_send{
     background: #E60712;
     box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.53);
     border-radius: 50%;
+    /* height: 40px;
+    width: 40px; */
     padding-top: 3%;
     padding-right: 3.7%;
     padding-bottom: 3%;
@@ -239,6 +289,7 @@ h3{
 .fa-lock, .fa-globe-americas {
     font-size: 1rem;
     color:  rgb(77, 77, 77);
+    
 }
 .title_user{
     width: 100%;
@@ -248,8 +299,9 @@ h3{
     height: 2.5rem;
     align-items: center;
     padding:4%;
-    margin-top: 2%;
+    margin-top: 2.5%;
 }
+
 .img_user{
     margin-right: 5%;
     width: 2.3em;
@@ -258,24 +310,25 @@ h3{
     border-radius: 50%;
 }
 
-.data_user{
+.data_user {
     display: flex;
     align-items: center;
     height: 2em;
-    width: 80%;
+    width: 90%;
 }
 .name_user{
     width: 60%;
 }
 h2{
  font-family: FontRegular;
- font-size: 0.8em;
+ font-size: 0.9em;
+
 }
 .menu_privacity_user{
     width: 20%;
     height: 2em;
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 .fa-lock:hover, .fa-globe-americas:hover{
     font-size: 1.6rem;
@@ -290,7 +343,7 @@ h2{
 }
 .options_post p{
     font-family: FontRegular;
-    font-size: 0.8em;
+font-size: 0.8em;
 }
 .option{
     width: 33%;
@@ -332,12 +385,14 @@ h2{
     border-top: 10px solid #E60712;
     width: 60%;
 }
+
 .modalContainer .closeInfo {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 .modalContainer .closeInfo:hover,
 .modalContainer .closeInfo:focus {
     color: #000;
@@ -353,12 +408,14 @@ h2{
     border-top: 10px solid #E60712;
     width: 60%;
 }
+
 .modalContainer .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 .modalContainer .close:hover,
 .modalContainer .close:focus {
     color: #000;
@@ -376,8 +433,7 @@ display: flex;
 width: 20%;
 }
 .div_header_logo{
-    width: 80%;
-}
+    width: 80%;}
 #btn-menu{
 display: none;
 }
@@ -391,15 +447,18 @@ font-size: 2em;
     height: 90%;
     display: flex;
     margin: 0% auto 0 9%;
+
 }
+
  header label{
     display: none;
     border: none;
     padding: 10px;
     width: 100%;
  }
+
 header label:hover{
-    cursor: pointer;  
+    cursor: pointer; 
   } 
   .menu{
     display: flex;
@@ -431,34 +490,89 @@ header label:hover{
     color: #959595;
     padding: 10px 15px;
   }
+/*--------------modal likes------------*/
+.overlay{
+    background: rgba(0, 0, 0, .2);
+position:fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+ .active {
+    visibility: visible;
+}
+.negative {
+	visibility: hidden;
+}
+.popup {
+    background: #f8f8f8;
+    box-shadow: 0px 0px 5px 0px rgba(0,0, 0, 0.3);
+    font-family: serif;
+    padding:4%;
+    text-align: center;
+    width: 60%;
+   
+}
+.popup  .btn-cerrar-popup{
+    font-size: 1.2em;
+	line-height: 16px;
+	display: block;
+	text-align: right;
+	transition: .3s ease all;
+	color: #BBBBBB;
+}
+ .btn-cerrar-popup:hover{
+    color:#0CE600;
+}
+.popup h3 {
+	font-size: 1rem;
+	font-weight: 80;
+	margin-bottom: 10%;
+	
+}
 
-  @media (max-width:768px){
-    header label{
-      display: block;
-      display: flex;
-      flex-direction: row;
-    } 
-    .menu{
-      position: absolute;
-      background: white;
-      width: 20%;
-      margin-left: -30%;
-      
-    }
-    .menu ul{
-        width: 100%;
-        flex-direction: column;
-    }
-    #btn-menu:checked ~ .menu {
-        margin: 4em 0 0 0;
-        width: 50%;
-    }
-  }
+.listaUsuarios{
+       /* font-size: 26px; */
+       font-weight: 100;
+       margin-bottom: 20px;
+       /* opacity: 0; */
+       width: 100%;
+       /* margin-bottom: 20px; */
+       height: 9em;
+       /* font-size: 18px; */
+       /* line-height: 52px; */
+       /* text-align: center; */
+       border: 1px solid #182eac;
+       display: flex;
+       flex-direction: column;
+       margin-bottom: 10%;
+}
+
+.input{
+    width: 95%;
+    border-bottom:1px solid #BBBBBB;
+	height: 52px;
+    font-size: 18px;
+    display: flex;
+    text-align: center;
+    padding: 2.5%;
+}
+.name-user-list{
+    font-size: 25px;
+
+}
+.img-usuario-list{
+    width: 15%;
+    font-weight: 50;
+}
 /*----------------post por publicar-------------*/
 .text_post{
 border: none;
 width: 100%;
-height: 100%;
 text-align: start;
 }
 .image_current_user{
@@ -481,16 +595,16 @@ text-align: start;
 /*---------------post ya publicados-------------*/
 .imgPublic{
     width: 100%;
-    height: 100%;
+height: 100%;
 }
 .div_image{
     width: 95%;
     height: 100%;
 }
 #cuarta_vista{
+
     background: white;
     height: 100%;
-    width: 100%;
 }
 .post_public{ 
     width: 90%;
@@ -516,12 +630,13 @@ color:#959595;
 color:#747373;
 }
 .options_post_public{
+    background: #D1D1D1;
     width: 100%;
     height: 2em;
     display: flex;
     border-bottom-right-radius:0.7em;
     border-bottom-left-radius:0.7em;
-    margin-left: 2.5%;
+    margin-left: 2.5%;/* aqui */
     
 }
 .contador_likes,.contador_comment{
@@ -534,7 +649,7 @@ color:#747373;
     display: flex;
     width: 50%;
     font-family: FontligtItalic;
-    color :#959595 ;
+    color :#766E72 ;
 }
 .icon_like, .icon_comment{
     width: 30px;
@@ -547,140 +662,6 @@ color:#747373;
     align-items: flex-start;
     margin-left: 5%;
 }
-/* vista iphone 5 */
-@media screen and (max-width:320px){
-    h1{
-        font-size: 1.4em;
-    }
-    .texto_inicio_opcional{
-        font-size: 0.8rem;
-    }
-    .separador{
-        width: 8%;
-        display: inline-block;
-    }
-    button{
-        font-size: 0.7em;
-    }
-    .boton_registrarse{
-        font-size: 0.8rem;
-    }
-    .formulario_registro p {
-        font-size: 0.7rem;
-    }
-}
-/* / Móviles en horizontal o tablets en vertical
-   ------------------------------------------------------------------------- /
-@media (min-width: 768px) { }*/
-
-@media screen and (min-width:768px){
-/* ------vista registrarse----------- */
-h1{
-    font-size: 2.5em;
-}
-.formulario_registro input[type="text"], input[type="password"]{
-    font-size: 1.5rem;
-}
-.iconLogin{
-    font-size: 1.5rem;
-}
-button{
-    font-size: 1.6rem;
-}
-.texto_inicio_opcional{
-    font-size: 1.5rem;
-}
-.separador{
-    width: 16%;
-    display: inline-block;
-}
-.text_form{
-    font-size: 1.4rem;
-}
-.boton_registrarse{
-    font-size: 1.5rem;
-}
-.formulario_registro p{
-    font-size: 1.5rem;
-}
-.portada{
-    display: none;
-}
-.divValidations{
-    font-size: 1.3em;
-}
-}
-/* / Tablets en horizonal y escritorios normales
-   ------------------------------------------------------------------------- /
-@media (min-width: 1024px) { } */
-
-@media screen and (min-width:1025px){
-/* ------vista login----------- */
-.iconLogin{
-    font-size: 1.1rem;
-}
-.separador{
-    width: 1.4em;
-}
-.texto_inicio_opcional{
-    font-size:0.9em ;
-}
-button{
-    font-size: 0.9rem;
-}
-/* ------vista registrarse----------- */
-body{
-    background: none;
-}
-
-.icon_info{
-    display: none;
-}
-
-.espacio-portada{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background: white;
-}
-.portada{
-    background: url("./imagenes/fondeDegradado.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;  
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-}
-form{
-    margin: auto;  
-}
-.espacio-login{
-    background: linear-gradient(180deg, rgba(12, 230, 0, 0.3) , rgba(117, 125, 0, 0.3));
-    justify-content: space-evenly;
-    width: 100%;
-    height: 100vh;
-} 
-.text_form{
-    font-size: 0.9em;
-}
-.formulario_registro p{
-    font-size: 1.1em;
-}
-h1{
-    font-size: 1.8rem;
-}
-.boton_registrarse {
-    font-size: 1.05rem;
-}
-.formulario_registro input[type="text"], input[type="password"] {
-    font-size: 1.1rem;
-}
-}
-/* Escritorios muy anchos
-   ------------------------------------------------------------------------- 
-@media (min-width: 1200px) { } */
 /* HOME USUARIO */
 #userDescription{
     color: #474343;
@@ -708,7 +689,7 @@ h1{
 }
 .imagePortada{
     width: 100%;
-    height: 40%;
+    height: 50%;
     border: 2px solid #ECEBEB;
     border-radius: 15px 15px 0px 0px;
 }
@@ -742,6 +723,13 @@ h1{
 .containerUserHome{
     display: none;
 }
+.imgPublic {
+    margin-left: 2%;
+}
+.usuarioHome{
+    display: none;
+}
+/* comentarios */
 .crearComentario{ 
     width: 90%;
     border: 2px solid #D1D1D1;
@@ -753,11 +741,16 @@ h1{
 .titleComentario{
     display: flex;
     justify-content: flex-start;
-}
-.nombreCometario{
+    flex-direction: row;
     padding:4%;
+    padding-top: 1%;
     padding-bottom: 2%;
-    margin-top: 2%;
+    margin-top: 1%;
+}
+.nombreUsuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .description_comentario{
     padding-left: 4%; 
@@ -776,34 +769,4 @@ h1{
     border-radius: 50%;
     margin-left: 3%;
     padding: 3%;
-}
-/* para pc y tablet horizontal */
-@media screen and (min-width:1025px){
-    /* #userDescription{
-        display: block;
-    } */
-    .containerUserHome{
-        display: block;
-    }
-    .titulos{
-        font-size: 25px;
-    }
-    .editUser{
-        font-size: 20px;
-    }
-    .containerHome{
-        display: flex;
-    }
-    .contenedorCabecera, .contenedorContenido{
-        display: flex;
-        justify-content: space-between;        
-    }    
-    #userDescription, #userDescription2, .post{
-        width: 30%;
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-    .space_post, #containerPost{
-        width: 60%;
-    }
 }

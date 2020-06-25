@@ -1,4 +1,8 @@
+import { eliminarComentario, modificarComentario } from '../firebase/firestore-controller.js';
+
 export default function crearComentarioTemplate(doc) {
+  console.log(doc.id);
+  console.log(doc.data());
   const divComentario = `
   <section class="comentario">
     <div class="title_user title_user_public">
@@ -8,32 +12,32 @@ export default function crearComentarioTemplate(doc) {
       </div>
     </div>
     <div class="titleComentario">
-      <h2 class ="nombreCometario">${doc.nombre}</h2>
+      <h2 class ="nombreCometario">${doc.data().autor}</h2>
     </div>
     <div class="description_comentario">
-      <p class="content_description_text" >${doc}</p>
+      <p class="content_description_text" >${doc.data().contenido}</p>
     </div>
   </section>
   <section class="editarComentario">
     <div class="titleComentario">
-      <h2 class ="nombreCometario">${doc.nombre}</h2>
+      <h2 class ="nombreCometario">${doc.data().autor}</h2>
     </div>
     <div class="description_comentario">
-      <input type="text" class="text_comentario" value="${doc}">
+      <input type="text" class="textEditarComentario" value="${doc.data().contenido}">
       <div class="GuardarComent"><i class="fas fa-angle-double-right"></i></div>
     </div>
 </section>`;
   const divElement = document.createElement('div');
   divElement.innerHTML = divComentario;
 
-  const divBtnEliminarComen = divElement.querySelector('divBtnEliminarComen');
+  const divBtnEliminarComen = divElement.querySelector('.divBtnEliminarComen');
   divBtnEliminarComen.addEventListener('click', () => {
     eliminarComentario(doc.id);
   });
-  const divBtnEditarComent = divElement.querySelector('divBtnEditarComent');
+  const divBtnEditarComent = divElement.querySelector('.divBtnEditarComent');
+  const textEditarComentario = divElement.querySelector('.textEditarComentario')
   divBtnEditarComent.addEventListener('click', () => {
-    const user = firebase.auth().currentUser;
-    crearComentario2(user.email, doc.id, _autor, _contenido);
+    modificarComentario(doc.id, textEditarComentario.value);
   });
 
   return divElement;

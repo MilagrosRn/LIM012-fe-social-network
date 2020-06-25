@@ -7,7 +7,7 @@ export default (data, cb) => {
   const viewHome = `
   <div id="cuarta_vista">
     <div class="contenedorCabecera"></div>
-    <div class="contenedorContenido">
+    <div class="containerProfile">
       <section id="userDescription2"></section>
       <section id="containerPost"></section>
     </div>

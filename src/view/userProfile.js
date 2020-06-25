@@ -32,6 +32,7 @@ export default (doc) => {
   const divElement = document.createElement('div');
   divElement.innerHTML = divUser;
 
+
   const btnEditUser = divElement.querySelector('.btnEditUser');
   btnEditUser.addEventListener('click', mostrarEditarUser);
 

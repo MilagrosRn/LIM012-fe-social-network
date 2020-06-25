@@ -19,6 +19,7 @@ const changeView = (hashUrl) => {
     case '#/register': return seccion.appendChild(views.register());
     case '#/home': return traerPost(mostrarDataPost);
     case '#/profile': return traerPost(mostrarDataPostUsuario);
+    // case '#/profile': return seccion.appendChild(views.profile(llamarCabecera));
     case '#/conditions': return seccion.appendChild(views.conditions());
     default: return seccion.appendChild(views.notFound());
   }

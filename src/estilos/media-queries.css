@@ -1,0 +1,393 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: FontRegular;
+    src: url(../fuentes/Poppins-Regular.ttf);
+}
+@font-face {
+    font-family: Fontmedium;
+    src: url(../fuentes/Poppins-Medium.ttf);
+}
+@font-face {
+    font-family: FontSemibold;
+    src: url(../fuentes/Poppins-SemiBold.ttf);
+}
+@font-face {
+    font-family: FontligtItalic;
+    src: url(../fuentes/Poppins-LightItalic.ttf);
+}
+@font-face {
+    font-family: FontMediumItalic;
+    src: url(../fuentes/Poppins-MediumItalic.ttf);
+}
+
+/* Móviles vertical */
+@media (max-width:768px){
+    /* body{
+        background: green;
+    } */
+    header label{
+      display: block;
+      display: flex;
+      flex-direction: row;
+    } 
+    .menu{
+      position: absolute;
+      background: white;
+      width: 20%;
+      margin-left: -30%;
+      
+    }
+    .menu ul{
+        width: 100%;
+        flex-direction: column;
+    }
+    #btn-menu:checked ~ .menu {
+        margin: 4em 0 0 0;
+        width: 50%;
+    }
+    h1{
+        font-size: 1.4em;
+    }
+    .texto_inicio_opcional{
+        font-size: 0.8rem;
+    }
+    .separador{
+        width: 8%;
+        display: inline-block;
+    }
+    button{
+        font-size: 0.7em;
+    }
+    .boton_registrarse{
+        font-size: 0.8rem;
+    }
+    .formulario_registro p {
+        font-size: 0.7rem;
+    }
+    /*vista home-------*/
+    .icon_privacity{
+        margin-left: 7%;
+    }
+  }
+  /*moviles pequeños horizntal*/
+  @media screen and (min-width:665px){
+    /* body{
+        background: indigo;
+    } */
+   .button_send {
+    padding-top: 2%;
+    padding-right: 2.3%;
+    padding-bottom: 2%;
+    padding-left: 2.3%;
+}
+.img-logo-header {
+    margin: 0% auto 0 20%;
+}
+.menu_privacity_user {
+    width: 12%;
+
+  }
+  .data_user {
+    width: 95%;
+}
+.img_user {
+    margin-right: 2.5%;
+    width: 2.8em;
+    height: 2.8em;
+}
+.fa-paper-plane {
+    font-size: 1.2em;
+}
+}
+ /* Móviles en horizontal o tablets en vertical */
+@media screen and (min-width:769px){
+    /* body{
+        background: teal;
+    } */
+/* ------vista registrarse----------- */
+h1{
+    font-size: 2.5em;
+}
+.formulario_registro input[type="text"], input[type="password"]{
+    font-size: 1.5rem;
+}
+.iconLogin{
+    font-size: 1.5rem;
+}
+button{
+    font-size: 1.6rem;
+}
+.texto_inicio_opcional{
+    font-size: 1.5rem;
+}
+.separador{
+    width: 16%;
+    display: inline-block;
+}
+.text_form{
+    font-size: 1.4rem;
+}
+.boton_registrarse{
+    font-size: 1.5rem;
+}
+.formulario_registro p{
+    font-size: 1.5rem;
+}
+.portada{
+    display: none;
+}
+.divValidations{
+    font-size: 1.3em;
+}
+.div_header_menu {
+    width: 0%;
+}
+.div_header_logo{
+    width: 20%;
+}
+header {
+    width: 100%;
+    height: 4.5em;
+    background: linear-gradient(to bottom,#0CE600, #757D00);
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.option_menu_list {
+    color: #959595;
+    padding: 5% 3%;
+    border-bottom: 0.2px solid #ccc;
+    background: red;
+    width: 33.3%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+}
+.menu ul {
+    margin: 0;
+    list-style: none;
+    padding: 2%;
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+.menu {
+    display: flex;
+    width: 60%;
+}
+.option_menu_list {
+    border-bottom: 0.2px solid #ccc;
+    background: rgba(255, 255, 255, 0.2);
+    color: #959595;
+    padding: 10px 15px;
+    border-radius: 12px;
+    width: 30%;
+    margin-right: 2.2%;
+}
+.option_menu_list2 {
+    color: #959595;
+    padding: 10px 15px;
+    background: white;
+    border-radius: 12px;
+    width: 40%;
+}
+}
+/* Tablets en horizonal y escritorios normales*/
+@media screen and (min-width:1025px){
+    /* body{
+        background: yellow;
+    } */
+    
+    /* ------vista login----------- */
+.iconLogin{
+    font-size: 1.1rem;
+}
+.separador{
+    width: 1.4em;
+}
+.texto_inicio_opcional{
+    font-size:0.9em ;
+}
+button{
+    font-size: 0.9rem;
+}
+/* ------vista registrarse----------- */
+body{
+    background: none;
+}
+
+.icon_info{
+    display: none;
+}
+
+.espacio-portada{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: white;
+}
+.portada{
+    background: url("../imagenes/fondeDegradado.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;  
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    margin: auto;  
+}
+.espacio-login{
+    background: linear-gradient(180deg, rgba(12, 230, 0, 0.3) , rgba(117, 125, 0, 0.3));
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100vh;
+} 
+
+.text_form{
+    font-size: 0.9em;
+}
+.formulario_registro p{
+    font-size: 1.1em;
+}
+h1{
+    font-size: 1.8rem;
+}
+.boton_registrarse {
+    font-size: 1.05rem;
+}
+.formulario_registro input[type="text"], input[type="password"] {
+    font-size: 1.1rem;
+}
+/* ------vista home----------- */
+
+.option_menu_list {
+    border-bottom: 0.2px solid #ccc;
+    background: rgba(255, 255, 255, 0.2); 
+    padding: 10px 15px;
+    border-radius: 12px;
+    width: 30%;
+    margin-right: 2.2%;
+    color: #3333339e;
+    text-align: center;
+    font-size: 1.3em;
+}
+.option_menu_list2 {
+  
+    padding: 10px 15px;
+    background: white;
+    border-radius: 12px;
+    width: 40%; 
+    color: #3333339e;
+    text-align: center;
+    font-size: 1.3em;
+}
+.containerUserHome{
+    display: block;
+}
+.titulos{
+    font-size: 25px;
+}
+.editUser{
+    font-size: 20px;
+}
+.containerHome{
+    display: flex;
+}
+#userDescription{
+    width: 100%;
+}
+
+
+ .contenedorUserProfile, .contenedorDescripcionPost{
+    display: flex;
+}
+.containerUserHome {
+    display: block;
+    display: block;
+    width: 70%;
+    padding-right: 2%;
+    padding-left: 5%;
+}
+.post{
+    margin-right: 5%;
+    margin-top: 2%;
+    height: 2%;}
+.divtop {
+    height: 60%;
+    margin: 5%;
+    border: 1px solid white;
+    border-radius: 15px 15px 15px 15px;
+    background: #ECEBEB;
+}
+.space_post {
+    width: 57.5%;
+    margin-right: 2%;
+    float: right;
+    margin-top: -23.5%;
+}
+.divbottom {
+    height: 30%;
+  
+}
+.imagePerfile {
+    width: 30%;
+    height: 30%;
+    margin-top: -10%;
+}
+h2 {
+    font-family: FontRegular;
+    font-size: 1.1em;
+}
+h3 {
+    color: #766E72;
+    font-size: 0.8em;
+}.text_post {
+    display: flex;
+    font-family: FontMediumItalic;
+    font-style: italic;
+    font-size: 1em;
+    color: #999999e6;
+}.options_post p {
+    font-family: FontRegular;
+    font-size: 1em;
+}.icon_privacity{
+    margin-left: 3%;
+}.fa-lock, .fa-globe-americas{
+    font-size: 1.5em;
+}header {
+    height: 5.5em;
+}
+.img-logo-header {
+    width: 280px;
+    height: 100%;
+}
+/*perfil*/
+.contenedorDescripcionPost {
+    display: flex;
+}.containerUser    {
+display: block;
+    width: 70%;
+    padding-right: 2%;
+    padding-left: 5%;
+    /* background: red; */
+}
+#userDescription2{
+    /* background: rgb(1, 9, 51); */
+    display: block;
+    width: 100%;
+}
+#containerPost{width: 57.5%;
+    margin-right: 2%;
+    float: right;
+    margin-top: -23.5%;
+}
+.usuarioHome{
+    display: block;
+}
+}
