@@ -119,7 +119,6 @@ export default function crearPostTemplate(doc) {
   }));
   return divElement;
 }
-
 // let privacityCollection = '';
 // if (privacityMarked) {
 //   privacityCollection = true;

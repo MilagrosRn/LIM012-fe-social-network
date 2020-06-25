@@ -29,3 +29,4 @@ firebase.auth().onAuthStateChanged((user) => {
     console.log('No logeado');
   }
 });
+

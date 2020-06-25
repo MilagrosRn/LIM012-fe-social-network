@@ -52,10 +52,26 @@ export const postTemplate = (doc) => {
   const user = firebase.auth().currentUser;
   let divPostPublicado = `
   <section class="post_public">
-      <div class="title_user title_user_public">
+    <div class="title_user title_user_public">
       <div class = "menu_edit_post">
-        <div class="divBtnEliminarPost"><span class="btnBorrarPost">🗑</span></div>
-        <div class="divBtnEditarPost"><span class="btnEditPost">✏</span></div>
+       <div class="header_menu_edit">
+          <input type="checkbox" name="" id="btn-menuEdit">
+          <label for="btn-menuEdit">
+           <div class="desplegar_menu">
+              <i class="img_menupost fas fa-ellipsis-h"></i>
+           </div>
+          </label>
+          <nav class="menuEdit">
+            <ul>
+              <div class="divBtnEditarPost">
+                <li  class="btnEditPost"><i class=" fas fa-edit"></i></a>Editar</li>
+              </div>
+              <div class="divBtnEliminarPost"> 
+                <li class="btnBorrarPost"><i class=" far fa-trash-alt"></i></a>Eliminar</li>
+              </div>
+            </ul>
+          </nav>
+       </div >
       </div> `;
   divPostPublicado += `
         <figure class="data_user">
@@ -93,27 +109,22 @@ export const postTemplate = (doc) => {
       </div>
       <div  class="options_post_public">
         <div class ="space_likes">
-          <img class="icon_like" src="../imagenes/logoColor.png">
+          <img class="icon_like" id="icon_like" src="../imagenes/logoColor.png">
           <p class = "contador_likes">${doc.data().likes.length}</p>
           <div class = "btn-abrir">
             <p class = "like_text " >Me gusta</p>
           </div>
-        <div class="overlay negative">
-          <div class="popup">
-            <a id = "btn-cerrar-popup" class="btn-cerrar-popup"><i class="far fa-times-circle"></i></a>
-            <h3 class="title-list">Personas que les gusto esta publicacion</h3>
-              <form action="">
-                <div class="contenedor-inputs">
-                  <div class = "listaUsuarios">
-                    <div class = "input">
-                      <img class="img-usuario-list" src="./imagenes/logoColor.png" alt="" >
-                      <h1 class="name-user-list">usuario1</h1>
-                    </div>
+          <div class="overlay negative">
+            <div class="popup">
+              <a id = "btn-cerrar-popup" class="btn-cerrar-popup"><i class="far fa-times-circle"></i></a>
+              <h3 class="title-list">Personas que les gusto esta publicacion</h3>
+                <form action="">
+                  <div class="contenedor-inputs">
+                    <div class = "listaUsuarios"></div>
                   </div>
-                </div>
-              </form>
+                </form>
             </div>
-          </div>
+        </div>
         </div>
         <div class ="space_comment">
           <img class="icon_comment" src="../imagenes/logoMensaje.png">
@@ -203,8 +214,9 @@ export const postTemplate = (doc) => {
   const btnCerrarPopUp = divElement.querySelector('.btn-cerrar-popup');
   const btnGuardarEdicion = divElement.querySelector('.btnGuardarEdicion');
   const btnBorrarPost = divElement.querySelector('.btnBorrarPost');
-  const btnLike = divElement.querySelector('.icon_like');
-  const contenido = divElement.querySelector('.listaUsuarios');
+
+  const btnLike = divElement.querySelector('#icon_like');
+  const listaUsuarios = divElement.querySelector('.listaUsuarios');
 
   if (user.email === doc.data().gmail) {
     menuEditPost.style.display = 'block';
@@ -224,9 +236,11 @@ export const postTemplate = (doc) => {
   let privacityMarked = '';
   btnPrivacidadPriv.addEventListener('click', () => {
     privacityMarked = false;
+    btnPrivacidadPriv.style.transform = 'scale(1.4)';
   });
   btnPrivacidadPublic.addEventListener('click', () => {
     privacityMarked = true;
+    btnPrivacidadPublic.style.transform = 'scale(1.4)';
   });
 
   // opciones ver usuarios que dieron like
@@ -242,12 +256,18 @@ export const postTemplate = (doc) => {
   });
   // opcion dar like
   btnLike.addEventListener('click', () => {
-    const objUser = verificarLikeUsuario(user, doc, contenido);
+    const arrLikes = doc.data().likes;
+    const found = arrLikes.includes(user.uid);
+    if (found === false) {
+      btnLike.src = '../imagenes/logolike.png';
+    }
+    const objUser = verificarLikeUsuario(user, doc, listaUsuarios);
     console.log(objUser);
-    // 
+
     // const div = mostrarLikesUsuarios(objUser);
     // console.log(div);
-   
+    // console.log(listaUsuarios)
+    // listaUsuarios.appendChild(div)
   });
 
   // opcion editar post

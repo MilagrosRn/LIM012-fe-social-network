@@ -67,8 +67,9 @@ const crearPostFuncion = (uid, nameUser, gmail, imageProfile, description, priva
 
 const mostrarLikesUsuarios = (user) => {
   console.log(user);
-  const divUsuario = `
-              <div class = "input">
+  let divUsuario = '';
+  divUsuario += `
+            <div class = "input">
               <img class="img-usuario-list" src="${user.profile}" >
               <h1 class="name-user-list">${user.name}</h1>
             </div>`;
@@ -78,13 +79,14 @@ const mostrarLikesUsuarios = (user) => {
   div.innerHTML = divUsuario;
   return div;
 };
-const verificarLikeUsuario = (user, documento, contenido) => {
+
+const verificarLikeUsuario = (user, documento) => {
   const arrLikes = documento.data().likes;
   const found = arrLikes.includes(user.uid);
   if (found === false) {
     darLike(user, documento);
-    const div = mostrarLikesUsuarios(user);
-    contenido.appendChild(div);
+    // const div = mostrarLikesUsuarios(user);
+    // contenido.appendChild(div);
   } else {
     quitarLike(user, documento);
   }

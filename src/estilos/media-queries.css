@@ -108,6 +108,7 @@
     /* body{
         background: teal;
     } */
+
 /* ------vista registrarse----------- */
 h1{
     font-size: 2.5em;
@@ -196,7 +197,7 @@ header {
 }
 }
 /* Tablets en horizonal y escritorios normales*/
-@media screen and (min-width:1025px){
+@media screen and (min-width:1024px){
     /* body{
         background: yellow;
     } */
@@ -371,7 +372,7 @@ h3 {
 .contenedorDescripcionPost {
     display: flex;
 }.containerUser    {
-display: block;
+    display: block;
     width: 70%;
     padding-right: 2%;
     padding-left: 5%;
@@ -386,6 +387,8 @@ display: block;
     margin-right: 2%;
     float: right;
     margin-top: -23.5%;
+}.divbottom {
+    height: 35%;
 }
 .usuarioHome{
     display: block;

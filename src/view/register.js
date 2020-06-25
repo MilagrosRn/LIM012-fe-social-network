@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-cond-assign */
+import { changeView } from '../view-controller/router.js';
 import { btnInfo } from '../view-controller/view-info.js';
 import { registrarUsuario } from '../view-controller/view-signIn.js';
 
