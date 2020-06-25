@@ -1,6 +1,8 @@
 // eslint-disable-next-line import/no-cycle
-import { eliminarPost, modificarPost, crearComentario } from '../firebase/firestore-controller.js';
+import { eliminarPost, modificarPost, crearComentario, traerComentarios } from '../firebase/firestore-controller.js';
 import { verificarLikeUsuario, mostrarLikesUsuarios } from '../view-controller/view-posts.js';
+import { mostrarDataComentarios } from '../view-controller/view-comentario.js';
+
 // fecha en el post
 class Utilidad {
   static obtenerFecha(timeStamp) {
@@ -190,7 +192,13 @@ export const postTemplate = (doc) => {
   divcrearComentario.style.display = 'none';
   const iconComment = divElement.querySelector('.icon_comment');
   iconComment.addEventListener('click', () => {
+    const nodo = divElement.querySelector('.mostrarComentarios');
     divcrearComentario.style.display = 'block';
+    const nuevonodo = (data) => {
+      nodo.innerHTML = '';
+      mostrarDataComentarios(data, nodo);
+    };
+    traerComentarios(nuevonodo, doc.id);
   });
 
   const GuardarComentario = divElement.querySelector('.GuardarComentario');
@@ -281,7 +289,7 @@ export const postTemplate = (doc) => {
 
   // opcion borrar un post
   btnBorrarPost.addEventListener('click', () => {
-    eliminarPost(doc);
+    eliminarPost(doc.id);
   });
   return divElement;
 };

@@ -126,11 +126,11 @@ const modificarComentario = (idComentario, _contenido) => {
     contenido: _contenido,
   });
 };
-const traerComentarios = (callback) => {
-  firebase.firestore().collection('comentarios').onSnapshot((querySnapshot) => {
+const traerComentarios = (callback, _idPost) => {
+  firebase.firestore().collection('comentarios').where('idPost', '==', _idPost).onSnapshot((querySnapshot) => {
     const data = [];
     querySnapshot.forEach((comentData) => {
-      data.push(comentData);
+      data.push({ id: comentData.id, ...comentData.data() });
     });
     callback(data);
   });

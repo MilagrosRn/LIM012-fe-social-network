@@ -1,13 +1,11 @@
 import {
   signIn, createUser, signInGoogle, signOut,
 } from '../src/firebase/auth-controller.js';
+import { mocksdk } from '../_mocks_/firebase-mock.js';
 
-const firebasemock = require('firebase-mock');
+global.firebase = mocksdk;
 
-global.firebase = firebasemock.MockFirebaseSdk(
-  () => null,
-  () => new firebasemock.MockAuthentication().autoFlush(),
-);
+
 describe('funcion signIn con email y password', () => {
   it('Deberia loguearse un usuario con email y conraseña', (done) => {
     signIn('example@gmail.com', '123456').then((user) => {

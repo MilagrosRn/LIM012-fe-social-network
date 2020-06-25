@@ -348,20 +348,28 @@ h2 {
 h3 {
     color: #766E72;
     font-size: 0.8em;
-}.text_post {
+}
+.text_post {
     display: flex;
     font-family: FontMediumItalic;
     font-style: italic;
     font-size: 1em;
     color: #999999e6;
-}.options_post p {
+}
+.options_post p {
     font-family: FontRegular;
     font-size: 1em;
-}.icon_privacity{
+}
+.icon_privacity{
     margin-left: 3%;
-}.fa-lock, .fa-globe-americas{
+}
+.fa-lock, .fa-globe-americas{
     font-size: 1.5em;
-}header {
+}
+.fa-lock:hover, .fa-globe-americas:hover{
+    font-size: 2.1rem;
+}
+header {
     height: 5.5em;
 }
 .img-logo-header {

@@ -2,7 +2,7 @@ import { eliminarComentario, modificarComentario } from '../firebase/firestore-c
 
 export default function crearComentarioTemplate(doc) {
   console.log(doc.id);
-  console.log(doc.data());
+  console.log(doc);
   const divComentario = `
   <section class="comentario">
     <div class="title_user title_user_public">
@@ -12,26 +12,26 @@ export default function crearComentarioTemplate(doc) {
       </div>
     </div>
     <div class="titleComentario">
-      <h2 class ="nombreCometario">${doc.data().autor}</h2>
+      <h2 class ="nombreCometario">${doc.autor}</h2>
     </div>
     <div class="description_comentario">
-      <p class="content_description_text" >${doc.data().contenido}</p>
+      <p class="content_description_text" >${doc.contenido}</p>
     </div>
   </section>
   <section class="editarComentario">
     <div class="titleComentario">
-      <h2 class ="nombreCometario">${doc.data().autor}</h2>
+      <h2 class ="nombreCometario">${doc.autor}</h2>
     </div>
     <div class="description_comentario">
-      <input type="text" class="textEditarComentario" value="${doc.data().contenido}">
+      <input type="text" class="textEditarComentario" value="${doc.contenido}">
       <div class="GuardarComent"><i class="fas fa-angle-double-right"></i></div>
     </div>
 </section>`;
   const divElement = document.createElement('div');
   divElement.innerHTML = divComentario;
 
-  const divBtnEliminarComen = divElement.querySelector('.divBtnEliminarComen');
-  divBtnEliminarComen.addEventListener('click', () => {
+  const divBtnEliminarComent = divElement.querySelector('.divBtnEliminarComent');
+  divBtnEliminarComent.addEventListener('click', () => {
     eliminarComentario(doc.id);
   });
   const divBtnEditarComent = divElement.querySelector('.divBtnEditarComent');
