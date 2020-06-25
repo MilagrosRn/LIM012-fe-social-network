@@ -79,6 +79,7 @@ const mostrarLikesUsuarios = (user) => {
   div.innerHTML = divUsuario;
   return div;
 };
+
 const verificarLikeUsuario = (user, documento) => {
   const arrLikes = documento.data().likes;
   const found = arrLikes.includes(user.uid);

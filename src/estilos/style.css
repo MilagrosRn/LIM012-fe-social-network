@@ -946,3 +946,775 @@
  #btn-menuEdit:checked~.desplegar_menu{
 margin-top: 5%;
  }
+=======
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: FontRegular;
+    src: url(../fuentes/Poppins-Regular.ttf);
+}
+@font-face {
+    font-family: Fontmedium;
+    src: url(../fuentes/Poppins-Medium.ttf);
+}
+@font-face {
+    font-family: FontSemibold;
+    src: url(../fuentes/Poppins-SemiBold.ttf);
+}
+@font-face {
+    font-family: FontligtItalic;
+    src: url(../fuentes/Poppins-LightItalic.ttf);
+}
+@font-face {
+    font-family: FontMediumItalic;
+    src: url(../fuentes/Poppins-MediumItalic.ttf);
+}
+body{
+    font-family:Fontmedium;
+    margin: 0;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.containerFondo{
+    background: url("../imagenes/fondeDegradado.jpg");
+}
+/* PC  */
+.header{
+    display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.logo{
+   width:68%;
+   display: flex;
+   margin-bottom: 0;
+  margin-bottom: 9%;
+}
+.fa-info-circle{
+   color: #FFFFFF;
+   margin-top: 5%;
+   margin-left: 5%;
+   font-size:1.5rem;
+}
+
+.espacio-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formulario_registro{
+    color: #575656;
+    padding: 6%;
+    text-align: center;
+    width: 85%;
+    border-radius: 16px;
+}
+form{
+    background: rgba(249, 249, 249, 0.89);
+    margin-bottom: 12%;
+}
+h1{
+    font-family: Fontmedium;
+    font-style: normal;
+    line-height: 0.3em;
+    font-size: 2em;
+}
+/* ------vista login----------- */
+.formulario_registro input[type="text"], input[type="password"]{
+    font-family: Fontmedium;
+    font-size: 1rem;
+    width: 81%;
+    padding: 2%;
+    border: none;
+}
+.input_contenedor {
+    margin-bottom: 15px;
+    border: 1px solid #d1d1d1;
+    background: #FFFFFF;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 82px;
+}
+input:hover{
+    outline: none;   
+}
+.icon_form{
+    color: #575656;
+    text-align: center;
+    min-width: 25%;
+}
+.btnIngresar{
+    display: flex;
+    font-family: Fontmedium;
+    justify-content: space-around;
+}
+button {
+    color: #FFFFFF;
+    width: 58%;
+    margin: 5% auto;
+    height: 17%;
+    padding: 3.5% 5%;
+    background: #E60712;
+    border-radius: 9px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.2s linear;
+    letter-spacing: 0.05em;
+    font-family: Fontmedium;
+    font-size: 0.9em;
+}
+
+.btnFG{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family: Fontmedium;
+}
+.submits {
+    width: 45%;
+    margin-left: 5%;
+}
+.frgt-pass {background: #3A5898;}
+.sign-up {background: #A4A4A4;}
+.texto_inicio_opcional{
+    color: #575656;
+    font-size: 0.9rem;
+}
+
+a:link {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+
+.inicio_sesion, #btnRegistrarse{
+    color: #FF0505;
+}
+
+  /* ------vista registro----------- */
+.boton_registrarse{
+    font-family: Fontmedium;
+    background: #E60712;
+    color: white;
+    border-radius: 16px;
+    padding: 3.5% 10%;
+    width: 58%;
+    margin: 0 5% 5% 5%;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.divValidations{
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: -2%;
+    margin-left: 0%;
+    font-size: 1em;
+}
+.text_form{
+font-size: 0.9em;
+}
+.formulario_registro p{
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    padding: 0%;
+}
+.terminos{
+    color:  #333333;
+}
+.inicio_sesion{
+    text-decoration: none;
+    font-family:FontSemibold;
+    color: #FF0505;
+    font-size: 1.1em;
+}
+.separador{
+    width: 13%;
+    display: inline-block;
+}
+.portada{
+    display: none;
+}
+/* ------vista home----------- */
+#tercera_vista_home{
+background-attachment: fixed;
+background-size: cover;
+background: white;
+height: 100%;
+}
+.header_navigation_home{
+    background: linear-gradient(180deg, #0CE600 2.6%, #757D00 100%);
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    height: 4em;
+    width: 100%;
+} 
+
+.conteiner_menu{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+}
+
+.conteiner_logo{
+    width: 80%;
+    height: 100%;
+    padding-right: 20%;
+    justify-content: center;
+    display: flex;
+    align-items: flex-end;
+     
+}
+ .header_logo{
+    width: 190px;
+    height: 62px;
+    
+}
+.post{
+    width: 90%;
+    border: 2px solid #D1D1D1;
+    border-radius: 0px 0px 15px 15px;
+    margin:5% auto;
+
+}
+.img_avatar_user{
+    width:100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.description_text{
+    /* border: 2px solid rgba(0, 0, 0, 0.2); */
+    width: 100%;
+    height:4.5em;
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 5%;
+}
+
+.text_post{
+    display: flex;
+    font-family: FontMediumItalic;
+    font-style: italic;
+    font-size: 0.7em;
+    text-align: center;
+    color: #999999e6;
+}
+.description_post  {
+    margin-bottom: 3%;
+}
+h3{
+    color: #766E72;
+    font-size: 0.5em;
+}
+
+.button_send{
+    background: #E60712;
+    box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.53);
+    border-radius: 50%;
+    /* height: 40px;
+    width: 40px; */
+    padding-top: 3%;
+    padding-right: 3.7%;
+    padding-bottom: 3%;
+    padding-left: 3.7%;
+    align-items: center; 
+    text-align:center;
+}
+.fa-paper-plane{
+    color: white;
+    font-size: 1em;
+}
+.fa-lock, .fa-globe-americas {
+    font-size: 1rem;
+    color:  rgb(77, 77, 77);
+    
+}
+.title_user{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    justify-content: flex-end;
+    height: 2.5rem;
+    align-items: center;
+    padding:4%;
+    margin-top: 2.5%;
+}
+
+.img_user{
+    margin-right: 5%;
+    width: 2.3em;
+    height: 2.3em;
+    background-color: #D1D1D1;
+    border-radius: 50%;
+}
+
+.data_user {
+    display: flex;
+    align-items: center;
+    height: 2em;
+    width: 90%;
+}
+.name_user{
+    width: 60%;
+}
+h2{
+ font-family: FontRegular;
+ font-size: 0.9em;
+
+}
+.menu_privacity_user{
+    width: 20%;
+    height: 2em;
+  display: flex;
+  justify-content: space-around;
+}
+.fa-lock:hover, .fa-globe-americas:hover{
+    font-size: 1.6rem;
+}
+.options_post{
+    width: 100%;
+    height: 2em;
+    background-color: #D1D1D1;
+    display: flex;
+    border-bottom-right-radius:0.7em;
+    border-bottom-left-radius:0.7em;
+}
+.options_post p{
+    font-family: FontRegular;
+font-size: 0.8em;
+}
+.option{
+    width: 33%;
+    border-right: 2px solid rgb(77, 77, 77);
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+.option2{
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+.fa-camera, .fa-heart, .fa-map-marker-alt {
+ color: rgb(77, 77, 77) ;
+ font-size: 1em;
+}
+/*---------modal informacion y validacion------*/
+.modalContainer {
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+/* Modal Informacion */
+.modalContainer .content-modal {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-top: 10px solid #E60712;
+    width: 60%;
+}
+
+.modalContainer .closeInfo {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modalContainer .closeInfo:hover,
+.modalContainer .closeInfo:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Modal Validar correo */
+.modalContainer .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-top: 10px solid #E60712;
+    width: 60%;
+}
+
+.modalContainer .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modalContainer .close:hover,
+.modalContainer .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*-----------header---------------*/
+header{
+width: 100%;
+height: 4.5em;
+background: linear-gradient(to bottom,#0CE600, #757D00);
+display: flex;
+}
+.div_header_menu{
+width: 20%;
+}
+.div_header_logo{
+    width: 80%;}
+#btn-menu{
+display: none;
+}
+.icono-menu{
+align-items: center;
+color: white;
+font-size: 2em;
+}
+.img-logo-header{
+    width: 179px;
+    height: 90%;
+    display: flex;
+    margin: 0% auto 0 9%;
+
+}
+
+ header label{
+    display: none;
+    border: none;
+    padding: 10px;
+    width: 100%;
+ }
+
+header label:hover{
+    cursor: pointer; 
+  } 
+  .menu{
+    display: flex;
+    justify-content: center;
+    
+  }
+  .menu ul{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+
+  .menu li:hover{
+    background: rgba(0,0,0,0.3);
+    width: 100%;
+    cursor: pointer;
+  }
+.fa-user-circle, .fa-home, .fa-times-circle{
+    font-size: 1.5em;
+    margin-right: 5%;
+}
+  .option_menu_list{
+    color:#959595;
+    padding: 10px 15px;
+    border-bottom: 0.2px solid #ccc;
+  }
+  .option_menu_list2{
+    color: #959595;
+    padding: 10px 15px;
+  }
+/*--------------modal likes------------*/
+.overlay{
+    background: rgba(0, 0, 0, .2);
+position:fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+ .active {
+    visibility: visible;
+}
+.negative {
+	visibility: hidden;
+}
+.popup {
+    background: #f8f8f8;
+    box-shadow: 0px 0px 5px 0px rgba(0,0, 0, 0.3);
+    font-family: serif;
+    padding:4%;
+    text-align: center;
+    width: 60%;
+   
+}
+.popup  .btn-cerrar-popup{
+    font-size: 1.2em;
+	line-height: 16px;
+	display: block;
+	text-align: right;
+	transition: .3s ease all;
+	color: #BBBBBB;
+}
+ .btn-cerrar-popup:hover{
+    color:#0CE600;
+}
+.popup h3 {
+	font-size: 1rem;
+	font-weight: 80;
+	margin-bottom: 10%;
+	
+}
+
+.listaUsuarios{
+       /* font-size: 26px; */
+       font-weight: 100;
+       margin-bottom: 20px;
+       /* opacity: 0; */
+       width: 100%;
+       /* margin-bottom: 20px; */
+       height: 9em;
+       /* font-size: 18px; */
+       /* line-height: 52px; */
+       /* text-align: center; */
+       border: 1px solid #182eac;
+       display: flex;
+       flex-direction: column;
+       margin-bottom: 10%;
+}
+
+.input{
+    width: 95%;
+    border-bottom:1px solid #BBBBBB;
+	height: 52px;
+    font-size: 18px;
+    display: flex;
+    text-align: center;
+    padding: 2.5%;
+}
+.name-user-list{
+    font-size: 25px;
+
+}
+.img-usuario-list{
+    width: 15%;
+    font-weight: 50;
+}
+/*----------------post por publicar-------------*/
+.text_post{
+border: none;
+width: 100%;
+text-align: start;
+}
+.image_current_user{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.logo_vacio_post{
+    width: 100%;
+    height: 4em;
+}
+#fileDisplayArea {
+    margin-top: 2em;
+    width: 100%;
+    overflow-x: auto;
+  }
+  #fileDisplayArea img{
+    width: 100%;
+  }
+/*---------------post ya publicados-------------*/
+.imgPublic{
+    width: 100%;
+height: 100%;
+}
+.div_image{
+    width: 95%;
+    height: 100%;
+}
+#cuarta_vista{
+
+    background: white;
+    height: 100%;
+}
+.post_public{ 
+    width: 90%;
+    border: 2px solid #D1D1D1;
+    border-radius: 0px 0px 15px 15px;
+    margin:5% auto;
+    margin-bottom: 0;
+}
+.title_user_public{
+    flex-direction: row-reverse;
+}
+.name_user{
+    display: flex;
+}
+.name_date_post{
+    display: block;
+}
+.fa-ellipsis-h{
+font-size: 2em;
+color:#959595;
+}
+.content_description_text{
+color:#747373;
+}
+.options_post_public{
+    background: #D1D1D1;
+    color: #766E72;
+    width: 100%;
+    height: 2em;
+    display: flex;
+    border-bottom-right-radius:0.7em;
+    border-bottom-left-radius:0.7em;
+}
+.contador_likes,.contador_comment{
+    margin-left: 3%;
+    margin-right: 3%;
+    justify-content: flex-start;
+}
+
+.space_likes, .space_comment{
+    display: flex;
+    width: 50%;
+    font-family: FontligtItalic;
+    color :#766E72 ;
+}
+.icon_like, .icon_comment{
+    width: 30px;
+    height: 80%;
+}
+.icon_privacity_public{
+    font-size: 2em;
+    color:#959595;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 5%;
+}
+/* HOME USUARIO */
+#userDescription{
+    color: #474343;
+}
+.titulos{
+    /* font-size: smaller; */
+    font-size: 20px;
+}
+.divtop{
+    height: 50%;
+    margin: 5%;
+    border: 1px solid white;
+    border-radius: 15px 15px 15px 15px;
+    background: #ECEBEB;
+}
+.divbottom{
+    height: 20%;
+    margin: 5%;
+    padding: 0 5% 0 5%;
+    border: 1px solid #ECEBEB;
+    border-radius: 15px 15px 15px 15px;
+    background: #ECEBEB;
+    /* display: flex;
+    justify-content: center; */
+}
+.imagePortada{
+    width: 100%;
+    height: 50%;
+    border: 2px solid #ECEBEB;
+    border-radius: 15px 15px 0px 0px;
+}
+.imagePerfile{
+    width: 40%;
+    height: 30%;
+    margin-top: -30%;
+    border: 1px solid rgba(255, 255, 255, 0.582);
+    border-radius: 50%;
+}
+.divTitleLogo{
+    display: flex;
+}
+.logo_editarUSer{
+    margin-top: 5%;
+    margin-left: 50%;
+    width: 15%;
+    height: 30%;
+}
+.editUser{
+    background: #ECEBEB;
+    border: 0px;
+    font-size: 15px;
+}
+.divInputEdit{
+    display: none;
+}
+.botonGuardarUserEdit{
+    display: none;
+}
+.containerUserHome{
+    display: none;
+}
+.imgPublic {
+    margin-left: 2%;
+}
+.usuarioHome{
+    display: none;
+}
+/* comentarios */
+.crearComentario{ 
+    width: 90%;
+    border: 2px solid #D1D1D1;
+    border-radius: 15px 15px 15px 15px;
+    margin:5% auto;
+    margin-top: 1%;
+    padding-bottom: 2%;
+}
+.titleComentario{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding:4%;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    margin-top: 1%;
+}
+.nombreUsuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.description_comentario{
+    padding-left: 4%; 
+    display: flex;
+}
+.text_comentario{
+    width: 80%;
+    padding-left: 2%;
+    background: #ADE4A1;
+    border: 1px solid #D1D1D1;
+    border-radius: 15px 15px 15px 15px;
+}
+.GuardarComentario{
+    background: #E60712;
+    box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.53);
+    border-radius: 50%;
+    margin-left: 3%;
+    padding: 3%;
+}

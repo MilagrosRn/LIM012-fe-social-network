@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { eliminarPost, modificarPost } from '../firebase/firestore-controller.js';
+import { eliminarPost, modificarPost, crearComentario } from '../firebase/firestore-controller.js';
 import { verificarLikeUsuario, mostrarLikesUsuarios } from '../view-controller/view-posts.js';
 // fecha en el post
 class Utilidad {
@@ -109,7 +109,7 @@ export const postTemplate = (doc) => {
       </div>
       <div  class="options_post_public">
         <div class ="space_likes">
-          <img class="icon_like" id="icon_like" src="../imagenes/logosinborde.png">
+          <img class="icon_like" id="icon_like" src="../imagenes/logoColor.png">
           <p class = "contador_likes">${doc.data().likes.length}</p>
           <div class = "btn-abrir">
             <p class = "like_text " >Me gusta</p>
@@ -168,8 +168,39 @@ export const postTemplate = (doc) => {
   divPostPublicado += `<div><input type="button" class="btnGuardarEdicion" value="Guardar Cambios"></div>
       </section>
     </section>`;
+  divPostPublicado += `
+    <section class="crearComentario">
+      <div class="titleComentario">       
+        <div class="img_user" id="img_user">
+          <img src ="${user.photoURL}" class="image_current_user">
+        </div>
+        <div class="nombreUsuario"><h2 class ="nombreCometario">${user.displayName}</h2></div>
+      </div>
+      <div class="description_comentario">
+        <input type="text" class="text_comentario" placeholder="Escribe un comentario">
+        <div class="GuardarComentario"><i class="fas fa-paper-plane"></i></div>
+      </div> 
+    </section>
+    <section class="mostrarComentarios"></section>`;
+
   const divElement = document.createElement('div');
   divElement.innerHTML = divPostPublicado;
+
+  const divcrearComentario = divElement.querySelector('.crearComentario');
+  divcrearComentario.style.display = 'none';
+  const iconComment = divElement.querySelector('.icon_comment');
+  iconComment.addEventListener('click', () => {
+    divcrearComentario.style.display = 'block';
+  });
+
+  const GuardarComentario = divElement.querySelector('.GuardarComentario');
+  GuardarComentario.addEventListener('click', () => {
+    const textComentario = divElement.querySelector('.text_comentario');
+    crearComentario(user.email, doc.id, user.displayName, user.photoURL, textComentario.value)
+      .then(() => {
+        textComentario.value = '';
+      }).catch(error => console.log('error con post', error));
+  });
 
   const menuEditPost = divElement.querySelector('.menu_edit_post');
   const editarPost = divElement.querySelector('.editarPost');
@@ -183,6 +214,7 @@ export const postTemplate = (doc) => {
   const btnCerrarPopUp = divElement.querySelector('.btn-cerrar-popup');
   const btnGuardarEdicion = divElement.querySelector('.btnGuardarEdicion');
   const btnBorrarPost = divElement.querySelector('.btnBorrarPost');
+
   const btnLike = divElement.querySelector('#icon_like');
   const listaUsuarios = divElement.querySelector('.listaUsuarios');
 

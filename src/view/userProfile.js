@@ -14,9 +14,8 @@ export default (doc) => {
       <div class="divTitleLogo">
         <div><p class="titulos">Detalles</p></div>
         <div class="divBtnEditUser">
-        <span class="btnEditUser">
-        <i class="fas fa-edit"></i>
-        </span></div>
+          <span class="btnEditUser"><i class="fas fa-edit"></i></span>
+        </div>
       </div>
       <div class="divPEditar">
         <center><p class="editUser">${doc.ocupation}</p></center>
@@ -28,9 +27,7 @@ export default (doc) => {
         <input type="text" class="editUser input_location" value="${doc.location}">
         <input type="text" class="editUser input_lenguaje" value="${doc.lenguaje}">
       </div>
-      <div class = "divButtonEdit">
-      <input type="button" class="botonGuardarUserEdit" value="Guardar">
-      </div>
+      <div class = "divButtonEdit"><input type="button" class="botonGuardarUserEdit" value="Guardar"></div>
     </div>
   </div>
     <section class="post"></section>`;
