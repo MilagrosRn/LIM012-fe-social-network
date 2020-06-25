@@ -107,12 +107,7 @@ export default function crearPostTemplate(doc) {
   // opcion crear un post
   btnCrearPost.addEventListener('click', (() => {
     const description = divElement.querySelector('.text_post').value;
-    let privacityCollection = '';
-    if (privacityMarked) {
-      privacityCollection = true;
-    } else {
-      privacityCollection = false;
-    }
+    const privacityCollection = privacityMarked === true;
     // comprueba que este autenticado el usuario antes de un
     if (user === null) {
       console.log('no autenticado para post');

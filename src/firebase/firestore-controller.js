@@ -1,4 +1,6 @@
-export const createDBUser = (gmailUser, nameUser) => {
+/* eslint-disable no-loop-func */
+/* eslint-disable max-len */
+const createDBUser = (gmailUser, nameUser) => {
   firebase.firestore().collection('users').doc(gmailUser).set({
     gmail: gmailUser,
     image_port: 'https://tremus.cl/wp-content/uploads/2018/04/HealthyFood.jpg',
@@ -9,7 +11,7 @@ export const createDBUser = (gmailUser, nameUser) => {
     ocupation: 'Ocupacion',
   });
 };
-export const createUserGooFac = (gmailUser, nameUser, imageProfileUser) => {
+const createUserGooFac = (gmailUser, nameUser, imageProfileUser) => {
   firebase.firestore().collection('users').doc(gmailUser).set({
     gmail: gmailUser,
     image_port: 'https://tremus.cl/wp-content/uploads/2018/04/HealthyFood.jpg',
@@ -20,14 +22,8 @@ export const createUserGooFac = (gmailUser, nameUser, imageProfileUser) => {
     ocupation: 'Ocupacion',
   });
 };
-export const constructorPost = () => {
-  const settings = {
-    timestampsInSnapshots: true,
-  };
-  firebase.firestore().settings(settings);
-};
-// eslint-disable-next-line max-len
-export const crearPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privacity, _imagenLink, _imagenName) => firebase.firestore().collection('posts').add({
+
+const crearPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privacity, _imagenLink, _imagenName) => firebase.firestore().collection('posts').add({
   uid: _uid,
   autor: _nameUser,
   gmail: _gmail,
@@ -39,8 +35,16 @@ export const crearPost = (_uid, _nameUser, _gmail, _imageProfile, _description, 
   imagenName: _imagenName,
   date: firebase.firestore.FieldValue.serverTimestamp(),
 });
-
-export const eliminarPost = (doc) => {
+const subirAlStorage = (_file, _uid) => {
+  const refStorage = firebase.storage().ref(`imagesUsers/${_uid}/${_file.name}`);
+  const task = refStorage.put(_file);
+  return task;
+};
+const eliminarStorage = (_uid, _file) => {
+  const desertRef = firebase.storage().ref(`imagesUsers/${_uid}/${_file.nombre}`);
+  return desertRef.delete();
+};
+const eliminarPost = (doc) => {
   const documento = doc.id;
   firebase.firestore().collection('posts').doc(documento).delete()
     .then(() => {
@@ -48,10 +52,10 @@ export const eliminarPost = (doc) => {
       if (doc.data().imagenLink !== null) {
         const uid = doc.data().uid;
         const file = doc.data().imagenName;
-        const desertRef = firebase.storage().ref(`imagesUsers/${uid}/${file.nombre}`);
-        desertRef.delete().then(() => {
-          console.log('se borro de storage');
-        });
+        eliminarStorage(uid, file)
+          .then(() => {
+            console.log('se borro de storage');
+          });
       }
     })
     .catch((error) => {
@@ -60,14 +64,14 @@ export const eliminarPost = (doc) => {
 };
 
 
-export const modificarPost = (_idPost, _description, _privacity) => {
+const modificarPost = (_idPost, _description, _privacity) => {
   firebase.firestore().collection('posts').doc(_idPost).update({
     description: _description,
     privacity: _privacity,
   });
 };
 
-export const traerPost = (callback) => {
+const traerPost = (callback) => {
   firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
     const data = [];
     querySnapshot.forEach((postData) => {
@@ -77,15 +81,41 @@ export const traerPost = (callback) => {
   });
 };
 
-export const traerUsuarios = (email, cb) => {
+const traerUsuarios = (email, cb) => {
   firebase.firestore().collection('users').doc(email).onSnapshot((querySnapshot) => {
     cb(querySnapshot.data());
   });
 };
-export const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => {
+const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => {
   firebase.firestore().collection('users').doc(emailUser).update({
     lenguaje: lenguajeUser,
     location: locacionUser,
     ocupation: ocupacionUser,
   });
+};
+
+const darLike = (user, documento) => {
+  firebase.firestore().collection('posts').doc(documento.id).update({
+    likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
+  });
+};
+const quitarLike = (user, documento) => {
+  firebase.firestore().collection('posts').doc(documento.id).update({
+    likes: firebase.firestore.FieldValue.arrayRemove(user.uid),
+  });
+};
+
+export {
+  createDBUser,
+  createUserGooFac,
+  crearPost,
+  subirAlStorage,
+  eliminarStorage,
+  eliminarPost,
+  modificarPost,
+  traerPost,
+  traerUsuarios,
+  modificarUser,
+  darLike,
+  quitarLike,
 };

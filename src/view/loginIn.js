@@ -1,5 +1,4 @@
 /* eslint-disable import/no-cycle */
-import { changeView } from '../view-controller/router.js';
 import { btnInfo } from '../view-controller/view-info.js';
 import { signInGoogleAccount, signInFacebookAccount, inicioSesion } from '../view-controller/view-signIn.js';
 
@@ -69,7 +68,6 @@ export default () => {
   btnRegistrarse.addEventListener('click', () => {
     window.location.hash = '#/register';
   });
-  // btnRegistrarse.addEventListener('click', changeView('#/register'));
 
   return divElement;
 };

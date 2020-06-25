@@ -12,11 +12,11 @@ export default function mostrarCabecera() {
   </div>
   <nav class="menu">
     <ul>
-      <li class="option_menu_list link_inicio"><i class="fas fa-user-circle"></i>
-        <a >Inicio</a>
-      </li>
-      <li class="option_menu_list link_profile"><i class="fas fa-home"></i>
+      <li class="option_menu_list link_profile"><i class="fas fa-user-circle"></i>
         <a >Perfil</a>
+      </li>
+      <li class="option_menu_list link_inicio"><i class="fas fa-home"></i>
+        <a >Inicio</a>
       </li>
       <li class="option_menu_list2 cerrar_sesion" id="close" ><i class="fas fa-times-circle"></i>
         <a >Cerrar sesión</a>

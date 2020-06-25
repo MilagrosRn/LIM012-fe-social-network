@@ -21,6 +21,7 @@ export default function vistaUsuario(doc) {
   </div>
   <section class="post"></section>`;
   const divElement = document.createElement('div');
+  divElement.className = 'contenedorDescripcionPost';
   divElement.innerHTML = divUser;
 
   const post = divElement.querySelector('.post');
