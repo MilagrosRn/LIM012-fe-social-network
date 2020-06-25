@@ -320,7 +320,7 @@ h1{
     margin-top: 2%;
     height: 2%;}
 .divtop {
-    height: 60%;
+    height: 50%;
     margin: 5%;
     border: 1px solid white;
     border-radius: 15px 15px 15px 15px;
@@ -388,7 +388,7 @@ h3 {
     float: right;
     margin-top: -23.5%;
 }.divbottom {
-    height: 35%;
+    height: 30%;
 }
 .usuarioHome{
     display: block;
