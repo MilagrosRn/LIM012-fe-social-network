@@ -289,7 +289,7 @@ export const postTemplate = (doc) => {
 
   // opcion borrar un post
   btnBorrarPost.addEventListener('click', () => {
-    eliminarPost(doc.id);
+    eliminarPost(doc);
   });
   return divElement;
 };
