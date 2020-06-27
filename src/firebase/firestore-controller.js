@@ -1,28 +1,32 @@
 /* eslint-disable no-loop-func */
 /* eslint-disable max-len */
-const createDBUser = (gmailUser, nameUser) => {
-  firebase.firestore().collection('users').doc(gmailUser).set({
-    gmail: gmailUser,
-    image_port: 'https://tremus.cl/wp-content/uploads/2018/04/HealthyFood.jpg',
-    image_profile: 'https://i1.wp.com/unimooc.com/wp-content/uploads/2015/04/corazon-comida-sana.jpg',
-    lenguaje: 'Idioma',
-    location: 'Locacion',
-    name_user: nameUser,
-    ocupation: 'Ocupacion',
-  });
-};
-const createUserGooFac = (gmailUser, nameUser, imageProfileUser) => {
-  firebase.firestore().collection('users').doc(gmailUser).set({
-    gmail: gmailUser,
-    image_port: 'https://tremus.cl/wp-content/uploads/2018/04/HealthyFood.jpg',
-    image_profile: imageProfileUser,
-    lenguaje: 'Idioma',
-    location: 'Locacion',
-    name_user: nameUser,
-    ocupation: 'Ocupacion',
-  });
-};
+import { eliminarStorage } from './storage-controller.js';
 
+const createDBUser = (gmailUser, nameUser) => firebase.firestore().collection('users').doc(gmailUser).set({
+  gmail: gmailUser,
+  image_port: 'https://tremus.cl/wp-content/uploads/2018/04/HealthyFood.jpg',
+  image_profile: 'https://i1.wp.com/unimooc.com/wp-content/uploads/2015/04/corazon-comida-sana.jpg',
+  lenguaje: 'Idioma',
+  location: 'Locacion',
+  name_user: nameUser,
+  ocupation: 'Ocupacion',
+});
+const createUserGooFac = (gmailUser, nameUser, imageProfileUser) => firebase.firestore().collection('users').doc(gmailUser).set({
+  gmail: gmailUser,
+  image_port: 'https://tremus.cl/wp-content/uploads/2018/04/HealthyFood.jpg',
+  image_profile: imageProfileUser,
+  lenguaje: 'Idioma',
+  location: 'Locacion',
+  name_user: nameUser,
+  ocupation: 'Ocupacion',
+});
+const crearComentario = (_gmail, _idPost, _autor, _imageAutor, _contenido) => firebase.firestore().collection('comentarios').add({
+  gmail: _gmail,
+  idPost: _idPost,
+  autor: _autor,
+  imageAutor: _imageAutor,
+  contenido: _contenido,
+});
 const crearPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privacity, _imagenLink, _imagenName) => firebase.firestore().collection('posts').add({
   uid: _uid,
   autor: _nameUser,
@@ -35,18 +39,10 @@ const crearPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privac
   imagenName: _imagenName,
   date: firebase.firestore.FieldValue.serverTimestamp(),
 });
-const subirAlStorage = (_file, _uid) => {
-  const refStorage = firebase.storage().ref(`imagesUsers/${_uid}/${_file.name}`);
-  const task = refStorage.put(_file);
-  return task;
-};
-const eliminarStorage = (_uid, _file) => {
-  const desertRef = firebase.storage().ref(`imagesUsers/${_uid}/${_file.nombre}`);
-  return desertRef.delete();
-};
+
 const eliminarPost = (doc) => {
   const documento = doc.id;
-  firebase.firestore().collection('posts').doc(documento).delete()
+  return firebase.firestore().collection('posts').doc(documento).delete()
     .then(() => {
       console.log('Document successfully deleted!');
       if (doc.data().imagenLink !== null) {
@@ -62,15 +58,41 @@ const eliminarPost = (doc) => {
       console.error('Error removing document: ', error);
     });
 };
+const eliminarComentario = doc => firebase.firestore().collection('comentarios').doc(doc).delete()
+  .then(() => {
+    console.log('Document successfully deleted!');
+  })
+  .catch((error) => {
+    console.error('Error removing document: ', error);
+  });
+const modificarPost = (_idPost, _description, _privacity) => firebase.firestore().collection('posts').doc(_idPost).update({
+  description: _description,
+  privacity: _privacity,
+});
 
-
-const modificarPost = (_idPost, _description, _privacity) => {
-  firebase.firestore().collection('posts').doc(_idPost).update({
-    description: _description,
-    privacity: _privacity,
+const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => firebase.firestore().collection('users').doc(emailUser).update({
+  lenguaje: lenguajeUser,
+  location: locacionUser,
+  ocupation: ocupacionUser,
+});
+const modificarComentario = (idComentario, _contenido) => firebase.firestore().collection('comentarios').doc(idComentario).update({
+  contenido: _contenido,
+});
+const darLike = (user, documento) => firebase.firestore().collection('posts').doc(documento.id).update({
+  likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
+});
+const quitarLike = (user, documento) => firebase.firestore().collection('posts').doc(documento.id).update({
+  likes: firebase.firestore.FieldValue.arrayRemove(user.uid),
+});
+const traerComentarios = (callback, _idPost) => {
+  firebase.firestore().collection('comentarios').where('idPost', '==', _idPost).onSnapshot((querySnapshot) => {
+    const data = [];
+    querySnapshot.forEach((comentData) => {
+      data.push({ id: comentData.id, ...comentData.data() });
+    });
+    callback(data);
   });
 };
-
 const traerPost = (callback) => {
   firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
     const data = [];
@@ -86,61 +108,10 @@ const traerUsuarios = (email, cb) => {
     cb(querySnapshot.data());
   });
 };
-const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => {
-  firebase.firestore().collection('users').doc(emailUser).update({
-    lenguaje: lenguajeUser,
-    location: locacionUser,
-    ocupation: ocupacionUser,
-  });
-};
-
-const darLike = (user, documento) => {
-  firebase.firestore().collection('posts').doc(documento.id).update({
-    likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
-  });
-};
-const quitarLike = (user, documento) => {
-  firebase.firestore().collection('posts').doc(documento.id).update({
-    likes: firebase.firestore.FieldValue.arrayRemove(user.uid),
-  });
-};
-const crearComentario = (_gmail, _idPost, _autor, _imageAutor, _contenido) => firebase.firestore().collection('comentarios').add({
-  gmail: _gmail,
-  idPost: _idPost,
-  autor: _autor,
-  imageAutor: _imageAutor,
-  contenido: _contenido,
-});
-
-const eliminarComentario = (doc) => {
-  firebase.firestore().collection('comentarios').doc(doc).delete()
-    .then(() => {
-      console.log('Document successfully deleted!');
-    })
-    .catch((error) => {
-      console.error('Error removing document: ', error);
-    });
-};
-const modificarComentario = (idComentario, _contenido) => {
-  firebase.firestore().collection('comentarios').doc(idComentario).update({
-    contenido: _contenido,
-  });
-};
-const traerComentarios = (callback, _idPost) => {
-  firebase.firestore().collection('comentarios').where('idPost', '==', _idPost).onSnapshot((querySnapshot) => {
-    const data = [];
-    querySnapshot.forEach((comentData) => {
-      data.push({ id: comentData.id, ...comentData.data() });
-    });
-    callback(data);
-  });
-};
 export {
   createDBUser,
   createUserGooFac,
   crearPost,
-  subirAlStorage,
-  eliminarStorage,
   eliminarPost,
   modificarPost,
   traerPost,

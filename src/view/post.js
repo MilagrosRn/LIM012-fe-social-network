@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { eliminarPost, modificarPost, crearComentario, traerComentarios } from '../firebase/firestore-controller.js';
-import { verificarLikeUsuario, mostrarLikesUsuarios } from '../view-controller/view-posts.js';
+import { verificarLikeUsuario } from '../view-controller/view-posts.js';
 import { mostrarDataComentarios } from '../view-controller/view-comentario.js';
 
 // fecha en el post
@@ -116,17 +116,6 @@ export const postTemplate = (doc) => {
           <div class = "btn-abrir">
             <p class = "like_text " >Me gusta</p>
           </div>
-          <div class="overlay negative">
-            <div class="popup">
-              <a id = "btn-cerrar-popup" class="btn-cerrar-popup"><i class="far fa-times-circle"></i></a>
-              <h3 class="title-list">Personas que les gusto esta publicacion</h3>
-                <form action="">
-                  <div class="contenedor-inputs">
-                    <div class = "listaUsuarios"></div>
-                  </div>
-                </form>
-            </div>
-        </div>
         </div>
         <div class ="space_comment">
           <img class="icon_comment" src="../imagenes/logoMensaje.png">
@@ -216,10 +205,6 @@ export const postTemplate = (doc) => {
   const btnEditPost = divElement.querySelector('.btnEditPost');
   const btnPrivacidadPriv = divElement.querySelector('.fa-lock');
   const btnPrivacidadPublic = divElement.querySelector('.fa-globe-americas');
-  const btnAbrirPopUp = divElement.querySelector('.btn-abrir');
-  const overlay = divElement.querySelector('.overlay');
-  const popup = divElement.querySelector('.popup');
-  const btnCerrarPopUp = divElement.querySelector('.btn-cerrar-popup');
   const btnGuardarEdicion = divElement.querySelector('.btnGuardarEdicion');
   const btnBorrarPost = divElement.querySelector('.btnBorrarPost');
 
@@ -244,38 +229,24 @@ export const postTemplate = (doc) => {
   let privacityMarked = '';
   btnPrivacidadPriv.addEventListener('click', () => {
     privacityMarked = false;
-    btnPrivacidadPriv.style.transform = 'scale(1.4)';
+    // btnPrivacidadPriv.style.transform = 'scale(1.4)';
   });
   btnPrivacidadPublic.addEventListener('click', () => {
     privacityMarked = true;
-    btnPrivacidadPublic.style.transform = 'scale(1.4)';
+    // btnPrivacidadPublic.style.transform = 'scale(1.4)';
   });
 
-  // opciones ver usuarios que dieron like
-  btnAbrirPopUp.addEventListener('click', () => {
-    overlay.classList.add('active');
-    popup.classList.add('active');
-    // const body = document.getElementsByTagName('body')[0];
-    // body.style.background= 'rgba(0, 0, 0, .2)';
-  });
-  btnCerrarPopUp.addEventListener('click', () => {
-    overlay.classList.remove('active');
-    popup.classList.remove('active');
-  });
+  // marcar el like
+  const arrLikes = doc.data().likes;
+  const found = arrLikes.includes(user.uid);
+  if (found) {
+    btnLike.src = '../imagenes/logolike.png';
+  }
+
   // opcion dar like
   btnLike.addEventListener('click', () => {
-    const arrLikes = doc.data().likes;
-    const found = arrLikes.includes(user.uid);
-    if (found === false) {
-      btnLike.src = '../imagenes/logolike.png';
-    }
     const objUser = verificarLikeUsuario(user, doc, listaUsuarios);
     console.log(objUser);
-
-    // const div = mostrarLikesUsuarios(objUser);
-    // console.log(div);
-    // console.log(listaUsuarios)
-    // listaUsuarios.appendChild(div)
   });
 
   // opcion editar post
