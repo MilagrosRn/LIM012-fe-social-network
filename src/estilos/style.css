@@ -573,94 +573,6 @@
      padding: 10px 15px;
  }
 
- /*--------------modal likes------------*/
- .overlay {
-     background: rgba(0, 0, 0, .2);
-     position: fixed;
-     top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     display: flex;
-     align-items: center;
-     justify-content: center;
- }
-
- .active {
-     visibility: visible;
- }
-
- .negative {
-     visibility: hidden;
- }
-
- .popup {
-     background: #f8f8f8;
-     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-     font-family: serif;
-     padding: 4%;
-     text-align: center;
-     width: 60%;
-
- }
-
- .popup .btn-cerrar-popup {
-     font-size: 1.2em;
-     line-height: 16px;
-     display: block;
-     text-align: right;
-     transition: .3s ease all;
-     color: #BBBBBB;
- }
-
- .btn-cerrar-popup:hover {
-     color: #0CE600;
- }
-
- .popup h3 {
-     font-size: 1rem;
-     font-weight: 80;
-     margin-bottom: 10%;
-
- }
-
- .listaUsuarios {
-     /* font-size: 26px; */
-     font-weight: 100;
-     margin-bottom: 20px;
-     /* opacity: 0; */
-     width: 100%;
-     /* margin-bottom: 20px; */
-     height: 9em;
-     /* font-size: 18px; */
-     /* line-height: 52px; */
-     /* text-align: center; */
-     border: 1px solid #182eac;
-     display: flex;
-     flex-direction: column;
-     margin-bottom: 10%;
- }
-
- .input {
-     width: 95%;
-     border-bottom: 1px solid #BBBBBB;
-     height: 52px;
-     font-size: 18px;
-     display: flex;
-     text-align: center;
-     padding: 2.5%;
- }
-
- .name-user-list {
-     font-size: 25px;
-
- }
-
- .img-usuario-list {
-     width: 15%;
-     font-weight: 50;
- }
-
  /*----------------post por publicar-------------*/
  .text_post {
      border: none;
@@ -946,3 +858,49 @@
  #btn-menuEdit:checked~.desplegar_menu{
 margin-top: 5%;
  }
+ /* --------------------------- */
+.usuarioHome{
+    display: none;
+ }
+ /* comentarios */
+ .crearComentario{ 
+    width: 90%;
+    border: 2px solid #D1D1D1;
+    border-radius: 15px 15px 15px 15px;
+    margin:5% auto;
+    margin-top: 1%;
+    padding-bottom: 2%;
+ }
+ .titleComentario{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding:4%;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    margin-top: 1%;
+ }
+ .nombreUsuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .description_comentario{
+    padding-left: 4%; 
+    display: flex;
+ }
+ .text_comentario{
+    width: 80%;
+    padding-left: 2%;
+    background: #ADE4A1;
+    border: 1px solid #D1D1D1;
+    border-radius: 15px 15px 15px 15px;
+ }
+ .GuardarComentario{
+    background: #E60712;
+    box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.53);
+    border-radius: 50%;
+    margin-left: 3%;
+    padding: 3%;
+ }
+ 

@@ -11,6 +11,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest --verbose --coverage",
+    "test:watch": "jest --watch",
     "start": "serve src/"
   },
   "devDependencies": {
@@ -31,6 +32,7 @@
     "stylelint-config-recommended": "^2.2.0"
   },
   "dependencies": {
-    "firebase": "^7.15.0"
+    "firebase": "^7.15.0",
+    "mock-cloud-firestore": "^0.12.0"
   }
 }

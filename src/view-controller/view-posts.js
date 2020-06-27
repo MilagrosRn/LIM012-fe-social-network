@@ -1,8 +1,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 import {
-  crearPost, subirAlStorage, darLike, quitarLike,
+  crearPost, darLike, quitarLike,
 } from '../firebase/firestore-controller.js';
+import { subirAlStorage } from '../firebase/storage-controller.js';
 
 const previsualizarImagen = (input, divShowContent) => {
   const file = input.files[0];
@@ -65,39 +66,19 @@ const crearPostFuncion = (uid, nameUser, gmail, imageProfile, description, priva
     }).catch(error => console.log('error con post', error));
 };
 
-const mostrarLikesUsuarios = (user) => {
-  console.log(user);
-  let divUsuario = '';
-  divUsuario += `
-            <div class = "input">
-              <img class="img-usuario-list" src="${user.profile}" >
-              <h1 class="name-user-list">${user.name}</h1>
-            </div>`;
-  //         });
-  //     }
-  const div = document.createElement('div');
-  div.innerHTML = divUsuario;
-  return div;
-};
+
 const verificarLikeUsuario = (user, documento) => {
   const arrLikes = documento.data().likes;
   const found = arrLikes.includes(user.uid);
   if (found === false) {
     darLike(user, documento);
-    // const div = mostrarLikesUsuarios(user);
-    // contenido.appendChild(div);
   } else {
     quitarLike(user, documento);
   }
-  return {
-    profile: user.photoURL,
-    name: user.displayName,
-  };
 };
 
 export {
   verificarLikeUsuario,
-  mostrarLikesUsuarios,
   previsualizarImagen,
   subirImagen,
   mostrarEstado,

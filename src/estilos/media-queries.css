@@ -26,9 +26,6 @@
 
 /* Móviles vertical */
 @media (max-width:768px){
-    body{
-        background: green;
-    }
     header label{
       display: block;
       display: flex;
@@ -75,9 +72,6 @@
   }
   /*moviles pequeños horizntal*/
   @media screen and (min-width:665px){
-    body{
-        background: indigo;
-    }
    .button_send {
     padding-top: 2%;
     padding-right: 2.3%;
@@ -105,9 +99,6 @@
 }
  /* Móviles en horizontal o tablets en vertical */
 @media screen and (min-width:769px){
-    body{
-        background: teal;
-    }
 /* ------vista registrarse----------- */
 h1{
     font-size: 2.5em;
@@ -197,11 +188,8 @@ header {
 }
 /* Tablets en horizonal y escritorios normales*/
 @media screen and (min-width:1024px){
-    body{
-        background: yellow;
-    }
-    
-    /* ------vista login----------- */
+
+ /* ------vista login----------- */
 .iconLogin{
     font-size: 1.1rem;
 }
