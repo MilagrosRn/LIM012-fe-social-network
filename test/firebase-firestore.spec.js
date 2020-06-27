@@ -1,6 +1,19 @@
 import MockFirebase from '../_mocks_/firestore-mock.js';
 import {
-  eliminarComentario, crearComentario, createDBUser, createUserGooFac, modificarUser, modificarPost, modificarComentario,
+  eliminarDocumentoEnPost,
+  eliminarComentario,
+  crearComentario,
+  createDBUser,
+  createUserGooFac,
+  modificarUser,
+  modificarPost,
+  modificarComentario,
+  crearPost,
+  traerPost,
+  traerUsuarios,
+  darLike,
+  quitarLike,
+  traerComentarios,
 } from '../src/firebase/firestore-controller.js';
 
 global.firebase = new MockFirebase();
@@ -15,31 +28,8 @@ const likes = [];
 const privacity = true;
 const uid = '8RTVKW86wQZ9vzkg8Yua8ithOug2';
 const description = '_description';
-const documento = {
-  id: 'cdfc',
-  data: {},
-};
-const user = {
-  uid: '8RTVKW86wQZ9vzkg8Yu',
-  displayName: 'user_3',
-};
+const documento = 'Av5OagKGiJKeslxvNGkI';
 // CREAR DATA
-
-
-// PUEDES HACER ESTA FUNCION CON EL TUTORIAL?????? YO HICE MOCKS MANUALES PORQUE SE ME COMPLICO LA LIBRERIA
-
-
-// describe('funcion crearPost', () => {
-//   it('Deberia crear un documento en la coleccion posts', (done) => {
-//     return crearPost(uid, nameUser, gmailUser, description, imageProfile, imagenLink, imagenName, likes, privacity).then((doc) => {
-//       expect(doc).toBe('se creo un documento en coleccion');
-//       done();
-//     });
-//   });
-// });
-
-// FALTA ELIMINAR DATA Y TRAER DATA (ES CON ONSNAPSHOT Y ESO NO SE PUEDE IMITAR CON MOCKS MANUALES),ESTA EN EL VIDEO
-
 describe('funcion crearComentario', () => {
   it('Deberia crear un documento en la coleccion comentarios', (done) => {
     crearComentario(gmailUser, uid, nameUser, imagenLink, description).then((doc) => {
@@ -117,7 +107,7 @@ describe('funcion modificarComentario', () => {
 });
 // ELIMINAR DATA
 describe('funcion eliminarDocumentoEnPost', () => {
-  it('Deberia actualizar un documento en la coleccion posts', (done) => {
+  it('Deberia borrar un documento en la coleccion posts', (done) => {
     eliminarDocumentoEnPost(documento).then((doc) => {
       expect(doc).toBe('se borro documento');
       done();

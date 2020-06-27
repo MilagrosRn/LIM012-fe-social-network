@@ -2,14 +2,17 @@ const firebaseFirestore = () => ({
   collection: name => ({
     doc: gmailUser => ({
       set: objDoc => new Promise((resolve) => {
-        resolve(`se creo usuario ${gmailUser}`);
+        resolve(objDoc);
       }),
       update: objDoc => new Promise((resolve) => {
-        resolve('se actualizo documento');
+        resolve(objDoc);
+      }),
+      delete: () => new Promise((resolve) => {
+        resolve('se borro documento');
       }),
     }),
     add: objDoc => new Promise((resolve) => {
-      resolve('se creo un documento en coleccion');
+      resolve(objDoc);
     }),
   }),
 });

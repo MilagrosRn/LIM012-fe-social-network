@@ -5,9 +5,8 @@ import { mocksdk } from '../_mocks_/firebase-mock.js';
 
 global.firebase = mocksdk;
 
-
 describe('funcion signIn con email y password', () => {
-  it('Deberia loguearse un usuario con email y conraseña', (done) => {
+  it('Deberia loguearse un usuario con email y contraseña', (done) => {
     signIn('example@gmail.com', '123456').then((user) => {
       expect(user.email).toBe('example@gmail.com');
       done();
@@ -15,7 +14,7 @@ describe('funcion signIn con email y password', () => {
   });
 });
 describe('funcion createUser con email y password', () => {
-  it('Deberia crearse un usuario con email y conraseña', (done) => {
+  it('Deberia crearse un usuario con email y contraseña', (done) => {
     createUser('exampleCreate@outlook.com', '123456').then((user) => {
       expect(user.email).toBe('exampleCreate@outlook.com');
       done();

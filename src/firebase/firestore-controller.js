@@ -39,10 +39,11 @@ const crearPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privac
   imagenName: _imagenName,
   date: firebase.firestore.FieldValue.serverTimestamp(),
 });
+const eliminarDocumentoEnPost = documento => firebase.firestore().collection('posts').doc(documento).delete();
 
 const eliminarPost = (doc) => {
   const documento = doc.id;
-  return firebase.firestore().collection('posts').doc(documento).delete()
+  eliminarDocumentoEnPost(documento)
     .then(() => {
       console.log('Document successfully deleted!');
       if (doc.data().imagenLink !== null) {
@@ -58,13 +59,13 @@ const eliminarPost = (doc) => {
       console.error('Error removing document: ', error);
     });
 };
-const eliminarComentario = doc => firebase.firestore().collection('comentarios').doc(doc).delete()
-  .then(() => {
-    console.log('Document successfully deleted!');
-  })
-  .catch((error) => {
-    console.error('Error removing document: ', error);
-  });
+const eliminarComentario = doc => firebase.firestore().collection('comentarios').doc(doc).delete();
+// .then(() => {
+//   console.log('Document successfully deleted!');
+// })
+// .catch((error) => {
+//   console.error('Error removing document: ', error);
+// });
 const modificarPost = (_idPost, _description, _privacity) => firebase.firestore().collection('posts').doc(_idPost).update({
   description: _description,
   privacity: _privacity,
@@ -113,6 +114,7 @@ export {
   createUserGooFac,
   crearPost,
   eliminarPost,
+  eliminarDocumentoEnPost,
   modificarPost,
   traerPost,
   traerUsuarios,
