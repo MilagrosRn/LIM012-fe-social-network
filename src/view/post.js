@@ -98,9 +98,17 @@ export const postTemplate = (doc) => {
         </figure> 
       </div>
       <div class="description_post">
-        <div class="description_text">
-          <p class="content_description_text" >${doc.data().description}</p>
-        </div>`;
+        `;
+  if (doc.data().description === '') {
+    divPostPublicado += ' ';
+  } else {
+    divPostPublicado += `
+      <div class="description_text">
+        <p class="content_description_text" >${doc.data().description}</p>
+      </div>
+    `;
+  }
+
   if (doc.data().imagenLink === undefined || doc.data().imagenLink === null) {
     divPostPublicado += ' ';
   } else {

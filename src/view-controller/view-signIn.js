@@ -27,57 +27,58 @@ const signInAccount = (email, password) => {
 // FUNCION PARA CREAR UN USUARIO Y VERIFICACION CON CORREO
 const createAccount = (newEmail, newPassword, newUser) => {
   const divValidations = document.querySelector('.divValidations');
-  createDBUser(newEmail, newUser);
   createUser(newEmail, newPassword)
-    .then((result) => {
-      const modal = document.getElementById('validarModal');
-      const span = document.getElementsByClassName('close')[0];
-      const body = document.getElementsByTagName('body')[0];
-      modal.style.display = 'block';
-      body.style.position = 'static';
-      body.style.height = '100%';
-      body.style.overflow = 'hidden';
-      span.onclick = () => {
-        modal.style.display = 'none';
-        body.style.position = 'inherit';
-        body.style.height = 'auto';
-        body.style.overflow = 'visible';
-        changeView('#/login');
-      };
-      window.onclick = (event) => {
-        if (event.target === modal) {
+    .then(() => {
+      createDBUser(newEmail, newUser).then((result) => {
+        const modal = document.getElementById('validarModal');
+        const span = document.getElementsByClassName('close')[0];
+        const body = document.getElementsByTagName('body')[0];
+        modal.style.display = 'block';
+        body.style.position = 'static';
+        body.style.height = '100%';
+        body.style.overflow = 'hidden';
+        span.onclick = () => {
           modal.style.display = 'none';
           body.style.position = 'inherit';
           body.style.height = 'auto';
           body.style.overflow = 'visible';
-        }
-      };
-      // esta accediendo y trayendo el nombre dle usuario
-      result.user.updateProfile({
-        displayName: newUser,
-      });
-      const configuracion = {
-        url: 'http://localhost:5000/#/home',
-      };
-      result.user.sendEmailVerification(configuracion)
-        .catch((error) => {
-          console.log(error);
-          divValidations.textContent = 'ha ocurrido un error intente nuevamente';
+          changeView('#/login');
+        };
+        window.onclick = (event) => {
+          if (event.target === modal) {
+            modal.style.display = 'none';
+            body.style.position = 'inherit';
+            body.style.height = 'auto';
+            body.style.overflow = 'visible';
+          }
+        };
+        // esta accediendo y trayendo el nombre dle usuario
+        result.user.updateProfile({
+          displayName: newUser,
         });
-      // que no guarde al usuario hasta clickear en el link
-      firebase.auth().signOut();
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      if (errorCode === 'auth/email-already-in-use') {
-        divValidations.innerHTML = 'Querido usuario, este correo ya esta en uso';
-      } else if (errorCode === 'auth/invalid-email') {
-        divValidations.innerHTML = 'Querido usuario, ingrese un correo válido';
-      } else if (errorCode === 'auth/weak-password') {
-        divValidations.textContent = 'Querido usuario, recuerde que su contraseña debe tener 6 digitos';
-      } else {
-        divValidations.textContent = 'ha ocurrido un error intente nuevamente';
-      }
+        const configuracion = {
+          url: 'http://localhost:5000/#/home',
+        };
+        result.user.sendEmailVerification(configuracion)
+          .catch((error) => {
+            console.log(error);
+            divValidations.textContent = 'ha ocurrido un error intente nuevamente';
+          });
+        // que no guarde al usuario hasta clickear en el link
+        firebase.auth().signOut();
+      })
+        .catch((error) => {
+          const errorCode = error.code;
+          if (errorCode === 'auth/email-already-in-use') {
+            divValidations.innerHTML = 'Querido usuario, este correo ya esta en uso';
+          } else if (errorCode === 'auth/invalid-email') {
+            divValidations.innerHTML = 'Querido usuario, ingrese un correo válido';
+          } else if (errorCode === 'auth/weak-password') {
+            divValidations.textContent = 'Querido usuario, recuerde que su contraseña debe tener 6 digitos';
+          } else {
+            divValidations.textContent = 'ha ocurrido un error intente nuevamente';
+          }
+        });
     });
 };
 
