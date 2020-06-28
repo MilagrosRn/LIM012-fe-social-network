@@ -26,6 +26,7 @@ const crearComentario = (_gmail, _idPost, _autor, _imageAutor, _contenido) => fi
   autor: _autor,
   imageAutor: _imageAutor,
   contenido: _contenido,
+  date: firebase.firestore.FieldValue.serverTimestamp(),
 });
 const crearPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privacity, _imagenLink, _imagenName) => firebase.firestore().collection('posts').add({
   uid: _uid,
@@ -86,13 +87,14 @@ const quitarLike = (user, documento) => firebase.firestore().collection('posts')
   likes: firebase.firestore.FieldValue.arrayRemove(user.uid),
 });
 const traerComentarios = (callback, _idPost) => {
-  firebase.firestore().collection('comentarios').where('idPost', '==', _idPost).onSnapshot((querySnapshot) => {
-    const data = [];
-    querySnapshot.forEach((comentData) => {
-      data.push({ id: comentData.id, ...comentData.data() });
+  firebase.firestore().collection('comentarios').orderBy('date', 'desc').where('idPost', '==', _idPost)
+    .onSnapshot((querySnapshot) => {
+      const data = [];
+      querySnapshot.forEach((comentData) => {
+        data.push({ id: comentData.id, ...comentData.data() });
+      });
+      callback(data);
     });
-    callback(data);
-  });
 };
 const traerPost = (callback) => {
   firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {

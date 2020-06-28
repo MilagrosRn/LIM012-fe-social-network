@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
 import {
   previsualizarImagen,
@@ -35,8 +36,8 @@ export default function crearPostTemplate(doc) {
     </div>
   </div>
   <div class ="option_image_public" style="display:none">
-    Select an image file: 
-    <progress value="0" max="100" id="uploader">0%</progress>
+    Carga una imagen: 
+    <progress value="0" max="100" id="uploader" class="barraStyle">0%</progress>
     <input type="file" id="fileInput">
     <div id="fileDisplayArea"></div>
   </div>

@@ -59,8 +59,8 @@ export const postTemplate = (doc) => {
     <div class="title_user title_user_public">
       <div class = "menu_edit_post">
        <div class="header_menu_edit">
+          <label class ="label-menu-option">
           <input type="checkbox" name="" id="btn-menuEdit">
-          <label for="btn-menuEdit">
            <div class="desplegar_menu">
               <i class="img_menupost fas fa-ellipsis-h"></i>
            </div>
@@ -140,8 +140,8 @@ export const postTemplate = (doc) => {
             </div>
           </figure>   
           <div class="menu_privacity_user">
-            <div class="icon_privacity"><i class="fas fa-lock"></i></div>
-            <div class="icon_privacity"><i class="fas fa-globe-americas"></i></div>
+            <div class="icon_privacity"><i class="fas fa-lock fa-lock-public" ></i></div>
+            <div class="icon_privacity"><i class="fas fa-globe-americas globe-americas-public"></i></div>
           </div>
         </div>
         <div class="description_post">
@@ -183,13 +183,25 @@ export const postTemplate = (doc) => {
   const editarPost = divElement.querySelector('.editarPost');
   const postPublic = divElement.querySelector('.post_public');
   const btnEditPost = divElement.querySelector('.btnEditPost');
-  const btnPrivacidadPriv = divElement.querySelector('.fa-lock');
-  const btnPrivacidadPublic = divElement.querySelector('.fa-globe-americas');
+  const btnPrivacidadPrivEdit = divElement.querySelector('.fa-lock-public');
+  const btnPrivacidadPublicEdit = divElement.querySelector('.globe-americas-public');
   const btnGuardarEdicion = divElement.querySelector('.btnGuardarEdicion');
   const btnBorrarPost = divElement.querySelector('.btnBorrarPost');
-
   const btnLike = divElement.querySelector('#icon_like');
   const listaUsuarios = divElement.querySelector('.listaUsuarios');
+  const hideOptionPost = divElement.querySelector('#btn-menuEdit');
+
+  hideOptionPost.addEventListener('change', () => {
+    const menuEdit = divElement.querySelector('.menuEdit');
+    const desplegarMenu = divElement.querySelector('.desplegar_menu');
+    if (hideOptionPost.checked) {
+      menuEdit.classList.add('showMenuEdit');
+      desplegarMenu.classList.add('.deployOptions');
+    } else {
+      menuEdit.classList.remove('showMenuEdit');
+      desplegarMenu.classList.remove('.deployOptions');
+    }
+  });
 
   if (user.email === doc.data().gmail) {
     menuEditPost.style.display = 'block';
@@ -201,20 +213,12 @@ export const postTemplate = (doc) => {
 
   // mostar opcion editar
   btnEditPost.addEventListener('click', () => {
+    const textPost = divElement.querySelector('.text_post');
     editarPost.style.display = 'block';
     postPublic.style.display = 'none';
+    textPost.style.border = '1px solid rgba(0, 0, 0, 0.53)';
   });
 
-  // opciones privacidad
-  let privacityMarked = '';
-  btnPrivacidadPriv.addEventListener('click', () => {
-    privacityMarked = false;
-    btnPrivacidadPriv.style.transform = 'scale(1.4)';
-  });
-  btnPrivacidadPublic.addEventListener('click', () => {
-    privacityMarked = true;
-    btnPrivacidadPublic.style.transform = 'scale(1.4)';
-  });
   // comentarios
   const divcrearComentario = divElement.querySelector('.crearComentario');
   divcrearComentario.style.display = 'none';
@@ -250,10 +254,24 @@ export const postTemplate = (doc) => {
     verificarLikeUsuario(user, doc, listaUsuarios);
   });
 
+  // opcion privacidad al editar
+  let privacitySelection = '';
+  btnPrivacidadPrivEdit.addEventListener('click', () => {
+    privacitySelection = false;
+  });
+  btnPrivacidadPublicEdit.addEventListener('click', () => {
+    privacitySelection = true;
+  });
+
   // opcion editar post
   btnGuardarEdicion.addEventListener('click', () => {
     const description = divElement.querySelector('.textPost').value;
-    const privacityCollection = privacityMarked === true;
+    let privacityCollection = '';
+    if (privacitySelection) {
+      privacityCollection = true;
+    } else {
+      privacityCollection = false;
+    }
     modificarPost(doc.id, description, privacityCollection);
     editarPost.style.display = 'none';
     postPublic.style.display = 'block';
