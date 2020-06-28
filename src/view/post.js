@@ -3,7 +3,7 @@ import {
   eliminarPost, modificarPost, crearComentario, traerComentarios,
 } from '../firebase/firestore-controller.js';
 import { verificarLikeUsuario } from '../view-controller/view-posts.js';
-import { mostrarDataComentarios } from '../view-controller/view-comentario.js';
+import { mostrarDataComentarios, agregarComentario } from '../view-controller/view-comentario.js';
 
 // fecha en el post
 class Utilidad {
@@ -228,7 +228,7 @@ export const postTemplate = (doc) => {
     divcrearComentario.style.display = 'block';
     const nuevonodo = (data) => {
       nodo.innerHTML = '';
-      mostrarDataComentarios(data, nodo);
+      mostrarDataComentarios(data, nodo, doc);
     };
     traerComentarios(nuevonodo, doc.id);
   });
@@ -237,8 +237,9 @@ export const postTemplate = (doc) => {
   GuardarComentario.addEventListener('click', () => {
     const textComentario = divElement.querySelector('.text_comentario');
     crearComentario(user.email, doc.id, user.displayName, user.photoURL, textComentario.value)
-      .then(() => {
+      .then((data) => {
         textComentario.value = '';
+        agregarComentario(data.id, doc);
       }).catch(error => console.log('error con post', error));
   });
 

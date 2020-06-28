@@ -1,8 +1,8 @@
 import crearComentarioTemplate from '../view/comentarios.js';
 
-export const mostrarDataComentarios = (data, nodo) => {
+export const mostrarDataComentarios = (data, nodo, id) => {
   data.forEach((element) => {
-    nodo.appendChild(crearComentarioTemplate(element));
+    nodo.appendChild(crearComentarioTemplate(element, id));
   });
 };
 
@@ -11,5 +11,5 @@ export const agregarComentario = (idComentario, documento) => firebase.firestore
 });
 
 export const quitarComentario = (idComentario, documento) => firebase.firestore().collection('posts').doc(documento.id).update({
-  likes: firebase.firestore.FieldValue.arrayRemove(idComentario),
+  contadorComentarios: firebase.firestore.FieldValue.arrayRemove(idComentario),
 });
