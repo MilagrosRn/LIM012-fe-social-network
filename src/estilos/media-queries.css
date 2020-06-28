@@ -482,4 +482,20 @@
     .divbottom {
         height: 35%;
     }
+
+    #margenPost {
+        margin-bottom: 38%;
+    }
+
+    .post {
+        border: none;
+    }
+
+    #post_init {
+        border-top: 1px solid #999999e6;
+    }
+
+    #fileDisplayArea img {
+        width: 20%;
+    }
 }
