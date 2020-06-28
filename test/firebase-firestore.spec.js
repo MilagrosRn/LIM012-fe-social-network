@@ -11,7 +11,6 @@ global.firebase = new MockFirebase();
 const gmailUser = 'user_1@gmail.com';
 const nameUser = 'user_3';
 const imageProfileUser = 'imageProfileUser';
-const imageProfile = 'https://i1.wp.com/comida-sana.jpg';
 const imagenLink = 'https://i1.wp.com/comida-sana.jpg';
 const imagenName = 'icon.png';
 const likes = [];
