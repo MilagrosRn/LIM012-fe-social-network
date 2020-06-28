@@ -113,7 +113,7 @@ export const postTemplate = (doc) => {
       </div>
       <div  class="options_post_public">
         <div class ="space_likes">
-          <img class="icon_like" id="icon_like" src="../imagenes/logoColor.png">
+          <img class="icon_like" id="icon_like" src="../imagenes/logosinborde.png">
           <p class = "contador_likes">${doc.data().likes.length}</p>
           <div class = "btn-abrir">
             <p class = "like_text " >Me gusta</p>
@@ -179,22 +179,6 @@ export const postTemplate = (doc) => {
   const divElement = document.createElement('div');
   divElement.innerHTML = divPostPublicado;
 
-  const divcrearComentario = divElement.querySelector('.crearComentario');
-  divcrearComentario.style.display = 'none';
-  const iconComment = divElement.querySelector('.icon_comment');
-  iconComment.addEventListener('click', () => {
-    divcrearComentario.style.display = 'block';
-  });
-
-  const GuardarComentario = divElement.querySelector('.GuardarComentario');
-  GuardarComentario.addEventListener('click', () => {
-    const textComentario = divElement.querySelector('.text_comentario');
-    crearComentario(user.email, doc.id, user.displayName, user.photoURL, textComentario.value)
-      .then(() => {
-        textComentario.value = '';
-      }).catch(error => console.log('error con post', error));
-  });
-
   const menuEditPost = divElement.querySelector('.menu_edit_post');
   const editarPost = divElement.querySelector('.editarPost');
   const postPublic = divElement.querySelector('.post_public');
@@ -203,7 +187,6 @@ export const postTemplate = (doc) => {
   const btnPrivacidadPublicEdit = divElement.querySelector('.globe-americas-public');
   const btnGuardarEdicion = divElement.querySelector('.btnGuardarEdicion');
   const btnBorrarPost = divElement.querySelector('.btnBorrarPost');
-
   const btnLike = divElement.querySelector('#icon_like');
   const listaUsuarios = divElement.querySelector('.listaUsuarios');
   const hideOptionPost = divElement.querySelector('#btn-menuEdit');

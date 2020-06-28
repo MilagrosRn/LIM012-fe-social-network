@@ -111,58 +111,6 @@ const traerUsuarios = (email, cb) => {
     cb(querySnapshot.data());
   });
 };
-<<<<<<< HEAD
-=======
-const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => {
-  firebase.firestore().collection('users').doc(emailUser).update({
-    lenguaje: lenguajeUser,
-    location: locacionUser,
-    ocupation: ocupacionUser,
-  });
-};
-
-const darLike = (user, documento) => {
-  firebase.firestore().collection('posts').doc(documento.id).update({
-    likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
-  });
-};
-const quitarLike = (user, documento) => {
-  firebase.firestore().collection('posts').doc(documento.id).update({
-    likes: firebase.firestore.FieldValue.arrayRemove(user.uid),
-  });
-};
-const crearComentario = (_gmail, _idPost, _autor, _imageAutor, _contenido) => firebase.firestore().collection('comentarios').add({
-  gmail: _gmail,
-  idPost: _idPost,
-  autor: _autor,
-  imageAutor: _imageAutor,
-  contenido: _contenido,
-});
-
-const eliminarComentario = (doc) => {
-  firebase.firestore().collection('comentarios').doc(doc).delete()
-    .then(() => {
-      console.log('Document successfully deleted!');
-    })
-    .catch((error) => {
-      console.error('Error removing document: ', error);
-    });
-};
-const modificarComentario = (idComentario, _contenido) => {
-  firebase.firestore().collection('comentarios').doc(idComentario).update({
-    contenido: _contenido,
-  });
-};
-const traerComentarios = (callback) => {
-  firebase.firestore().collection('comentarios').onSnapshot((querySnapshot) => {
-    const data = [];
-    querySnapshot.forEach((comentData) => {
-      data.push(comentData);
-    });
-    callback(data);
-  });
-};
->>>>>>> 2192c9b5d48daa7b7c8b296e8a10757af4e0b5fe
 export {
   createDBUser,
   createUserGooFac,
