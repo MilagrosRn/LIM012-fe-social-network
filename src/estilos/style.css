@@ -872,3 +872,41 @@ margin-top: 5%;
    margin-left: 3%;
    padding: 3%;
 }
+/* --------------calses menu toggle------- */
+.deployOptions {
+   margin-top: 5%;
+}
+
+.showMenuEdit {
+   display: block;
+   margin-inline-start: -400%;
+   position: relative;
+   background: #4ec448fb;
+}
+/* ------barra progreso--------------- */
+.barraStyle{
+   border-radius: 10px;
+}
+.barraStyle::-webkit-progress-bar{
+   border-radius: 10px;
+   background: #fff;
+}
+.barraStyle::-webkit-progress-value{
+   background: #ADE4A1;
+   border-radius: 10px;
+}
+/* ----------- editar comentario--------  */
+.title_user_public {   
+    flex-direction: row-reverse;
+}
+
+.menu_edit_Comentario {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    font-size: 1.9em;
+}
+.alerta{
+   margin-top: 12%;
+   font-size: 1.2em;
+}

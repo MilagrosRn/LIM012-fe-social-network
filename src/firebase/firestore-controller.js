@@ -38,6 +38,7 @@ const crearPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privac
   imagenLink: _imagenLink,
   imagenName: _imagenName,
   date: firebase.firestore.FieldValue.serverTimestamp(),
+  contadorComentarios: [],
 });
 const eliminarDocumentoEnPost = documento => firebase.firestore().collection('posts').doc(documento).delete();
 

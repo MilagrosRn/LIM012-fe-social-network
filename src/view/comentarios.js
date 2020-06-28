@@ -1,4 +1,5 @@
 import { eliminarComentario, modificarComentario } from '../firebase/firestore-controller.js';
+// import { quitarComentario } from '../view-controller/view-comentario.js';
 
 export default function crearComentarioTemplate(doc) {
   const divComentario = `
@@ -49,6 +50,7 @@ export default function crearComentarioTemplate(doc) {
   const divBtnEliminarComent = divElement.querySelector('.divBtnEliminarComent');
   divBtnEliminarComent.addEventListener('click', () => {
     eliminarComentario(doc.id);
+    // quitarComentario(idPost, doc.id);
   });
 
   const divBtnEditarComent = divElement.querySelector('.divBtnEditarComent');
