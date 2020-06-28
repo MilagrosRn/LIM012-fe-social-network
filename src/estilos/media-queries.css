@@ -498,4 +498,100 @@
     #fileDisplayArea img {
         width: 20%;
     }
+ .contenedorUserProfile, .contenedorDescripcionPost{
+    display: flex;
+}
+.containerUserHome {
+    display: block;
+    display: block;
+    width: 70%;
+    padding-right: 2%;
+    padding-left: 5%;
+}
+.post{
+    margin-right: 5%;
+    margin-top: 2%;
+    height: 2%;}
+.divtop {
+    height: 50%;
+    margin: 5%;
+    border: 1px solid white;
+    border-radius: 15px 15px 15px 15px;
+    background: #ECEBEB;
+}
+.space_post {
+    width: 57.5%;
+    margin-right: 2%;
+    float: right;
+    margin-top: -23.5%;
+}
+.divbottom {
+    height: 30%;
+  
+}
+.imagePerfile {
+    width: 30%;
+    height: 30%;
+    margin-top: -10%;
+}
+h2 {
+    font-family: FontRegular;
+    font-size: 1.1em;
+}
+h3 {
+    color: #766E72;
+    font-size: 0.8em;
+}
+.text_post {
+    display: flex;
+    font-family: FontMediumItalic;
+    font-style: italic;
+    font-size: 1em;
+    color: #999999e6;
+}
+.options_post p {
+    font-family: FontRegular;
+    font-size: 1em;
+}
+.icon_privacity{
+    margin-left: 3%;
+}
+.fa-lock, .fa-globe-americas{
+    font-size: 1.5em;
+}
+.fa-lock:hover, .fa-globe-americas:hover{
+    font-size: 2.1rem;
+}
+header {
+    height: 5.5em;
+}
+.img-logo-header {
+    width: 280px;
+    height: 100%;
+}
+/*perfil*/
+.contenedorDescripcionPost {
+    display: flex;
+}.containerUser    {
+    display: block;
+    width: 70%;
+    padding-right: 2%;
+    padding-left: 5%;
+    /* background: red; */
+}
+#userDescription2{
+    /* background: rgb(1, 9, 51); */
+    display: block;
+    width: 100%;
+}
+#containerPost{width: 57.5%;
+    margin-right: 2%;
+    float: right;
+    margin-top: -23.5%;
+}.divbottom {
+    height: 30%;
+}
+.usuarioHome{
+    display: block;
+}
 }

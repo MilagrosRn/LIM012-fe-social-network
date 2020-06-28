@@ -1,9 +1,15 @@
-/* eslint-disable import/no-unresolved */
-import crearComentarioTemplate from '../view/comentario.js';
+import crearComentarioTemplate from '../view/comentarios.js';
 
-export const mostrarDataComentarios = (data, nodo) => {
-  console.log(data);
+export const mostrarDataComentarios = (data, nodo, id) => {
   data.forEach((element) => {
-    nodo.appendChild(crearComentarioTemplate(element));
+    nodo.appendChild(crearComentarioTemplate(element, id));
   });
 };
+
+export const agregarComentario = (idComentario, documento) => firebase.firestore().collection('posts').doc(documento.id).update({
+  contadorComentarios: firebase.firestore.FieldValue.arrayUnion(idComentario),
+});
+
+export const quitarComentario = (idComentario, documento) => firebase.firestore().collection('posts').doc(documento.id).update({
+  contadorComentarios: firebase.firestore.FieldValue.arrayRemove(idComentario),
+});

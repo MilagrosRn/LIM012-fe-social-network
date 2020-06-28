@@ -1,8 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
-import {
-  crearPost, darLike, quitarLike,
-} from '../firebase/firestore-controller.js';
+import { crearPost, darLike, quitarLike } from '../firebase/firestore-controller.js';
 import { subirAlStorage } from '../firebase/storage-controller.js';
 
 const previsualizarImagen = (input, divShowContent) => {

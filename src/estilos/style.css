@@ -934,6 +934,7 @@
      flex-direction: row-reverse;
  }
 
+
  .menu_edit_Comentario {
      display: flex;
      justify-content: space-between;
@@ -941,7 +942,13 @@
      font-size: 1.9em;
  }
 
+
  .alerta {
     margin-top: 12%;
     font-size: 1.2em;
+
+}
+.alerta{
+   margin-top: 12%;
+   font-size: 1.2em;
 }
