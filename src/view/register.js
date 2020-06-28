@@ -69,7 +69,9 @@ export default () => {
   btnInformacion.addEventListener('click', btnInfo);
 
   const btnRegistrarse = divElement.querySelector('.boton_registrarse');
-  btnRegistrarse.addEventListener('click', registrarUsuario);
+  btnRegistrarse.addEventListener('click', () => {
+    registrarUsuario();
+  });
 
   const btnInicioSesion = divElement.querySelector('.inicio_sesion');
   btnInicioSesion.addEventListener('click', () => {

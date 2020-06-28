@@ -2,7 +2,7 @@ import createPostTemplate from './createPost.js';
 
 export default function vistaUsuario(doc) {
   const divUser = `
-  <div class="containerUserHome">
+  <div class="containerUserHome usuarioHome">
     <div class="divtop">
       <img src="${doc.image_port}" class="imagePortada">
       <center><img src="${doc.image_profile}" class="imagePerfile"></center>
@@ -21,6 +21,7 @@ export default function vistaUsuario(doc) {
   </div>
   <section class="post"></section>`;
   const divElement = document.createElement('div');
+  
   divElement.className = 'contenedorDescripcionPost';
   divElement.innerHTML = divUser;
 
