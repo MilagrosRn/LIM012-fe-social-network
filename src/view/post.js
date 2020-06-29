@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-cycle
 import {
-  eliminarPost, modificarPost, crearComentario, traerComentarios,
+  modificarPost, crearComentario, traerComentarios,
 } from '../firebase/firestore-controller.js';
-import { verificarLikeUsuario } from '../view-controller/view-posts.js';
+import { verificarLikeUsuario, eliminarPost } from '../view-controller/view-posts.js';
 import { mostrarDataComentarios, agregarComentario } from '../view-controller/view-comentario.js';
 
 // fecha en el post

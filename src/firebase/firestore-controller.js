@@ -1,6 +1,5 @@
 /* eslint-disable no-loop-func */
 /* eslint-disable max-len */
-import { eliminarStorage } from './storage-controller.js';
 
 const createDBUser = (gmailUser, nameUser) => firebase.firestore().collection('users').doc(gmailUser).set({
   gmail: gmailUser,
@@ -43,31 +42,8 @@ const crearPost = (_uid, _nameUser, _gmail, _imageProfile, _description, _privac
 });
 const eliminarDocumentoEnPost = documento => firebase.firestore().collection('posts').doc(documento).delete();
 
-const eliminarPost = (doc) => {
-  const documento = doc.id;
-  eliminarDocumentoEnPost(documento)
-    .then(() => {
-      console.log('Document successfully deleted!');
-      if (doc.data().imagenLink !== null) {
-        const uid = doc.data().uid;
-        const file = doc.data().imagenName;
-        eliminarStorage(uid, file)
-          .then(() => {
-            console.log('se borro de storage');
-          });
-      }
-    })
-    .catch((error) => {
-      console.error('Error removing document: ', error);
-    });
-};
 const eliminarComentario = doc => firebase.firestore().collection('comentarios').doc(doc).delete();
-// .then(() => {
-//   console.log('Document successfully deleted!');
-// })
-// .catch((error) => {
-//   console.error('Error removing document: ', error);
-// });
+
 const modificarPost = (_idPost, _description, _privacity) => firebase.firestore().collection('posts').doc(_idPost).update({
   description: _description,
   privacity: _privacity,
@@ -81,12 +57,7 @@ const modificarUser = (emailUser, ocupacionUser, locacionUser, lenguajeUser) => 
 const modificarComentario = (idComentario, _contenido) => firebase.firestore().collection('comentarios').doc(idComentario).update({
   contenido: _contenido,
 });
-const darLike = (user, documento) => firebase.firestore().collection('posts').doc(documento.id).update({
-  likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
-});
-const quitarLike = (user, documento) => firebase.firestore().collection('posts').doc(documento.id).update({
-  likes: firebase.firestore.FieldValue.arrayRemove(user.uid),
-});
+
 const traerComentarios = (callback, _idPost) => {
   firebase.firestore().collection('comentarios').orderBy('date', 'desc').where('idPost', '==', _idPost)
     .onSnapshot((querySnapshot) => {
@@ -116,14 +87,11 @@ export {
   createDBUser,
   createUserGooFac,
   crearPost,
-  eliminarPost,
   eliminarDocumentoEnPost,
   modificarPost,
   traerPost,
   traerUsuarios,
   modificarUser,
-  darLike,
-  quitarLike,
   crearComentario,
   eliminarComentario,
   modificarComentario,

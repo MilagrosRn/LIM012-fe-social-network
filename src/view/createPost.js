@@ -82,7 +82,6 @@ export default function crearPostTemplate(doc) {
     const divImage = divElement.querySelector('.option_image_public');
     divImage.style.display = 'block';
     divElement.id = 'margenPost';
-    console.log(divElement.id)
 
     const fileInput = divElement.querySelector('#fileInput');
     const fileDisplayArea = divElement.querySelector('#fileDisplayArea');

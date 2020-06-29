@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
-import { crearPost, darLike, quitarLike } from '../firebase/firestore-controller.js';
-import { subirAlStorage } from '../firebase/storage-controller.js';
+import { crearPost, eliminarDocumentoEnPost } from '../firebase/firestore-controller.js';
+import { subirAlStorage, eliminarStorage } from '../firebase/storage-controller.js';
 
 const previsualizarImagen = (input, divShowContent) => {
   const file = input.files[0];
@@ -40,6 +40,14 @@ const subirImagen = (file, uid, uploader) => {
     });
 };
 
+const darLike = (user, documento) => firebase.firestore().collection('posts').doc(documento.id).update({
+  likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
+});
+
+const quitarLike = (user, documento) => firebase.firestore().collection('posts').doc(documento.id).update({
+  likes: firebase.firestore.FieldValue.arrayRemove(user.uid),
+});
+
 const mostrarEstado = (divState, fatherText) => {
   divState.textContent = '';
   const textState = 'Me siento...';
@@ -75,6 +83,25 @@ const verificarLikeUsuario = (user, documento) => {
   }
 };
 
+const eliminarPost = (doc) => {
+  const documento = doc.id;
+  eliminarDocumentoEnPost(documento)
+    .then(() => {
+      console.log('Document successfully deleted!');
+      if (doc.data().imagenLink !== null) {
+        const uid = doc.data().uid;
+        const file = doc.data().imagenName;
+        eliminarStorage(uid, file)
+          .then(() => {
+            console.log('se borro de storage');
+          });
+      }
+    })
+    .catch((error) => {
+      console.error('Error removing document: ', error);
+    });
+};
+
 export {
   verificarLikeUsuario,
   previsualizarImagen,
@@ -82,4 +109,7 @@ export {
   mostrarEstado,
   mostrarLocacion,
   crearPostFuncion,
+  eliminarPost,
+  darLike,
+  quitarLike,
 };
