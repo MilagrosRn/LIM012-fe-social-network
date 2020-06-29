@@ -58,7 +58,7 @@ const createAccount = (newEmail, newPassword, newUser) => {
         });
         const configuracion = {
           // url: 'http://localhost:5000/#/home',
-          url: 'https://milagrosrn.github.io/LIM012-fe-social-network/src/?#/',
+          url: 'https://milagrosrn.github.io/LIM012-fe-social-network/src/#/home',
         };
         result.user.sendEmailVerification(configuracion)
           .catch((error) => {
@@ -103,6 +103,7 @@ const signInGoogleAccount = () => {
       if (errorCode) {
         const divValidationsLogin = document.querySelector('.divValidationsLogin');
         divValidationsLogin.innerHTML = 'Error al autenticar con Google';
+        console.log(error)
       }
     });
 };
