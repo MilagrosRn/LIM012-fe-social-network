@@ -233,6 +233,14 @@
         border-radius: 12px;
         width: 40%;
     }
+
+    .text404 {
+        margin-top: 10%;
+    }
+
+    .logo404 {
+        width: 50%;
+    }
 }
 
 /* Tablets en horizonal y escritorios normales*/

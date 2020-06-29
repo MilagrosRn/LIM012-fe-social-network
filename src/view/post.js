@@ -121,14 +121,14 @@ export const postTemplate = (doc) => {
       </div>
       <div  class="options_post_public">
         <div class ="space_likes">
-          <img class="icon_like" id="icon_like" src="../imagenes/logosinborde.png">
+          <img class="icon_like" id="icon_like" src="https://scontent.ftcq1-1.fna.fbcdn.net/v/t1.0-9/106255566_2668398890073154_4433118275845262369_n.jpg?_nc_cat=107&_nc_sid=8024bb&_nc_eui2=AeGtel6XD7b7qwYcdpA1yLySvuQd-c6CgV--5B35zoKBXwZnOtIpr4k6V1TjQMT74KnEWIbtxQLeX4jNMyrwe--e&_nc_ohc=YNAecUGGry8AX9lqx2p&_nc_ht=scontent.ftcq1-1.fna&oh=aa20ec3f374bacf16fbb4c8685bbcd61&oe=5F1E284F">
           <p class = "contador_likes">${doc.data().likes.length}</p>
           <div class = "btn-abrir">
             <p class = "like_text " >Me gusta</p>
           </div>
         </div>
         <div class ="space_comment">
-          <img class="icon_comment" src="../imagenes/logoMensaje.png">
+          <img class="icon_comment" src="https://scontent.ftcq1-1.fna.fbcdn.net/v/t1.0-9/106335202_2668400310073012_5026502737925211041_n.jpg?_nc_cat=108&_nc_sid=8024bb&_nc_eui2=AeEmIu21cy1Ka7eetPAlhp9hF4-DSUkStdwXj4NJSRK13ACDwl3Ob7eIJXGNaunccTA-5r2kDjW4MWJ8E3D56Q6M&_nc_ohc=S1ZaqvGL4-0AX9SFxwB&_nc_ht=scontent.ftcq1-1.fna&oh=32a0aba28273290004a8b84ddb1e68a3&oe=5F1FF711">
           <p class = "contador_comment">${doc.data().contadorComentarios.length}</p>
           <p class = "comment_text">comentarios</p>
         </div>
@@ -255,7 +255,7 @@ export const postTemplate = (doc) => {
   const arrLikes = doc.data().likes;
   const found = arrLikes.includes(user.uid);
   if (found) {
-    btnLike.src = '../imagenes/logolike.png';
+    btnLike.src = 'https://scontent.ftcq1-1.fna.fbcdn.net/v/t1.0-9/106255566_2668398890073154_4433118275845262369_n.jpg?_nc_cat=107&_nc_sid=8024bb&_nc_eui2=AeGtel6XD7b7qwYcdpA1yLySvuQd-c6CgV--5B35zoKBXwZnOtIpr4k6V1TjQMT74KnEWIbtxQLeX4jNMyrwe--e&_nc_ohc=YNAecUGGry8AX9lqx2p&_nc_ht=scontent.ftcq1-1.fna&oh=aa20ec3f374bacf16fbb4c8685bbcd61&oe=5F1E284F';
   }
 
   // opcion dar like

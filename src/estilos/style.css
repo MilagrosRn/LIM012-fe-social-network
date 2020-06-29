@@ -945,3 +945,32 @@ header label:hover {
    margin-top: 12%;
    font-size: 1.2em;
 }
+.vista404{
+    width: 100%;
+    height: 100%;
+  }
+  .header404{
+    background:  linear-gradient(180deg, #0CE600 2.6%, #757D00 100%);
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  .logo404{
+    width: 70%;
+  }
+  .text404{
+    color: #464646;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 20%
+  }
+  .error404{
+    font-size: 5em;
+    margin: 0;
+    margin-bottom: 5%;
+  }
+  .errortext404{
+    font-size: 2em; 
+  }
