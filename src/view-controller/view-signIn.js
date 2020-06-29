@@ -124,6 +124,7 @@ const signInFacebookAccount = () => {
       if (result.additionalUserInfo.isNewUser === true) {
         createUserGooFac(email, name, image);
       }
+      changeView('#/home');
     })
     .catch(error => console.log('error facebook', error.credential));
 };

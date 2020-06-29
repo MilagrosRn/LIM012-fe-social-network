@@ -9,6 +9,7 @@ window.addEventListener('load', init);
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    console.log('logeado');
     if (user.emailVerified === false) {
       console.log('email no verificado');
     } else {
