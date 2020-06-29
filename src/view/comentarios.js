@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { eliminarComentario, modificarComentario } from '../firebase/firestore-controller.js';
 import { quitarComentario } from '../view-controller/view-comentario.js';
 

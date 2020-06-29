@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 /* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
 import {
@@ -121,9 +122,3 @@ export default function crearPostTemplate(doc) {
   }));
   return divElement;
 }
-// let privacityCollection = '';
-// if (privacityMarked) {
-//   privacityCollection = true;
-// } else {
-//   privacityCollection = false;
-// }

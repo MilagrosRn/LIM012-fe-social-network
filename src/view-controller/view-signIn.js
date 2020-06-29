@@ -144,6 +144,32 @@ const registrarUsuario = () => {
     createAccount(email, password, user);
   }
 };
+// MOSTRAR INFORMACION
+export const btnInfo = () => {
+  const modal = document.getElementById('modal');
+  const span = document.getElementsByClassName('closeInfo')[0];
+  const body = document.getElementsByTagName('body')[0];
+  modal.style.display = 'block';
+  body.style.position = 'static';
+  body.style.height = '100%';
+  body.style.overflow = 'hidden';
+  span.onclick = () => {
+    modal.style.display = 'none';
+    body.style.position = 'inherit';
+    body.style.height = 'auto';
+    body.style.overflow = 'visible';
+    changeView('#/login');
+  };
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+      body.style.position = 'inherit';
+      body.style.height = 'auto';
+      body.style.overflow = 'visible';
+    }
+  };
+};
+// FUNCION INICIO DE SESION
 const inicioSesion = () => {
   const email = document.querySelector('.correo').value;
   const password = document.querySelector('.coontraseña').value;

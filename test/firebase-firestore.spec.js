@@ -70,19 +70,6 @@ const uid = '8RTVKW86wQZ9vzkg8Yua8ithg2Ou';
 const description = '_description nuevo';
 
 global.firebase = new MockFirebase(fixtureData);
-// global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
-
-
-// describe('crearPost', () => {
-//   it('Deberia agregar un post', done => crearPost(uid, nameUser, gmail, imageProfile, description, privacity, imagenLink, imagenName)
-//     .then(() => traerPost(
-//       (data) => {
-//         const result = data.find(posts => posts.data().description === '_description nuevo');
-//         expect(result.data().description).toBe('_description nuevo');
-//         done();
-//       },
-//     )));
-// });
 
 describe('funcion crearPost', () => {
   it('Deberia agregar un post', done => crearPost(uid, nameUser, gmail, imageProfile, description, privacity, imagenLink, imagenName).then(() => {
@@ -182,13 +169,3 @@ describe('funcion eliminarComentario', () => {
     traerComentarios(callback, 'post1');
   }));
 });
-// describe('darLike', () => {
-//   it('Deberia dar Like a un post', done => darLike('user1', postP)
-//     .then(() => traerPost((data) => {
-//       console.log(data);
-//       const result = data.find(posts => posts.id === 'post1');
-//       console.log(result.data().likes);
-//       expect(result.data().likes).toBe(['user1']);
-//       done();
-//     })));
-// });

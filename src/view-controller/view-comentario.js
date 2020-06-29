@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import crearComentarioTemplate from '../view/comentarios.js';
 
 export const mostrarDataComentarios = (data, nodo, id) => {
