@@ -82,14 +82,14 @@ Se prototitotiparon todas las vistas con Figma [puedes verlo aqui](https://www.f
 - [x] [Firestore](https://firebase.google.com/docs/firestore)
 - [x] [Firebase Auth](https://firebase.google.com/docs/auth/web/start)
 - [x] [Firebase security rules](https://firebase.google.com/docs/rules)
-- [x] [Uso de onSnapshot](https://firebase.google.com/docs/firestore/query-data/listen)
+- [ ] [Uso de onSnapshot](https://firebase.google.com/docs/firestore/query-data/listen)
 | [onAuthStateChanged](https://firebase.google.com/docs/auth/web/start#set_an_authentication_state_observer_and_get_user_data)
 
 ### Testing
 
 - [x] [Testeo de tus funciones](https://jestjs.io/docs/es-ES/getting-started)
 - [x] [Testeo asíncrono](https://jestjs.io/docs/es-ES/asynchronous)
-- [ ] [Mocking](https://jestjs.io/docs/es-ES/manual-mocks)
+- [x] [Mocking](https://jestjs.io/docs/es-ES/manual-mocks)
 
 ### Colaboración en Github
 
